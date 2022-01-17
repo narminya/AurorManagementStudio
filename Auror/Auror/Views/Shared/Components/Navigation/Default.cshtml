@@ -1,0 +1,45 @@
+﻿<div class="hotel-top-bar">
+    <div class="container">
+        <div class="hotel-left-side">
+            <!-- logo -->
+            <a asp-controller="Home" asp-action="Index" class="hotel-logo-frame" style="width: 50px;">
+                <img src="img/hotellogo.png" alt="logo">
+            </a>
+            <!-- logo end -->
+        </div>
+        <div class="hotel-right-side">
+            <!-- menu -->
+            <div class="hotel-menu">
+                <nav>
+                    <ul>
+                        <li class="current-item">
+                            <a asp-controller="Home" asp-action="Index" >Ana Səhifə</a>
+                        </li>
+                        <li>
+                            <a asp-controller="About" asp-action="Index">Haqqımızda</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Hotel" asp-action="Index">Hotellər</a>
+                        </li>
+                        <li>
+                            <a  asp-controller="Room" asp-action="Index">Otaqlar</a>
+                        </li>
+                        <li>
+                            <a  asp-controller="Service" asp-action="Index">Xidmətlərimiz</a>
+                        </li>
+                        <li>
+                            <a  asp-controller="Contact" asp-action="Index">Əlaqə</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- menu end -->
+            <!-- action button -->
+            <a  asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="img/icons/bookmark.svg" alt="icon">Giriş</a>
+            <!-- action button end -->
+        </div>
+        <!-- menu button -->
+        <div class="hotel-menu-btn"><span></span></div>
+        <!-- menu button end -->
+    </div>
+</div>
