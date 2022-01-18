@@ -81,23 +81,23 @@ namespace Auror.Controllers
                 return View();
             }
 
-            var User = await _userManager.FindByNameAsync(rvm.Username);
-            if (User != null)
+            var dbUser = await _userManager.FindByNameAsync(rvm.Username);
+            if (dbUser != null)
             {
                 ModelState.AddModelError(nameof(RegisterViewModel.Username), "This username is taken. Please enter another username");
                 return View();
             }
 
-            User user = new User()
-            {
-                UserName = rvm.Username,
-                Name = rvm.Name,
-                Surname = rvm.Surname,
-                Email = rvm.Email,
-                Gender = (await _dt.Gender.FindAsync(rvm.GenderId)).Name,
-                ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
+            User user = new User();
 
-            };
+            user.UserName = rvm.Username;
+            user.Name = rvm.Name;
+            user.Surname = rvm.Surname;
+            user.Email = rvm.Email;
+               //user.Gender = (await _dt.Gender.FindAsync(rvm.GenderId)).Name,
+               //user.ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
+
+            
 
             var identityUser = await _userManager.CreateAsync(user, rvm.Password);
 
@@ -112,7 +112,8 @@ namespace Auror.Controllers
 
             await _signInManager.SignInAsync(user, true);
             await _userManager.AddToRoleAsync(user, RoleConstants.User);
-            rvm.Email.SendConfirmationEmail();
+            
+            rvm.Email.EmailSender(Credentials.Message, Credentials.Body);
 
             return RedirectToAction("Index", "Home");
         }

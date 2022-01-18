@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj": {}
+    "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj": {
+    "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
+        "projectUniqueName": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
         "projectName": "Auror",
-        "projectPath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
-        "packagesPath": "C:\\Users\\Narminya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Auror\\obj\\",
+        "projectPath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
+        "packagesPath": "C:\\Users\\afsana.mammadova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Narminya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\afsana.mammadova\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj": {
-                "projectPath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj"
+              "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -97,17 +97,17 @@
         }
       }
     },
-    "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj": {
+    "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
-        "packagesPath": "C:\\Users\\Narminya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\obj\\",
+        "projectPath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
+        "packagesPath": "C:\\Users\\afsana.mammadova\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Narminya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\afsana.mammadova\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -898,7 +898,7 @@ login
     .login .container {
         position: relative;
         width: 800px;
-        height: 500px;
+        height: 700px;
         background: #fff;
         box-shadow: 0 15px 50px rgba(0, 0, 0, .1);
         overflow: hidden;
@@ -952,7 +952,7 @@ login
                     color: #555;
                 }
 
-                .login .container .user .formBox input {
+                .login .container .user .formBox input.form-box-text {
                     width: 100%;
                     padding: 10px;
                     background: #f5f5f5;
@@ -966,27 +966,30 @@ login
                     font-weight: 300;
                 }
 
-                    .login .container .user .formBox input[type="submit"] {
-                        max-width: 150px;
-                        background: #677eff;
+                .login .container .user .formBox button {
+                    border: none;
+                    padding: 20px;
+                    border-radius: 20px;
+                    max-width: 200px;
+                    background: #677eff;
+                    color: #fff;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    transition: .5s;
+                }
+
+                    .login .container .user .formBox button:hover {
+                        background: #f34444;
                         color: #fff;
-                        cursor: pointer;
-                        font-size: 14px;
-                        font-weight: 500;
-                        letter-spacing: 1px;
-                        transition: .5s;
                     }
 
-                        .login .container .user .formBox input[type="submit"]:hover {
-                            background: #f34444;
-                            color: #fff;
-                        }
-
-            .login .container .user.signupBox .formBox input[type="submit"] {
+            .login .container .user.signupBox .formBox button {
                 background: #e73e49;
             }
 
-                .login .container .user.signupBox .formBox input[type="submit"]:hover {
+                .login .container .user.signupBox .formBox button:hover {
                     background: #557085;
                 }
 
@@ -1010,17 +1013,15 @@ login
                         color: #fa0b0b;
                     }
 
-        .login .container .signupBox {
-            pointer-events: none;
-        }
+
 
         .login .container.active .signupBox {
             pointer-events: initial;
         }
 
-       
 
-   
+
+
 
         .login .container .signinBox .imgBox {
             top: 0;

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auror", "Auror\Auror.csproj", "{ABFB44EE-98C3-437C-A8DB-FD3F41726065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{E00CD595-F925-427E-9B84-6DDF3E6EC203}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{E00CD595-F925-427E-9B84-6DDF3E6EC203}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

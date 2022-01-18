@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
-    internal static class Credentials
+    public static class Credentials
     {
         internal static string Email = "noreplyauror@gmail.com";
         internal static string Password = "iGA-Fc9-wRk-usg";
+        public static string Message = "Thank you for your registration";
+        public static string Body = "Hope you enjoy it";
+
     }
 }

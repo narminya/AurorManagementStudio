@@ -32,8 +32,9 @@
                     <div class="formBox">
                         <form asp-action="Login" method="post">
                             <h2>Giriş</h2>
-                            <input asp-for="Email"  placeholder="Email">
-                            <input asp-for="Password" placeholder="Şifrə">
+                            <input class="form-box-text" asp-for="Email"  placeholder="Email">
+                            <input class="form-box-text" asp-for="Password" placeholder="Şifrə">
+                            <label asp-for="KeepMeSigned" >Keep me signed</label>
                             <input asp-for="KeepMeSigned"/>
                             <button type="submit"  value="Giriş"></button>
                             <p class="signup">Hesabınız yoxdur? O zaman <a asp-controller="Account" asp-action="Register" >Qedyiyyatdan keçin</a></p>

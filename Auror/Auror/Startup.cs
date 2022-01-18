@@ -45,17 +45,22 @@ namespace Auror
 
             services.AddAuthorization(options =>
             {
-            //    options.AddPolicy("Hotel", policy => policy.RequireRole("Hotel").RequireClaim("EditHotels", "true")
-            //    .RequireClaim("DeleteHotels", "true"));
+                //    options.AddPolicy("Hotel", policy => policy.RequireRole("Hotel").RequireClaim("EditHotels", "true")
+                //    .RequireClaim("DeleteHotels", "true"));
 
-                options.AddPolicy("Admin&Moderator", policy => policy.RequireClaim("Admin").RequireClaim("Moderator"));
+                //options.AddPolicy("Admin&Moderator", policy => policy.RequireClaim("Admin").RequireClaim("Moderator"));
 
-                options.AddPolicy("User", policy => policy.RequireRole("User"));
-               
-                options.AddPolicy("Hotels", policyBuilder => policyBuilder.RequireAssertion(
-                    context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
-                    || context.User.IsInRole("Hotel")
-                    
+                //options.AddPolicy("User", policy => policy.RequireRole("User"));
+
+                //options.AddPolicy("Hotels", policyBuilder => policyBuilder.RequireAssertion(
+                //    context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
+                //    || context.User.IsInRole("Hotel")
+                //    ));
+
+                options.AddPolicy("AreaAdmin", policyBuilder => policyBuilder.RequireAssertion(
+                    context => context.User.IsInRole("SuperAdmin") ||
+                               context.User.IsInRole("Admin") ||
+                               context.User.IsInRole("Hotel") && context.User.HasClaim("Admin", "true")
                     ));
             });
 
@@ -70,7 +75,7 @@ namespace Auror
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -79,6 +84,7 @@ namespace Auror
 
             app.UseRouting();
             app.UseStaticFiles();
+           await app.Seed();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "xitnPc62nWfRONgmP9NRaCi3l6Oa/c9uLIWbxoHGQAhcoR7O7Fl8ZPbdbaK6Xl5PP2S2fT0d1prqYo17RgYsgQ==",
+  "dgSpecHash": "GATtnJpQCKyE/C/pckF2v0BttGx9aJDeD2V1buD5CnY9Fp7Dvk0yoP9qwnh6+kTClZKaAWR02eQm3BGbr1sKJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Narminya\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
+  "projectFilePath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Utilities\\Utilities.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.12\\microsoft.aspnetcore.cryptography.keyderivation.5.0.12.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.12\\microsoft.aspnetcore.http.features.5.0.12.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.12\\microsoft.extensions.identity.core.5.0.12.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
-    "C:\\Users\\Narminya\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.12\\microsoft.aspnetcore.cryptography.keyderivation.5.0.12.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.12\\microsoft.aspnetcore.http.features.5.0.12.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.12\\microsoft.extensions.identity.core.5.0.12.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\afsana.mammadova\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy ="Admin&Moderator")]
-
+    [Authorize(Policy = "AreaAdmin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
