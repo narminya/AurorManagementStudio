@@ -14,5 +14,9 @@ namespace Auror.Models.Entity
         public bool Pool { get; set; }
         public bool FreeCancel { get; set; }
         public bool Parking { get; set; }
+        public bool Security { get; set; }
+        public bool Laundry { get; set; }
+        public bool AllInclusive { get; set; }
+        public bool AirportTransfer { get; set; }
     }
 }

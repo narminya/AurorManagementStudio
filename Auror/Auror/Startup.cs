@@ -37,6 +37,14 @@ namespace Auror
             services.AddControllersWithViews()
               .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling
               = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Hotel", policy => policy.RequireClaim("Hotel"));
+                options.AddPolicy("Admin&Moderator", policy => policy.RequireClaim("Admin").RequireClaim("Moderator"));
+            });
+
+
             services.AddDbContext<AurorDataContext>(options =>
             {
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));

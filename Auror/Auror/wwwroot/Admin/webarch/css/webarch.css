@@ -6478,6 +6478,22 @@ h4.custom-line-height {
 .open > .dropdown-toggle.btn-info:hover {
   background-color: #1b3148;
 }
+.btn-info-g,
+.btn-info-g:hover,
+.btn-info-g:focus,
+.btn-info-g:active,
+.btn-info-g.active,
+.btn-info-g.disabled,
+.btn-info-g[disabled],
+.btn-info-g.active.focus,
+.btn-info-g:active:focus,
+.btn-info-g:active:hover,
+.open > .dropdown-toggle.btn-info.focus,
+.open > .dropdown-toggle.btn-info:focus,
+.open > .dropdown-toggle.btn-info:hover {
+    color: white;
+    background-color: #d93c3c;
+}
 .btn-warning {
   color: #ffffff;
   background-color: #fbb05e;

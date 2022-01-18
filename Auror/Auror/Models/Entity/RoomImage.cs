@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Auror.Models.Entity
 {
-    public class Images : Base
+    public class RoomImage : Base
     {
         public string Path { get; set; }
-        public int? HotelId { get; set; }
-        public Hotel Hotel { get; set; }
+        public int? RoomId { get; set; }
+        public Room Room { get; set; }
     }
 }

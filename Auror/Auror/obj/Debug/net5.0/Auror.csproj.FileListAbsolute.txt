@@ -157,3 +157,6 @@ C:\Users\afsana.mammadova\source\repos\Auror\Auror\obj\Debug\net5.0\Razor\Views\
 C:\Users\afsana.mammadova\source\repos\Auror\Auror\obj\Debug\net5.0\Razor\Views\Hotel\Index.cshtml.g.cs
 C:\Users\afsana.mammadova\source\repos\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\Components\Navigation\Default.cshtml.g.cs
 C:\Users\afsana.mammadova\source\repos\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\Login.cshtml.g.cs
+C:\Users\afsana.mammadova\source\repos\Auror\Auror\bin\Debug\net5.0\Utilities.dll
+C:\Users\afsana.mammadova\source\repos\Auror\Auror\bin\Debug\net5.0\Utilities.pdb
+C:\Users\afsana.mammadova\source\repos\Auror\Auror\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs

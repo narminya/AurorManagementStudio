@@ -12,6 +12,8 @@ namespace Auror.Models.Entity
         public RoomType RoomType { get; set; }
         public bool IsAvailable { get; set; }
         public decimal CurrentPrice { get; set; }
+        public int PeopleCount { get; set; }
+        public int RoomSquare { get; set; }
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
         public ICollection<RoomAdvantages> Advantages { get; set; }

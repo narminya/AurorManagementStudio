@@ -15,7 +15,7 @@ namespace Auror.Models.Entity
         public HotelCategory HotelCategory { get; set; }
         public string Description { get; set; }
         public string DefaultImage { get; set; }
-        public ICollection<Images> Images { get; set; }
+        public ICollection<HotelImage> Images { get; set; }
         public ICollection<Room> Rooms { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
         public ICollection<HotelAdvantages> Advantages { get; set; }
