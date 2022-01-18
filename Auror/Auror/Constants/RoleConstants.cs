@@ -5,7 +5,13 @@ using System.Threading.Tasks;
 
 namespace Auror.Constants
 {
-    public class RoleConstants
+    public static class RoleConstants
     {
+        public static string User { get; set; } = "User";
+        public static string SuperAdmin { get; set; } = "SuperAdmin";
+        public static string Admin { get; set; } = "Admin";
+        public static string Hotel { get; set; } = "Hotel";
+
+
     }
 }

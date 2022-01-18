@@ -36,4 +36,8 @@
     <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\uploads\" />
+  </ItemGroup>
+
 </Project>
