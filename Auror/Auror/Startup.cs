@@ -1,3 +1,4 @@
+using Auror.Constants;
 using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,10 +19,13 @@ namespace Auror
 {
     public class Startup
     {
-        private readonly IConfiguration _configuration;
-        public Startup(IConfiguration configuration)
+        private readonly IConfiguration _conf;
+        private readonly IWebHostEnvironment _env;
+
+        public Startup(IConfiguration conf, IWebHostEnvironment env)
         {
-            _configuration = configuration;
+            _conf = conf;
+            _env = env;
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -40,15 +45,26 @@ namespace Auror
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("Hotel", policy => policy.RequireClaim("Hotel"));
+            //    options.AddPolicy("Hotel", policy => policy.RequireRole("Hotel").RequireClaim("EditHotels", "true")
+            //    .RequireClaim("DeleteHotels", "true"));
+
                 options.AddPolicy("Admin&Moderator", policy => policy.RequireClaim("Admin").RequireClaim("Moderator"));
+
+                options.AddPolicy("User", policy => policy.RequireRole("User"));
+               
+                options.AddPolicy("Hotels", policyBuilder => policyBuilder.RequireAssertion(
+                    context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
+                    
+                    ));
             });
 
 
             services.AddDbContext<AurorDataContext>(options =>
             {
-                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(_conf.GetConnectionString("DefaultConnection"));
             });
+
+            FileConstants.ImagePath = Path.Combine(_env.WebRootPath, "img", "uploads");
 
         }
 

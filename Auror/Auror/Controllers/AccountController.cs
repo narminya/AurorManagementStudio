@@ -16,11 +16,13 @@ namespace Auror.Controllers
         private readonly AurorDataContext _dt;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
-        public AccountController(AurorDataContext dt,SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly RoleManager<IdentityRole> _roleManager; 
+        public AccountController(AurorDataContext dt,SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _dt = dt;
             _signInManager = signInManager;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
         public IActionResult Login()
         {
@@ -50,6 +52,7 @@ namespace Auror.Controllers
                 return View();
             }
 
+
            
 
             return RedirectToAction(nameof(HomeController), nameof(HomeController.Index));
@@ -62,8 +65,29 @@ namespace Auror.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterViewModel rvm)
+        public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var User = await _userManager.FindByNameAsync(rvm.Username);
+            if (User != null)
+            {
+                ModelState.AddModelError(nameof(RegisterViewModel.Username), "This username is taken. Please enter another username");
+                return View();
+            }
+
+            User user = new User()
+            {
+                UserName = rvm.Username,
+                Name = rvm.Name,
+                Surname = rvm.Surname,
+                PhoneNumber = rvm.Phone,
+
+            };
+
             rvm.Email.SendConfirmationEmail();
             return View();
         }

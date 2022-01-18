@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +21,10 @@ namespace Auror.Models.ViewModels
         public string Password { get; set; }
         [Required, DataType(DataType.Password),Compare("Password")]
         public string ConfirmPassword { get; set; }
-        public string Gender { get; set; }
+        public string GenderId { get; set; }
         public string Phone { get; set; }
+        
+        [NotMapped]
+        public IFormFile ProfilePicture { get; set; }
     }
 }

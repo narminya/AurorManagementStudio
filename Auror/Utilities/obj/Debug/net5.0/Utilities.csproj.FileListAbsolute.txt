@@ -10,3 +10,15 @@ C:\Users\afsana.mammadova\source\repos\Auror\Utilities\obj\Debug\net5.0\Utilitie
 C:\Users\afsana.mammadova\source\repos\Auror\Utilities\obj\Debug\net5.0\Utilities.dll
 C:\Users\afsana.mammadova\source\repos\Auror\Utilities\obj\Debug\net5.0\ref\Utilities.dll
 C:\Users\afsana.mammadova\source\repos\Auror\Utilities\obj\Debug\net5.0\Utilities.pdb
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\bin\Debug\net5.0\Utilities.deps.json
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\bin\Debug\net5.0\Utilities.dll
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\bin\Debug\net5.0\ref\Utilities.dll
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\bin\Debug\net5.0\Utilities.pdb
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.dll
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\ref\Utilities.dll
+C:\Users\Narminya\Desktop\AurorManagementStudio\Auror\Utilities\obj\Debug\net5.0\Utilities.pdb
