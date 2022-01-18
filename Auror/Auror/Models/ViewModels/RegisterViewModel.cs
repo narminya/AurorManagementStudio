@@ -22,7 +22,6 @@ namespace Auror.Models.ViewModels
         [Required, DataType(DataType.Password),Compare("Password")]
         public string ConfirmPassword { get; set; }
         public string GenderId { get; set; }
-        public string Phone { get; set; }
         
         [NotMapped]
         public IFormFile ProfilePicture { get; set; }

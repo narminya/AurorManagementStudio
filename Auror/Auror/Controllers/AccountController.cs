@@ -4,6 +4,7 @@ using Auror.Models.Entity;
 using Auror.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +66,7 @@ namespace Auror.Controllers
 
         public IActionResult Register()
         {
+            ViewBag.Gender = new SelectList(_dt.Gender, "Id", "Name");
             return View();
         }
 
@@ -72,6 +74,8 @@ namespace Auror.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
+            ViewBag.Gender = new SelectList(_dt.Gender, "Id", "Name");
+
             if (!ModelState.IsValid)
             {
                 return View();
@@ -90,7 +94,6 @@ namespace Auror.Controllers
                 Name = rvm.Name,
                 Surname = rvm.Surname,
                 Email = rvm.Email,
-                PhoneNumber = rvm.Phone,
                 Gender = (await _dt.Gender.FindAsync(rvm.GenderId)).Name,
                 ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
 

@@ -31,10 +31,14 @@
                     <div class="formBox">
                         <form>
                             <h2>Hesab aç</h2>
-                            <input type="text" placeholder="İstifadəçi Adınız">
-                            <input type="text" placeholder="E-mail Adresiniz">
-                            <input type="password" placeholder="Şifrə">
-                            <input type="password" placeholder="Şifrə (təkrar)">
+                            <input asp-for="Username" placeholder="İstifadəçi Adınız">
+                            <input asp-for="Name" placeholder="Adınız">
+                            <input asp-for="Surname" placeholder="Soyadınız">
+                            <input asp-for="Email" placeholder="Soyadınız">
+                            <input asp-for="Password" placeholder="Soyadınız">
+                            <input asp-for="ConfirmPassword" placeholder="Soyadınız">
+                            <select asp-items="ViewBag.Gender" asp-for="GenderId"></select>
+                            
                             <input type="submit" value="Qeydiyyatdan keç">
                         </form>
                     </div>

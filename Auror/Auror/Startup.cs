@@ -54,6 +54,7 @@ namespace Auror
                
                 options.AddPolicy("Hotels", policyBuilder => policyBuilder.RequireAssertion(
                     context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
+                    || context.User.IsInRole("Hotel")
                     
                     ));
             });
