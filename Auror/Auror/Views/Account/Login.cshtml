@@ -16,7 +16,7 @@
     <div class="hotel-app">
         <div class="hotel-preloader-frame">
             <div class="hotel-preloader imgLoad">
-                <img class="lozad" data-src="img/hotellogo.png" alt="logo" />
+                <img class="lozad" src="~/img/hotellogo.png" alt="logo" />
                 <div class="hotel-preloader-progress">
                     <div class="hotel-preloader-bar"></div>
                 </div>
@@ -34,9 +34,9 @@
                             <h2>Giriş</h2>
                             <input class="form-box-text" asp-for="Email"  placeholder="Email">
                             <input class="form-box-text" asp-for="Password" placeholder="Şifrə">
-                            <label asp-for="KeepMeSigned" >Keep me signed</label>
-                            <input asp-for="KeepMeSigned"/>
-                            <button type="submit"  value="Giriş"></button>
+                            
+                            <input asp-for="KeepMeSigned"/><label asp-for="KeepMeSigned">Keep me signed</label>
+                                                           <button type="submit" >Giriş</button>
                             <p class="signup">Hesabınız yoxdur? O zaman <a asp-controller="Account" asp-action="Register" >Qedyiyyatdan keçin</a></p>
                         </form>
                     </div>

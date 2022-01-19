@@ -84,7 +84,7 @@ namespace Auror.Controllers
             var dbUser = await _userManager.FindByNameAsync(rvm.Username);
             if (dbUser != null)
             {
-                ModelState.AddModelError(nameof(RegisterViewModel.Username), "This username is taken. Please enter another username");
+                ModelState.AddModelError(rvm.Username, "This username is taken. Please enter another username");
                 return View();
             }
 
@@ -94,7 +94,7 @@ namespace Auror.Controllers
             user.Name = rvm.Name;
             user.Surname = rvm.Surname;
             user.Email = rvm.Email;
-               //user.Gender = (await _dt.Gender.FindAsync(rvm.GenderId)).Name,
+            user.GenderId = (await _dt.Gender.FindAsync(int.Parse(rvm.GenderId))).Id;
                //user.ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
 
             
@@ -115,6 +115,12 @@ namespace Auror.Controllers
             
             rvm.Email.EmailSender(Credentials.Message, Credentials.Body);
 
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

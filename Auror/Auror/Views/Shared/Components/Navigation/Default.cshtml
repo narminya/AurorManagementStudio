@@ -35,6 +35,10 @@
             </div>
             <!-- menu end -->
             <!-- action button -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-action="LogOut" asp-controller="Account">@User.Identity.Name</a>
+            }
             <a  asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="img/icons/bookmark.svg" alt="icon">Giriş</a>
             <!-- action button end -->
         </div>

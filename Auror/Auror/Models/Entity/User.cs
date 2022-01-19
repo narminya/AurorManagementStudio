@@ -12,6 +12,7 @@ namespace Auror.Models.Entity
         public string Surname { get; set; }
         public string Password { get; set; }
         public string ProfilePhoto { get; set; }
-        public string Gender { get; set; }
+        public int GenderId { get; set; }
+        public Gender Gender { get; set; }
     }
 }
