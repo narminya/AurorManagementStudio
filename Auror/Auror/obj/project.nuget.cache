@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UFZtsrIyO7SZf9y2ntIgFqDX4tws/ePIgSyYBmanu1S00J0ARjyLZnMWm1RrlzPId0aE7tz60EyR15DkGNBxmg==",
+  "dgSpecHash": "+Cb7d9j7JyCX6yqdA0lOakQqtCFyJCXzQRiE5qWTMUNxaE3woKg72Y+JQPJLJ7LrkpnNCMIqQVyW0YY3ueqbTQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\afsana.mammadova\\Desktop\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
+  "projectFilePath": "C:\\Users\\afsana.mammadova\\Downloads\\AurorManagementStudio\\Auror\\Auror\\Auror.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\afsana.mammadova\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\afsana.mammadova\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",

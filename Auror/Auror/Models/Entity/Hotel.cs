@@ -19,7 +19,6 @@ namespace Auror.Models.Entity
         public ICollection<Room> Rooms { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
         public ICollection<HotelAdvantages> Advantages { get; set; }
-        public ICollection<HotelTag> Tags { get; set; }
 
 
 

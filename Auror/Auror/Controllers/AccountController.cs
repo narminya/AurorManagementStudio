@@ -59,7 +59,7 @@ namespace Auror.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index", "Dashboard", "Area");
+            return RedirectToAction("Index", "Dashboard", new { area  = "Area"});
 
 
         }
@@ -69,7 +69,6 @@ namespace Auror.Controllers
             ViewBag.Gender = new SelectList(_dt.Gender, "Id", "Name");
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)

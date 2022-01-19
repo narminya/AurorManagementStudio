@@ -22,13 +22,41 @@ namespace Auror.Models.DataAccessLayer
 
                 db.Database.Migrate();
 
-               await InitRoles(db, role);
+                await InitRoles(db, role);
                 InitGender(db);
-
+                InitReservationStatus(db);
+                InitRoomType(db);
                 await db.SaveChangesAsync();
             }
 
             return app;
+        }
+
+        private static void InitRoomType(AurorDataContext db)
+        {
+            if (!db.RoomType.Any())
+            {
+                db.RoomType.AddRange(
+               new RoomType { Name = "Double" },
+               new RoomType { Name = "Single" },
+               new RoomType { Name = "King suite" },
+               new RoomType { Name = "Prezident suite" },
+               new RoomType { Name = "Twin" },
+               new RoomType { Name = "Studio" }
+               );
+            }
+        }
+
+        private static void InitReservationStatus(AurorDataContext db)
+        {
+            if (!db.ReservationStatus.Any())
+            {
+                db.ReservationStatus.AddRange(
+                 new ReservationStatus { Status = "Active" },
+                 new ReservationStatus { Status = "Suspended" },
+                 new ReservationStatus { Status = "Closed" },
+                 new ReservationStatus { Status = "Pelnaltization" });
+            }
         }
 
         private static void InitGender(AurorDataContext db)
@@ -38,8 +66,7 @@ namespace Auror.Models.DataAccessLayer
                 db.Gender.AddRange(
                     new Gender { Name = "Male" },
                     new Gender { Name = "Female" },
-                    new Gender { Name = "Prefer not to say" }
-                    );
+                    new Gender { Name = "Prefer not to say" });
             }
         }
 
@@ -53,7 +80,7 @@ namespace Auror.Models.DataAccessLayer
                 await role.CreateAsync(new IdentityRole { Name = RoleConstants.Hotel });
 
             }
-          
+
         }
     }
 }

@@ -22,7 +22,6 @@ namespace Auror.Models.DataAccessLayer
         public DbSet<HotelCategory> HotelCategory { get; set; }
         public DbSet<HotelAdvantages> HotelAdvantages { get; set; }
         public DbSet<HotelComments> HotelComments { get; set; }
-        public DbSet<HotelTag> HotelTag { get; set; }
         public DbSet<HotelImage> Images { get; set; }
         public DbSet<Reservation> Reservation { get; set; }
         public DbSet<ReservationRooms> ReservationRooms { get; set; }
@@ -31,7 +30,6 @@ namespace Auror.Models.DataAccessLayer
         public DbSet<RoomAdvantages> RoomAdvantages { get; set; }
         public DbSet<RoomComments> RoomComments { get; set; }
         public DbSet<RoomType> RoomType { get; set; }
-        public DbSet<Tags> Tags { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -15,7 +15,7 @@ namespace Auror.Models.ViewComponents
         {
             _dt = dt;
         }
-        public IViewComponentResult Invoke()
+        public  IViewComponentResult Invoke()
         {
             return View();
         }

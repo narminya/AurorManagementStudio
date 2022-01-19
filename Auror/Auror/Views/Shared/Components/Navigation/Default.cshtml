@@ -13,7 +13,7 @@
                 <nav>
                     <ul>
                         <li class="current-item">
-                            <a asp-controller="Home" asp-action="Index" >Ana Səhifə</a>
+                            <a asp-controller="Home" asp-action="Index">Ana Səhifə</a>
                         </li>
                         <li>
                             <a asp-controller="About" asp-action="Index">Haqqımızda</a>
@@ -22,13 +22,13 @@
                             <a asp-controller="Hotel" asp-action="Index">Hotellər</a>
                         </li>
                         <li>
-                            <a  asp-controller="Room" asp-action="Index">Otaqlar</a>
+                            <a asp-controller="Room" asp-action="Index">Otaqlar</a>
                         </li>
                         <li>
-                            <a  asp-controller="Service" asp-action="Index">Xidmətlərimiz</a>
+                            <a asp-controller="Service" asp-action="Index">Xidmətlərimiz</a>
                         </li>
                         <li>
-                            <a  asp-controller="Contact" asp-action="Index">Əlaqə</a>
+                            <a asp-controller="Contact" asp-action="Index">Əlaqə</a>
                         </li>
                     </ul>
                 </nav>
@@ -37,9 +37,13 @@
             <!-- action button -->
             @if (User.Identity.IsAuthenticated)
             {
-                <a asp-action="LogOut" asp-controller="Account">@User.Identity.Name</a>
+                <a asp-action="LogOut" class="hotel-btn" asp-controller="Account">@User.Identity.Name</a>
             }
-            <a  asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="img/icons/bookmark.svg" alt="icon">Giriş</a>
+            else
+            {
+                <a asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="img/icons/bookmark.svg" alt="icon">Giriş</a>
+            }
+
             <!-- action button end -->
         </div>
         <!-- menu button -->

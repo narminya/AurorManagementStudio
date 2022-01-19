@@ -38,7 +38,7 @@
                 </ul>
                 <!-- BEGIN LOGO -->
                 <a href="index.html">
-                    <img src="~/Admin/assets/img/logo.png" class="logo" alt="" data-src="assets/img/logo.png" data-src-retina="assets/img/logo2x.png" width="106" height="21" />
+                    <img src="~/Admin/assets/img/logo.png" class="logo" alt="" width="106" height="21" />
                 </a>
                 <!-- END LOGO -->
                 <ul class="nav pull-right notifcation-center">
@@ -98,7 +98,7 @@
                     <div style="width:300px">
                         <div class="notification-messages info">
                             <div class="user-profile">
-                                <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                <img src="~/Admin/assets/img/profiles/d.jpg" alt=""  width="35" height="35">
                             </div>
                             <div class="message-wrapper">
                                 <div class="heading">
@@ -132,7 +132,7 @@
                         </div>
                         <div class="notification-messages success">
                             <div class="user-profile">
-                                <img src="~/Admin/assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
+                                <img src="~/Admin/assets/img/profiles/h.jpg" alt="" width="35" height="35">
                             </div>
                             <div class="message-wrapper">
                                 <div class="heading">
@@ -154,7 +154,7 @@
                 <div class="pull-right">
                     <div class="chat-toggler sm">
                         <div class="profile-pic">
-                            <img src="~/Admin/assets/img/profiles/avatar_small.jpg" alt="" data-src="assets/img/profiles/avatar_small.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="35" height="35" />
+                            <img src="~/Admin/assets/img/profiles/avatar_small.jpg" alt=""  width="35" height="35" />
                             <div class="availability-bubble online"></div>
                         </div>
                     </div>
@@ -212,16 +212,7 @@
         <div class="page-sidebar " id="main-menu">
             <!-- BEGIN MINI-PROFILE -->
             <div class="page-sidebar-wrapper scrollbar-dynamic" id="main-menu-wrapper">
-                <div class="user-info-wrapper sm">
-                    <div class="profile-wrapper sm">
-                        <img src="~/Admin/assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar2x.jpg" width="69" height="69" />
-                        <div class="availability-bubble online"></div>
-                    </div>
-                    <div class="user-info sm">
-                        <div class="username">Fred <span class="semi-bold">Smith</span></div>
-                        <div class="status">Life goes on...</div>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("User")
                 <!-- END MINI-PROFILE -->
                 <!-- BEGIN SIDEBAR MENU -->
                 <p class="menu-title sm">BROWSE <span class="pull-right"><a href="javascript:;"><i class="material-icons">refresh</i></a></span></p>
@@ -229,13 +220,18 @@
                     <li class="start ">
                         <a href="index.html"><i class="material-icons">home</i> <span class="title">Dashboard</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
-                            <li> <a href="dashboard_v1.html"> Dashboard v1 </a> </li>
-                            <li class=""> <a href="index.html"> Dashboard v2 <span class=" label label-info pull-right m-r-30">NEW</span></a></li>
+                            <li> <a asp-controller="Dashboard" asp-action="Index">Dashboard</a> </li>
+                            @*  <li class=""> <a href="index.html"> Dashboard v2 <span class=" label label-info pull-right m-r-30">NEW</span></a></li>*@
                         </ul>
                     </li>
-                   
+                    <li class="start ">
+                        <a href="index.html"><i class="material-icons">home</i> <span class="title">Hotel</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a asp-controller="Hotel" asp-action="Index">Hotel</a></li>
+                        </ul>
+                    </li>
                 </ul>
-          
+
                 <!-- END SIDEBAR MENU -->
             </div>
         </div>
@@ -290,7 +286,7 @@
                                 <div class="side-widget-content">
                                     <div class="user-details-wrapper active" data-chat-status="online" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
                                         <div class="user-profile">
-                                            <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                            <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                                         </div>
                                         <div class="user-details">
                                             <div class="user-name">
@@ -310,7 +306,7 @@
                                     </div>
                                     <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester">
                                         <div class="user-profile">
-                                            <img src="~/Admin/assets/img/profiles/c.jpg" alt="" data-src="assets/img/profiles/c.jpg" data-src-retina="assets/img/profiles/c2x.jpg" width="35" height="35">
+                                            <img src="~/Admin/assets/img/profiles/c.jpg" alt="" data-src="Admin/assets/img/profiles/c.jpg" data-src-retina="Admin/assets/img/profiles/c2x.jpg" width="35" height="35">
                                         </div>
                                         <div class="user-details">
                                             <div class="user-name">
@@ -336,7 +332,7 @@
                             <div class="side-widget-content" id="friends-list">
                                 <div class="user-details-wrapper" data-chat-status="online" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="user-name">
@@ -355,7 +351,7 @@
                                 </div>
                                 <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/h.jpg" alt="" data-src="Admin/assets/img/profiles/h.jpg" data-src-retina="Admin/assets/img/profiles/h2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="user-name">
@@ -375,7 +371,7 @@
                                 </div>
                                 <div class="user-details-wrapper" data-chat-status="online" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="Jane Smith">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/c.jpg" alt="" data-src="assets/img/profiles/c.jpg" data-src-retina="assets/img/profiles/c2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/c.jpg" alt="" data-src="Admin/assets/img/profiles/c.jpg" data-src-retina="Admin/assets/img/profiles/c2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="user-name">
@@ -394,7 +390,7 @@
                                 </div>
                                 <div class="user-details-wrapper" data-chat-status="busy" data-chat-user-pic="~/Admin/assets/img/profiles/d.jpg" data-chat-user-pic-retina="~/Admin/assets/img/profiles/d2x.jpg" data-user-name="David Nester">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/h.jpg" alt="" data-src="assets/img/profiles/h.jpg" data-src-retina="assets/img/profiles/h2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/h.jpg" alt="" data-src="Admin/assets/img/profiles/h.jpg" data-src-retina="Admin/assets/img/profiles/h2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="user-name">
@@ -436,7 +432,7 @@
                                 <div class="sent_time">Yesterday 11:25pm</div>
                                 <div class="user-details-wrapper ">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="bubble">
@@ -448,7 +444,7 @@
                                 </div>
                                 <div class="user-details-wrapper ">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="bubble">
@@ -460,7 +456,7 @@
                                 </div>
                                 <div class="user-details-wrapper ">
                                     <div class="user-profile">
-                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="assets/img/profiles/d.jpg" data-src-retina="assets/img/profiles/d2x.jpg" width="35" height="35">
+                                        <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
                                     </div>
                                     <div class="user-details">
                                         <div class="bubble">
