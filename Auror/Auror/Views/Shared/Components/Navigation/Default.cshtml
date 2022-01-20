@@ -4,7 +4,7 @@
         <div class="hotel-left-side">
             <!-- logo -->
             <a asp-controller="Home" asp-action="Index" class="hotel-logo-frame" style="width: 50px;">
-                <img src="img/hotellogo.png" alt="logo">
+                <img src="~/img/hotellogo.png" alt="logo">
             </a>
             <!-- logo end -->
         </div>
@@ -19,24 +19,6 @@
                                 <a asp-controller="@item.Controller" asp-action="Index">@item.Name</a>
                             </li>
                         }
-                        @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Home"?"current-item":"")">
-                            <a asp-controller="Home" asp-action="Index">Ana Səhifə</a>
-                        </li>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="About"?"current-item":"")">
-                            <a asp-controller="About" asp-action="Index">Haqqımızda</a>
-                        </li>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Hotel"?"current-item":"")">
-                            <a asp-controller="Hotel" asp-action="Index">Hotellər</a>
-                        </li>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Room"?"current-item":"")">
-                            <a asp-controller="Room" asp-action="Index">Otaqlar</a>
-                        </li>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Service"?"current-item":"")">
-                            <a asp-controller="Service" asp-action="Index">Xidmətlərimiz</a>
-                        </li>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Contact"?"current-item":"")">
-                            <a asp-controller="Contact" asp-action="Index">Əlaqə</a>
-                        </li>*@
                     </ul>
                 </nav>
             </div>
@@ -48,7 +30,7 @@
             }
             else
             {
-                <a asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="img/icons/bookmark.svg" alt="icon">Giriş</a>
+                <a asp-controller="Account" asp-action="Login" class="hotel-btn"><img src="~/img/icons/bookmark.svg" alt="icon">Giriş</a>
             }
 
             <!-- action button end -->

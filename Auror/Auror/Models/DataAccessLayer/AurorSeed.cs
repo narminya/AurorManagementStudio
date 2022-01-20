@@ -30,12 +30,68 @@ namespace Auror.Models.DataAccessLayer
                 InitHotel(db);
                 InitHotelImages(db);
                 InitNavigation(db);
+                InitAdvantages(db);
+                InitHotelAdvantages(db);
                 //await db.SaveChangesAsync();
             }
 
             return app;
         }
 
+        private static void InitAdvantages(AurorDataContext db)
+        {
+            if (!db.Advantages.Any())
+            {
+                db.Advantages.AddRange(
+                    new Advantage { Name = "All Inclusive", Icon = "2.svg" },
+                    new Advantage { Name = "Airport Transfer", Icon = "1.svg" },
+                    new Advantage { Name = "Air Conditioner", Icon = "3.svg" },
+                    new Advantage { Name = "Security", Icon = "4.svg" },
+                    new Advantage { Name = "Pool", Icon = "5.svg" },
+                    new Advantage { Name = "Wifi", Icon = "6.svg" },
+                    new Advantage { Name = "Smart tv", Icon = "7.svg" },
+                    new Advantage { Name = "Laundry Service", Icon = "8.svg" }
+
+                    );
+                db.SaveChanges();
+
+            }
+
+        }
+        private static void InitHotelAdvantages(AurorDataContext db)
+        {
+            if (!db.HotelAdvantages.Any())
+            {
+                db.HotelAdvantages.AddRange(
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 1 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 2 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 3 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 4 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 5 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 6 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 7 },
+                    new HotelAdvantages { HotelId = 1, AdvantageId = 8 },
+                    new HotelAdvantages { HotelId = 2, AdvantageId = 1 },
+                    new HotelAdvantages { HotelId = 2, AdvantageId = 3 },
+                    new HotelAdvantages { HotelId = 2, AdvantageId = 4 },
+                    new HotelAdvantages { HotelId = 2, AdvantageId = 6 },
+                    new HotelAdvantages { HotelId = 2, AdvantageId = 8 },
+                    new HotelAdvantages { HotelId = 3, AdvantageId = 1 },
+                    new HotelAdvantages { HotelId = 3, AdvantageId = 3 },
+                    new HotelAdvantages { HotelId = 3, AdvantageId = 7 },
+                    new HotelAdvantages { HotelId = 3, AdvantageId = 6 },
+                    new HotelAdvantages { HotelId = 3, AdvantageId = 8 },
+                    new HotelAdvantages { HotelId = 4, AdvantageId = 8 },
+                    new HotelAdvantages { HotelId = 4, AdvantageId = 2 },
+                    new HotelAdvantages { HotelId = 4, AdvantageId = 6 },
+                    new HotelAdvantages { HotelId = 4, AdvantageId = 5 }
+
+                    );
+                db.SaveChanges();
+
+            }
+
+        }
         private static void InitNavigation(AurorDataContext db)
         {
             if (!db.Navigation.Any())

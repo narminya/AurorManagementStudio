@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css" />
-    @RenderSection("style", required: false)
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    @RenderSection("style",false)
     <!-- page title -->
     <title>@ViewBag.Title</title>
 </head>
@@ -17,7 +17,7 @@
         <!-- preloader -->
         <div class="hotel-preloader-frame">
             <div class="hotel-preloader imgLoad">
-                <img class="lozad" data-src="img/hotellogo.png" alt="logo" />
+                <img class="lozad" src="~/img/hotellogo.png" alt="logo" />
                 <div class="hotel-preloader-progress">
                     <div class="hotel-preloader-bar"></div>
                 </div>
@@ -37,13 +37,6 @@
         <!-- footer -->
         <footer class="footer-section">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="footer-logo">
-                            <a href="#"><img src="img/logo" alt=""></a>
-                        </div>
-                    </div>
-                </div>
                 <div class="row pb-50">
                     <div class="col-lg-3 col-sm-6">
                         <div class="single-footer-widget">
@@ -101,7 +94,7 @@
         <!-- footer end -->
         <!-- popup -->
         <div id="hotel-success" class="hotel-popup imgLoad">
-            <img class="lozad" data-src="img/features/12.svg"
+            <img class="lozad" data-src="~/img/features/12.svg"
                  alt="success" class="hotel-succes-icon" />
             <h2 class="hotel-mb-20">Uğurlu</h2>
             <p>
@@ -133,12 +126,12 @@
 
                         <div class="col-lg-12 hotel-center imgLoad">
                             <button type="submit" class="hotel-btn">
-                                <img class="lozad" data-src="img/icons/search.svg"
+                                <img class="lozad" src="~/img/icons/search.svg"
                                      class="hotel-zoom"
                                      alt="icon" />Giriş
                             </button>
                             <button type="submit" class="hotel-btn">
-                                <a href="#"><img class="lozad" data-src="img/icons/search.svg" class="hotel-zoom" alt="icon" />Qeydiyyat</a>
+                                <a href="#"><img class="lozad" src="~/img/icons/search.svg" class="hotel-zoom" alt="icon" />Qeydiyyat</a>
                             </button>
                         </div>
                     </div>
@@ -149,35 +142,35 @@
     </div>
     <!-- page wrapper end -->
     <!-- jquery js -->
-    <script src="js/plugins/jquery.min.js"></script>
-    <script src="js/plugins/lozad.js"></script>
+    <script src="~/js/plugins/jquery.min.js"></script>
+    <script src="~/js/plugins/lozad.js"></script>
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
     <script>
         const observer = lozad();
         observer.observe();
     </script>
     <!-- bootstrap js -->
-    <script src="js/plugins/bootstrap.min.js"></script>
+    <script src="~/js/plugins/bootstrap.min.js"></script>
     <!-- nice select js -->
 
-    <script src="js/plugins/jquery.nice-select.min.js"></script>
+    <script src="~/js/plugins/jquery.nice-select.min.js"></script>
     <!-- datepicker js -->
-    <script src="js/plugins/datepicker.js"></script>
+    <script src="~/js/plugins/datepicker.js"></script>
     <!-- smooth scroll js -->
-    <script src="js/plugins/smooth-scroll.js"></script>
+    <script src="~/js/plugins/smooth-scroll.js"></script>
     <!-- isotope js -->
-    <script src="js/plugins/isotope.min.js"></script>
+    <script src="~/js/plugins/isotope.min.js"></script>
     <!-- mapbox js -->
-    <script src="js/plugins/mapbox.min.js"></script>
+    <script src="~/js/plugins/mapbox.min.js"></script>
     <!-- fancybox js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.2.1/lightgallery.min.js"></script>
-    <script src="js/plugins/fancybox.min.js"></script>
+    <script src="~/js/plugins/fancybox.min.js"></script>
     <!-- swiper js -->
-    <script src="js/plugins/swiper.min.js"></script>
+    <script src="~/js/plugins/swiper.min.js"></script>
     <!-- sticky js -->
-    <script src="js/plugins/sticky.js"></script>
+    <script src="~/js/plugins/sticky.js"></script>
     <!-- kinsley js -->
-    <script src="js/main.js"></script>
+    <script src="~/js/main.js"></script>
 
     @RenderSection("script", required: false)
 </body>

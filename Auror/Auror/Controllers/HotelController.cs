@@ -1,4 +1,5 @@
 ﻿using Auror.Models.DataAccessLayer;
+using Auror.Models.Entity;
 using Auror.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,9 +31,34 @@ namespace Auror.Controllers
             return View(hvm);
         }
 
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(int? id)
         {
-            return View();
+            if (!id.HasValue && id.Value == 0)
+            {
+                return BadRequest();
+            }
+            if ((await _dt.Hotel.FindAsync(id)) == null)
+            {
+                return NotFound();
+            }
+
+            var adv = await _dt.HotelAdvantages.Where(i => i.HotelId == id).ToListAsync();
+
+            List<Advantage> advantages = new List<Advantage>();
+            foreach (var item in adv)
+            {
+                advantages.AddRange(_dt.Advantages.Where(c=>c.Id == item.AdvantageId));
+            }
+
+            var hdvm = new HotelDetailViewModel()
+            {
+                Hotel = await _dt.Hotel.Where(f => f.Id == id).Include(c => c.HotelCategory)
+                .Include(o => o.Images).FirstOrDefaultAsync(),
+                Advantages = advantages
+
+            };
+
+            return View(hdvm);
         }
     }
 }

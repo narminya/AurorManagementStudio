@@ -649,8 +649,6 @@ C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Hotel\Detail.cshtml.g.cs
-C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Hotel\Index.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\Components\Navigation\Default.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -663,3 +661,5 @@ C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\ref\Auror.dll
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Auror.pdb
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Auror.genruntimeconfig.cache
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Hotel\Detail.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Hotel\Index.cshtml.g.cs
