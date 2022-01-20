@@ -1,4 +1,5 @@
-﻿<div class="hotel-top-bar">
+﻿@model List<Navigation> 
+<div class="hotel-top-bar">
     <div class="container">
         <div class="hotel-left-side">
             <!-- logo -->
@@ -12,8 +13,14 @@
             <div class="hotel-menu">
                 <nav>
                     <ul>
-                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Home"?"current-item":"")">
-                            <a asp-controller="Home" asp-action="Index" >Ana Səhifə</a>
+                        @foreach (var item in Model)
+                        {
+                            <li class="@(ViewContext.RouteData.Values["Controller"].ToString()==$"{item.Controller}"?"current-item":"")">
+                                <a asp-controller="@item.Controller" asp-action="Index">@item.Name</a>
+                            </li>
+                        }
+                        @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Home"?"current-item":"")">
+                            <a asp-controller="Home" asp-action="Index">Ana Səhifə</a>
                         </li>
                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="About"?"current-item":"")">
                             <a asp-controller="About" asp-action="Index">Haqqımızda</a>
@@ -29,7 +36,7 @@
                         </li>
                         <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Contact"?"current-item":"")">
                             <a asp-controller="Contact" asp-action="Index">Əlaqə</a>
-                        </li>
+                        </li>*@
                     </ul>
                 </nav>
             </div>

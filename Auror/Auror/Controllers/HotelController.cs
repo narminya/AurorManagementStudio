@@ -21,13 +21,18 @@ namespace Auror.Controllers
             var hvm = new HotelViewModel()
             {
                 Hotels = await _dt.Hotel.Where(h => !h.IsDeleted)
-                .Include(c=>c.HotelCategory)
+                .Include(c => c.HotelCategory)
                 .OrderBy(r => r.Rating)
                 .ToListAsync(),
 
                 Categories = await _dt.HotelCategory.ToListAsync()
             };
             return View(hvm);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            return View();
         }
     }
 }

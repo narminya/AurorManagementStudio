@@ -29,32 +29,50 @@ namespace Auror.Models.DataAccessLayer
                 InitHotelCategories(db);
                 InitHotel(db);
                 InitHotelImages(db);
+                InitNavigation(db);
                 //await db.SaveChangesAsync();
             }
 
             return app;
         }
+
+        private static void InitNavigation(AurorDataContext db)
+        {
+            if (!db.Navigation.Any())
+            {
+                db.Navigation.AddRange(
+                    new Navigation { Name = "Ana Səhifə", Order = 1, Controller = "Home" },
+                    new Navigation { Name = "Haqqımızda", Order = 2, Controller = "About" },
+                    new Navigation { Name = "Hotellər", Order = 3, Controller = "Hotel" },
+                    new Navigation { Name = "Otaqlar", Order = 4, Controller = "Room" },
+                    new Navigation { Name = "Xidmətlərimiz", Order = 5, Controller = "Service" },
+                    new Navigation { Name = "Əlaqə", Order = 6, Controller = "Contact" }
+                    );
+            }
+            db.SaveChanges();
+        }
+
         private static void InitHotelImages(AurorDataContext db)
         {
             if (!db.Images.Any())
             {
                 db.Images.AddRange(
-                    new HotelImage { Path = "hotel-2.jpg", HotelId = 7 },
-                    new HotelImage { Path = "hotel-3.jpg", HotelId = 7 },
-                    new HotelImage { Path = "hotel-4.jpg", HotelId = 7 },
-                    new HotelImage { Path = "hotel-8.jpg", HotelId = 7 },
+                    new HotelImage { Path = "hotel-2.jpg", HotelId = 1 },
+                    new HotelImage { Path = "hotel-3.jpg", HotelId = 1 },
+                    new HotelImage { Path = "hotel-4.jpg", HotelId = 1 },
+                    new HotelImage { Path = "hotel-8.jpg", HotelId = 1 },
                     new HotelImage { Path = "hotel-2.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-3.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-4.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-8.jpg", HotelId = 4 },
-                    new HotelImage { Path = "hotel-2.jpg", HotelId = 5 },
-                    new HotelImage { Path = "hotel-3.jpg", HotelId = 5 },
-                    new HotelImage { Path = "hotel-4.jpg", HotelId = 5 },
-                    new HotelImage { Path = "hotel-8.jpg", HotelId = 5 },
-                    new HotelImage { Path = "hotel-2.jpg", HotelId = 6 },
-                    new HotelImage { Path = "hotel-3.jpg", HotelId = 6 },
-                    new HotelImage { Path = "hotel-4.jpg", HotelId = 6 },
-                    new HotelImage { Path = "hotel-8.jpg", HotelId = 6 }
+                    new HotelImage { Path = "hotel-2.jpg", HotelId = 3 },
+                    new HotelImage { Path = "hotel-3.jpg", HotelId = 3 },
+                    new HotelImage { Path = "hotel-4.jpg", HotelId = 3 },
+                    new HotelImage { Path = "hotel-8.jpg", HotelId = 3 },
+                    new HotelImage { Path = "hotel-2.jpg", HotelId = 2 },
+                    new HotelImage { Path = "hotel-3.jpg", HotelId = 2 },
+                    new HotelImage { Path = "hotel-4.jpg", HotelId = 2 },
+                    new HotelImage { Path = "hotel-8.jpg", HotelId = 2 }
                     );
             }
             db.SaveChanges();
@@ -70,8 +88,9 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 5",
                         Rating = 49,
                         IsDeleted = false,
+                        DefaultImage = "hotel-1.jpg",
                         Phone = "+0(68)48214848",
-                        HotelCategoryId = 17,
+                        HotelCategoryId = 1,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
                         "velit laborum itaque numquam rem fugiat maxime modi sed voluptatibus a saepe aspernatur odio voluptas?"
                     },
@@ -81,8 +100,9 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 6",
                         Rating = 85,
                         IsDeleted = false,
+                        DefaultImage = "hotel-2.jpg",
                         Phone = "+0(68)47814848",
-                        HotelCategoryId = 18,
+                        HotelCategoryId = 2,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
                         "velit laborum itaque numquam rem fugiat maxime modi sed voluptatibus a saepe aspernatur odio voluptas?"
                     },
@@ -92,8 +112,9 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 12",
                         Rating = 79,
                         IsDeleted = false,
+                        DefaultImage = "hotel-3.jpg",
                         Phone = "+0(68)48212848",
-                        HotelCategoryId = 19,
+                        HotelCategoryId = 3,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
                         "velit laborum itaque numquam rem fugiat maxime modi sed voluptatibus a saepe aspernatur odio voluptas?"
                     },
@@ -103,8 +124,9 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 8",
                         Rating = 75,
                         IsDeleted = false,
+                        DefaultImage = "hotel-4.jpg",
                         Phone = "+0(68)96214848",
-                        HotelCategoryId = 20,
+                        HotelCategoryId = 4,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
                         "velit laborum itaque numquam rem fugiat maxime modi sed voluptatibus a saepe aspernatur odio voluptas?"
                     }
@@ -176,5 +198,7 @@ namespace Auror.Models.DataAccessLayer
             db.SaveChanges();
 
         }
+
+
     }
 }

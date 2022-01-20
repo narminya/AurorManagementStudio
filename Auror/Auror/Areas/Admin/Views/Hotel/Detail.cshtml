@@ -31,11 +31,11 @@
         </div>
     </div>
 </div>
-<div class="content">
+<div class="content" style="padding: 0">
     <div class="superbox" style="display: flex">
         @foreach (var item in Model.Images)
         {
-            <div class="superbox-list"> <img src="~/img/HOTEL/@item.Path" data-img="@Url.Content($"~/img/HOTEL/{@item.Path}")" alt="" class="superbox-img"> </div>
+            <div class="superbox-list" style="width: 25%"> <img src="~/img/HOTEL/@item.Path" data-img="@Url.Content($"~/img/HOTEL/{@item.Path}")" alt="" class="superbox-img"> </div>
             <div class="superbox-float"></div>
         }
 

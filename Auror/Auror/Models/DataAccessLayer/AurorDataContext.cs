@@ -30,6 +30,7 @@ namespace Auror.Models.DataAccessLayer
         public DbSet<RoomAdvantages> RoomAdvantages { get; set; }
         public DbSet<RoomComments> RoomComments { get; set; }
         public DbSet<RoomType> RoomType { get; set; }
+        public DbSet<Navigation> Navigation { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

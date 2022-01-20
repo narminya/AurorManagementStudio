@@ -17,7 +17,8 @@ namespace Auror.Models.ViewComponents
         }
         public  IViewComponentResult Invoke()
         {
-            return View();
+            var navigation = _dt.Navigation.OrderBy(o => o.Order).ToList();
+            return View(navigation);
         }
     }
 }

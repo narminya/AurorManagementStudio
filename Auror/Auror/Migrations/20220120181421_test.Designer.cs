@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    [Migration("20220120155106_hotelCategory3")]
-    partial class hotelCategory3
+    [Migration("20220120181421_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -313,6 +313,36 @@ namespace Auror.Migrations
                     b.HasIndex("HotelId");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.Navigation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Controller")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Navigation");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
