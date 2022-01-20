@@ -36,4 +36,9 @@
     <ProjectReference Include="..\Utilities\Utilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\ViewModels\" />
+    <Folder Include="wwwroot\Admin\assets\plugins\jquery-superbox\img\" />
+  </ItemGroup>
+
 </Project>

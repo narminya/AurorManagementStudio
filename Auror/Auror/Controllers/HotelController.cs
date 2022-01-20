@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Auror.Models.DataAccessLayer;
+using Auror.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,23 @@ namespace Auror.Controllers
 {
     public class HotelController : Controller
     {
-        public IActionResult Index()
+        private readonly AurorDataContext _dt;
+        public HotelController(AurorDataContext dt)
         {
-            return View();
+            _dt = dt;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var hvm = new HotelViewModel()
+            {
+                Hotels = await _dt.Hotel.Where(h => !h.IsDeleted)
+                .Include(c=>c.HotelCategory)
+                .OrderBy(r => r.Rating)
+                .ToListAsync(),
+
+                Categories = await _dt.HotelCategory.ToListAsync()
+            };
+            return View(hvm);
         }
     }
 }

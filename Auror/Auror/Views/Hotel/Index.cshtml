@@ -1,4 +1,4 @@
-﻿
+﻿@model HotelViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -31,9 +31,14 @@
 
         <div class="hotel-filter hotel-mb-60">
             <a href="#" data-filter="*" class="hotel-work-category hotel-current">Bütün Hotellər</a>
-            <a href="#" data-filter=".deluxe" class="hotel-work-category">A Hotel</a>
-            <a href="#" data-filter=".standart" class="hotel-work-category">B Hotel</a>
-            <a href="#" data-filter=".economy" class="hotel-work-category">C Hotel</a>
+            @foreach (var item in Model.Categories)
+            {
+                <a href="#" data-filter=".@item.Name.ToLower()" class="hotel-work-category">@item.Name</a>
+            }
+
+            @*<a href="#" data-filter=".deluxe" class="hotel-work-category">A Hotel</a>
+                <a href="#" data-filter=".standart" class="hotel-work-category">B Hotel</a>
+                <a href="#" data-filter=".economy" class="hotel-work-category">C Hotel</a>*@
 
 
         </div>
@@ -41,34 +46,45 @@
         <div class="hotel-masonry-grid hotel-3-col">
 
             <div class="hotel-grid-sizer"></div>
-            <div class="hotel-masonry-grid-item hotel-masonry-grid-item-33 deluxe">
 
-                <!-- room card -->
-                <div class="hotel-room-card">
-                    <div class="hotel-cover-frame imgLoad">
-                        <a href="menu.html"><img class="lozad" data-src="img/HOTEL/hotel-1.jpg" alt="cover"></a>
-                    </div>
-                    <div class="hotel-description-frame">
-                        <ul class="rating">
-                            <li class="star">&star;</li>
-                            <li class="star">&star;</li>
-                            <li class="star">&star;</li>
-                            <li class="star">&star;</li>
-                            <li class="star">&star;</li>
-                        </ul>
-                        <a href="menu.html">
-                            <h3 class="hotel-mb-20">A Hotel</h3>
-                        </a>
-                        <div class="hotel-text-light hotel-text-sm hotel-mb-20">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, iste!</div>
-                        <div class="hotel-card-bottom imgLoad">
+            @foreach (var item in Model.Hotels)
+            {
+                <div class="hotel-masonry-grid-item hotel-masonry-grid-item-33 @item.HotelCategory.Name.ToLower()">
 
-                            <a href="menu.html" class="hotel-btn"><img class="lozad" data-src="img/icons/bookmark.svg" alt="icon">Hotelə get</a>
+                    <!-- room card -->
+                    <div class="hotel-room-card">
+                        <div class="hotel-cover-frame imgLoad">
+                            <a href="menu.html"><img class="lozad" src="@Url.Content($"~/img/HOTEL/{@item.DefaultImage}")" alt="cover"></a>
+                        </div>
+                        <div class="hotel-description-frame">
+                            <ul class="rating">
+                                <li class="star">&star;</li>
+                                <li class="star">&star;</li>
+                                <li class="star">&star;</li>
+                                <li class="star">&star;</li>
+                                <li class="star">&star;</li>
+                            </ul>
+                            <a href="menu.html">
+                                <h3 class="hotel-mb-20">@item.Name</h3>
+                            </a>
+                            <div class="hotel-text-light hotel-text-sm hotel-mb-20">
+                            
+                                    @item.Description
+                                
+
+
+                            </div>
+                            <div class="hotel-card-bottom imgLoad">
+
+                                <a asp-controller="Hotel" asp-action="Detail" asp-route-id="@item.Id" class="hotel-btn"><img class="lozad" data-src="img/icons/bookmark.svg" alt="icon">Hotelə get</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- room card end -->
+                    <!-- room card end -->
 
-            </div>
+                </div>
+
+            }
 
 
         </div>

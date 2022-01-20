@@ -1,5 +1,7 @@
-﻿using Auror.Models.Entity;
+﻿using Auror.Models.DataAccessLayer;
+using Auror.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +12,34 @@ namespace Auror.Areas.Admin.Controllers
     [Area("Admin")]
     public class HotelController : Controller
     {
-        public IActionResult Index()
+        private readonly AurorDataContext _dt;
+        public HotelController(AurorDataContext dt)
         {
-            return View();
+            _dt = dt;
         }
-        public IActionResult Detail(int id)
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var hotels = await _dt.Hotel.Where(h => !h.IsDeleted).Include(c=>c.HotelCategory).OrderBy(r => r.Rating).ToListAsync();
+            return View(hotels);
+        }
+        public async Task<IActionResult> Detail(int? id)
+        {
+            if (!id.HasValue || id.Value == 0)
+            {
+                return NotFound();
+            }
+            var hotel = await _dt.Hotel.Where(t=>t.Id == id).Include(c=>c.Advantages)
+                .Include(r=>r.Reservations)
+                .Include(r => r.Images)
+                .Include(r => r.Rooms)
+                .FirstOrDefaultAsync();
+            if (hotel == null)
+            {
+                return NotFound();
+            }
+
+            
+            return View(hotel);
         }
         
         public IActionResult Create()

@@ -12,22 +12,22 @@
             <div class="hotel-menu">
                 <nav>
                     <ul>
-                        <li class="current-item">
-                            <a asp-controller="Home" asp-action="Index">Ana Səhifə</a>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Home"?"current-item":"")">
+                            <a asp-controller="Home" asp-action="Index" >Ana Səhifə</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="About"?"current-item":"")">
                             <a asp-controller="About" asp-action="Index">Haqqımızda</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Hotel"?"current-item":"")">
                             <a asp-controller="Hotel" asp-action="Index">Hotellər</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Room"?"current-item":"")">
                             <a asp-controller="Room" asp-action="Index">Otaqlar</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Service"?"current-item":"")">
                             <a asp-controller="Service" asp-action="Index">Xidmətlərimiz</a>
                         </li>
-                        <li>
+                        <li class="@(ViewContext.RouteData.Values["Controller"].ToString()=="Contact"?"current-item":"")">
                             <a asp-controller="Contact" asp-action="Index">Əlaqə</a>
                         </li>
                     </ul>

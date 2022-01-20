@@ -1,0 +1,51 @@
+﻿@model Hotel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="page-title">
+    <i class="icon-custom-left"></i>
+    <h3>Photo - <span class="semi-bold">Gallery</span></h3>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="grid simple vertical green">
+            <div class="grid-title no-border">
+                <h4>Hotel</h4>
+            </div>
+            <div class="grid-body no-border">
+                <div class="row-fluid ">
+                    <address class="margin-bottom-20 margin-top-10">
+                        <strong>@Model.Name</strong><br> <strong>Rating : @Model.Rating</strong>
+                        @Model.Location<br>
+                        San Francisco, CA 94107<br>
+                        <abbr title="Phone">P:</abbr> @Model.Phone
+                    </address>
+                    <address>
+                        <strong>@Model.Description</strong><br>
+                        <a href="mailto:#">@Model.Email</a>
+                    </address>
+                    <img style="width: 20%" src="~/img/HOTEL/@Model.DefaultImage" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="superbox" style="display: flex">
+        @foreach (var item in Model.Images)
+        {
+            <div class="superbox-list"> <img src="~/img/HOTEL/@item.Path" data-img="@Url.Content($"~/img/HOTEL/{@item.Path}")" alt="" class="superbox-img"> </div>
+            <div class="superbox-float"></div>
+        }
+
+    </div>
+</div>
+    @section script {
+        <script>
+            $(function () {
+                // Call SuperBox - that's it!
+                $('.superbox').SuperBox();
+            });
+        </script>
+    }

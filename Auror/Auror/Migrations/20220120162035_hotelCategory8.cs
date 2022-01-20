@@ -2,7 +2,7 @@
 
 namespace Auror.Migrations
 {
-    public partial class roles : Migration
+    public partial class hotelCategory8 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

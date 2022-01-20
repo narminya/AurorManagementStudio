@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    [Migration("20220118215314_hello")]
-    partial class hello
+    [Migration("20220120155106_hotelCategory3")]
+    partial class hotelCategory3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -142,6 +142,9 @@ namespace Auror.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("HotelCategoryId")
                         .HasColumnType("int");
 
@@ -156,6 +159,9 @@ namespace Auror.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -307,37 +313,6 @@ namespace Auror.Migrations
                     b.HasIndex("HotelId");
 
                     b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("Auror.Models.Entity.HotelTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("TagsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
-
-                    b.HasIndex("TagsId");
-
-                    b.ToTable("HotelTag");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
@@ -593,30 +568,6 @@ namespace Auror.Migrations
                     b.ToTable("RoomType");
                 });
 
-            modelBuilder.Entity("Auror.Models.Entity.Tags", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -823,8 +774,8 @@ namespace Auror.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -837,6 +788,8 @@ namespace Auror.Migrations
 
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("GenderId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -911,21 +864,6 @@ namespace Auror.Migrations
                         .HasForeignKey("HotelId");
 
                     b.Navigation("Hotel");
-                });
-
-            modelBuilder.Entity("Auror.Models.Entity.HotelTag", b =>
-                {
-                    b.HasOne("Auror.Models.Entity.Hotel", "Hotel")
-                        .WithMany("Tags")
-                        .HasForeignKey("HotelId");
-
-                    b.HasOne("Auror.Models.Entity.Tags", "Tags")
-                        .WithMany()
-                        .HasForeignKey("TagsId");
-
-                    b.Navigation("Hotel");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
@@ -1062,6 +1000,17 @@ namespace Auror.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Auror.Models.Entity.User", b =>
+                {
+                    b.HasOne("Auror.Models.Entity.Gender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Gender");
+                });
+
             modelBuilder.Entity("Auror.Models.Entity.Comment", b =>
                 {
                     b.Navigation("Children");
@@ -1076,8 +1025,6 @@ namespace Auror.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("Rooms");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
