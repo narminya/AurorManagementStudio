@@ -59,7 +59,8 @@ namespace Auror.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index", "Dashboard", new { area  = "Area"});
+            return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
+
 
 
         }
@@ -120,7 +121,7 @@ namespace Auror.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account", new { Area = "" });
         }
     }
 }

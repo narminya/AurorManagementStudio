@@ -14,10 +14,11 @@ namespace Auror.Models.Entity
         public decimal CurrentPrice { get; set; }
         public int PeopleCount { get; set; }
         public int RoomSquare { get; set; }
+        public int BedCount { get; set; }
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
-        public ICollection<RoomAdvantages> Advantages { get; set; }
         public ICollection<RoomComments> Comments { get; set; }
+        public ICollection<RoomImage> RoomImages { get; set; }
 
     }
 }

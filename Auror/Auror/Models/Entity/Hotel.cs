@@ -12,7 +12,6 @@ namespace Auror.Models.Entity
         public string Phone { get; set; }
         //Category
         public string Email { get; set; }
-
         public decimal Rating { get; set; }
         public int? HotelCategoryId { get; set; }
         public HotelCategory HotelCategory { get; set; }

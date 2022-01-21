@@ -13,7 +13,7 @@ namespace Auror.Models.Entity
         public string Email { get; set; }
         public int? GenderId { get; set; }
         public Gender Gender { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public User User { get; set; }
     }
 }

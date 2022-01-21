@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Reservation";
+}
+
+<section class="hotel-banner-simple hotel-transition-bottom hotelmenu">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="hotel-center hotel-title-frame">
+                    <h1 class="hotel-mb-20 hotel-h1-inner">Make reservation now!</h1>
+                    <p class="hotel-mb-30">Laborum accusantium libero commodi. Voluptate consequatur itaque expedita accusamus impedit perspiciatis asperiores necessitatibus assumenda magnam ipsa.</p>
+                    <ul class="hotel-breadcrumbs">
+                        <li><a asp-action="Index" asp-controller="Home">Ana Səhifə</a></li>
+                        <li><span>Reservation</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hotel-p-100-100">
+    <div class="container">
+        <div class="hotel-book-form hotel-book-form-2">
+            <form>
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-3">
+                        <div class="hotel-input-frame hotel-book-form-2">
+                            <label for="check-in">Gəliş</label>
+                            <input id="check-in"
+                                   type="text"
+                                   class="datepicker-here"
+                                   data-position="bottom left"
+                                   placeholder="Tarix seçin"
+                                   autocomplete="off"
+                                   readonly="readonly" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="hotel-input-frame">
+                            <label for="check-out" class="hotel-add-icon">Gediş</label>
+                            <input id="check-out"
+                                   type="text"
+                                   class="datepicker-here"
+                                   data-position="bottom left"
+                                   placeholder="Tarix seçin"
+                                   autocomplete="off"
+                                   readonly="readonly" />
+                        </div>
+                    </div>
+                    <div class="col-6 col-lg-3">
+                        <div class="hotel-select-frame">
+                            <label for="person">Adam sayı</label>
+                            <select id="person">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4" disabled>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-1 text-center imgLoad">
+                        <button type="submit" class="hotel-btn">
+                            <img class="lozad" src="~/img/icons/search.svg"
+                                 class="hotel-zoom"
+                                 alt="icon" /><span>Axtar</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section script{ 
+<script>
+
+</script>
+}

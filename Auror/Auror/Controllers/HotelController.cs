@@ -1,6 +1,7 @@
 ﻿using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
 using Auror.Models.ViewModels;
+using Auror.Models.ViewModels.Reservation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -42,23 +43,30 @@ namespace Auror.Controllers
                 return NotFound();
             }
 
-            var adv = await _dt.HotelAdvantages.Where(i => i.HotelId == id).ToListAsync();
 
-            List<Advantage> advantages = new List<Advantage>();
-            foreach (var item in adv)
-            {
-                advantages.AddRange(_dt.Advantages.Where(c=>c.Id == item.AdvantageId));
-            }
 
             var hdvm = new HotelDetailViewModel()
             {
                 Hotel = await _dt.Hotel.Where(f => f.Id == id).Include(c => c.HotelCategory)
                 .Include(o => o.Images).FirstOrDefaultAsync(),
-                Advantages = advantages
+                Advantages = await _dt.HotelAdvantages.Where(i => i.HotelId == id).Select(x =>
+                new Advantage
+                {
+                    Name = x.Advantage.Name,
+                    Icon = x.Advantage.Icon
 
+                }).ToListAsync(),
+                Rooms = await _dt.Room.Where(f => f.HotelId == id && f.IsAvailable == true).Include(r => r.RoomType).ToListAsync()
             };
 
             return View(hdvm);
         }
+        //public async Task<IActionResult> Rooms(int? id)
+        //{
+
+        //}
+
+
+     
     }
 }

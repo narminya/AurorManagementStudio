@@ -11,5 +11,7 @@ namespace Auror.Models.ViewModels
 
         public Hotel Hotel { get; set; }
         public List<Advantage> Advantages { get; set; }
+        public List<Room> Rooms { get; set; }
+
     }
 }

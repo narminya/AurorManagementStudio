@@ -1,5 +1,6 @@
 ﻿using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,8 @@ using System.Threading.Tasks;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "AreaAdmin")]
+
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;

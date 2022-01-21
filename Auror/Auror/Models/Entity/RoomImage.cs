@@ -8,6 +8,7 @@ namespace Auror.Models.Entity
     public class RoomImage : Base
     {
         public string Path { get; set; }
+        public bool IsMain { get; set; }
         public int? RoomId { get; set; }
         public Room Room { get; set; }
     }

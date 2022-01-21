@@ -32,12 +32,78 @@ namespace Auror.Models.DataAccessLayer
                 InitNavigation(db);
                 InitAdvantages(db);
                 InitHotelAdvantages(db);
+                InitRooms(db);
+                InitRoomImages(db);
+                //   InitReservation(db);
+                InitGuest(db);
                 //await db.SaveChangesAsync();
             }
 
             return app;
         }
 
+        private static void InitRoomImages(AurorDataContext db)
+        {
+            if (!db.Room.Any())
+            {
+
+            }
+        }
+
+        private static void InitGuest(AurorDataContext db)
+        {
+            if (!db.Guest.Any())
+            {
+                db.Guest.AddRange(
+                    new Guest { Name = "Brad", Surname = "Pitt", Email = "bradpitt@gmail.com", GenderId = 2, UserId = "b4bbc156-ca0c-40f2-9773-26520ad7880e" },
+                    new Guest { Name = "Chris", Surname = "Hemsworth", Email = "chrish@gmail.com", GenderId = 2, UserId = "a0b71bab-722d-4b5e-b4e7-c85143e79e42" },
+                    new Guest { Name = "Tom", Surname = "Hiddleston", Email = "tomh@gmail.com", GenderId = 2, UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee" }
+                    );
+                db.SaveChanges();
+            }
+        }
+
+        private static void InitReservation(AurorDataContext db)
+        {
+            if (!db.Reservation.Any())
+            {
+                db.AddRange(new Reservation { });
+            }
+            db.SaveChanges();
+        }
+        private static void InitRooms(AurorDataContext db)
+        {
+            if (!db.Room.Any())
+            {
+                db.Room.AddRange(
+                    new Room { Name = "D100", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 1 },
+                    new Room { Name = "D135", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 2 },
+                    new Room { Name = "P420", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 90, HotelId = 2 },
+                    new Room { Name = "P630", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 95, HotelId = 1 },
+                    new Room { Name = "S110", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 4 },
+                    new Room { Name = "S205", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 4 },
+                    new Room { Name = "T121", RoomTypeId = 5, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 200, RoomSquare = 35, HotelId = 1 },
+                    new Room { Name = "D108", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 1 },
+                    new Room { Name = "D137", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 3 },
+                    new Room { Name = "P425", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 90, HotelId = 1 },
+                    new Room { Name = "P662", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 95, HotelId = 1 },
+                    new Room { Name = "S203", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 3 },
+                    new Room { Name = "S301", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 2 },
+                    new Room { Name = "T111", RoomTypeId = 5, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 200, RoomSquare = 35, HotelId = 3 },
+                    new Room { Name = "S295", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 4 },
+                    new Room { Name = "T127", RoomTypeId = 5, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 200, RoomSquare = 35, HotelId = 1 },
+                    new Room { Name = "D148", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 1 },
+                    new Room { Name = "D137", RoomTypeId = 4, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 250, RoomSquare = 50, HotelId = 4 },
+                    new Room { Name = "P425", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 90, HotelId = 4 },
+                    new Room { Name = "P674", RoomTypeId = 1, IsAvailable = true, PeopleCount = 4, BedCount = 4, CurrentPrice = 700, RoomSquare = 95, HotelId = 2 },
+                    new Room { Name = "S223", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 1 },
+                    new Room { Name = "S361", RoomTypeId = 3, IsAvailable = true, PeopleCount = 1, BedCount = 1, CurrentPrice = 200, RoomSquare = 40, HotelId = 3 },
+                    new Room { Name = "T171", RoomTypeId = 5, IsAvailable = true, PeopleCount = 2, BedCount = 2, CurrentPrice = 200, RoomSquare = 35, HotelId = 1 }
+                    );
+                db.SaveChanges();
+
+            }
+        }
         private static void InitAdvantages(AurorDataContext db)
         {
             if (!db.Advantages.Any())
@@ -107,7 +173,6 @@ namespace Auror.Models.DataAccessLayer
             }
             db.SaveChanges();
         }
-
         private static void InitHotelImages(AurorDataContext db)
         {
             if (!db.Images.Any())

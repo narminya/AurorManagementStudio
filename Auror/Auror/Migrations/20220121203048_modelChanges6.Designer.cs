@@ -4,14 +4,16 @@ using Auror.Models.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    partial class AurorDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220121203048_modelChanges6")]
+    partial class modelChanges6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

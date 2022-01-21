@@ -4,14 +4,16 @@ using Auror.Models.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    partial class AurorDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220121165504_modelChanges3")]
+    partial class modelChanges3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,49 +110,6 @@ namespace Auror.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Gender");
-                });
-
-            modelBuilder.Entity("Auror.Models.Entity.Guest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("GenderId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GenderId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Guest");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.Hotel", b =>
@@ -339,6 +298,9 @@ namespace Auror.Migrations
                     b.Property<int?>("GuestId")
                         .HasColumnType("int");
 
+                    b.Property<string>("GuestId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("HotelId")
                         .HasColumnType("int");
 
@@ -356,7 +318,7 @@ namespace Auror.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GuestId");
+                    b.HasIndex("GuestId1");
 
                     b.HasIndex("HotelId");
 
@@ -522,9 +484,6 @@ namespace Auror.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsMain")
                         .HasColumnType("bit");
 
                     b.Property<string>("Path")
@@ -805,21 +764,6 @@ namespace Auror.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Auror.Models.Entity.Guest", b =>
-                {
-                    b.HasOne("Auror.Models.Entity.Gender", "Gender")
-                        .WithMany()
-                        .HasForeignKey("GenderId");
-
-                    b.HasOne("Auror.Models.Entity.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Gender");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Auror.Models.Entity.Hotel", b =>
                 {
                     b.HasOne("Auror.Models.Entity.HotelCategory", "HotelCategory")
@@ -855,9 +799,9 @@ namespace Auror.Migrations
 
             modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
                 {
-                    b.HasOne("Auror.Models.Entity.Guest", "Guest")
+                    b.HasOne("Auror.Models.Entity.User", "Guest")
                         .WithMany()
-                        .HasForeignKey("GuestId");
+                        .HasForeignKey("GuestId1");
 
                     b.HasOne("Auror.Models.Entity.Hotel", "Hotel")
                         .WithMany("Reservations")
