@@ -34,6 +34,8 @@ namespace Auror.Models.DataAccessLayer
                 InitHotelAdvantages(db);
                 InitRooms(db);
                 InitRoomImages(db);
+                InitComments(db);
+                InitServices(db);
                 //   InitReservation(db);
                 InitGuest(db);
                 //await db.SaveChangesAsync();
@@ -42,12 +44,87 @@ namespace Auror.Models.DataAccessLayer
             return app;
         }
 
+        private static void InitServices(AurorDataContext db)
+        {
+            if (!db.Services.Any())
+            {
+                db.Services.AddRange(
+                       new Service { Name = "Lounge Bar", ImagePath = "1.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" },
+                       new Service { Name = "Hovuz", ImagePath = "2.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" },
+                       new Service { Name = "Restorant", ImagePath = "3.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" },
+                       new Service { Name = "Oyun Zalı", ImagePath = "4.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" },
+                       new Service { Name = "Spa Salonu", ImagePath = "5.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" },
+                       new Service { Name = "İdman Zalı", ImagePath = "6.jpg", Description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, rerum?" }
+                    );
+                db.SaveChanges();
+            }
+        }
+
+        private static void InitComments(AurorDataContext db)
+        {
+            {
+                db.Comment.AddRange(
+                    new Comment
+                    {
+                        Content = " Lorem ipsum dolor sit amet consectetur,adipisicing elit.Aliquid doloribus" +
+                        "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
+                        HotelId = 1,
+                        Rating = 4,
+                        UserId = "a0b71bab-722d-4b5e-b4e7-c85143e79e42"
+                    },
+                    new Comment
+                    {
+                        Content = " Lorem ipsum dolor sit amet consectetur,adipisicing elit.Aliquid doloribus" +
+                        "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
+                        HotelId = 2,
+                        Rating = 3,
+                        UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee"
+                    },
+                    new Comment
+                    {
+                        Content = " Lorem ipsum dolor sit amet consectetur,adipisicing elit.Aliquid doloribus" +
+                        "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
+                        HotelId = 2,
+                        Rating = 4,
+                        UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee"
+                    }
+                    );
+                db.SaveChanges();
+            }
+        }
+
         private static void InitRoomImages(AurorDataContext db)
         {
-            if (!db.Room.Any())
+            if (!db.RoomImages.Any())
             {
+                db.RoomImages.AddRange(
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 1 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 2 },
+                 new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 3 },
+                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 4 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 5 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 6 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 7 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 8 },
+                 new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 9 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 10 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 11 },
+                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 12 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 14 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 15 },
+                 new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 16 },
+                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 17 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 18 },
+                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 19 },
+                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 20 },
+                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 21 },
+                 new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 22 },
+                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 23 }
 
+                 );
             }
+            db.SaveChanges();
+
         }
 
         private static void InitGuest(AurorDataContext db)

@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -420,407 +420,60 @@
             <div class="col-lg-12">
                 <div class="swiper-container hotel-uni-slider">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/1.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>8.8 m²</span>
-                                        </div>
+                        @foreach (var item in Model.Rooms)
+                        {
+                            <div class="swiper-slide">
+                                <!-- room card -->
+                                <div class="hotel-room-card hotel-scroll-animation">
+                                    <div class="hotel-cover-frame imgLoad">
+                                        <a href="room.html">
+                                            <img class="lozad" src="~/img/rooms/@item.RoomImages.FirstOrDefault().Path" alt="cover" />
+                                        </a>
                                     </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Kral Suite</h3>
-                                    </a>
-                                    <div class="
+                                    <div class="hotel-description-frame">
+                                        <div class="hotel-room-features">
+                                            <div class="hotel-feature imgLoad">
+                                                <div class="hotel-icon-frame">
+                                                    <img class="lozad" src="~/img/icons/bed.svg"
+                                                         alt="icon" />
+                                                </div>
+                                                <span>@item.PeopleCount Nəfərlik</span>
+                                            </div>
+                                            <div class="hotel-feature imgLoad">
+                                                <div class="hotel-icon-frame">
+                                                    <img class="lozad" src="~/img/icons/square.svg"
+                                                         alt="icon" />
+                                                </div>
+                                                <span>8.8 m²</span>
+                                            </div>
+                                        </div>
+                                        <a href="room.html">
+                                            <h3 class="hotel-mb-20">@item.RoomType.Name</h3>
+                                        </a>
+                                        <div class="
 														hotel-text-light
 														hotel-text-sm
 														hotel-mb-20
 													">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Amet aperiam deleniti
-                                        quas!
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            500 M<span>/gecə</span>
+                                            Lorem ipsum dolor sit amet consectetur
+                                            adipisicing elit. Amet aperiam deleniti
+                                            quas!
                                         </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
+                                        <div class="hotel-card-bottom imgLoad">
+                                            <div class="hotel-price">
+                                                @item.CurrentPrice M<span>/gecə</span>
+                                            </div>
+                                            <a href="room.html" class="hotel-btn">
+                                                <img class="lozad" src="~/img/icons/bookmark.svg"
+                                                     alt="icon" />Rezerv et
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- room card end -->
                             </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/2.jpg" alt="cover" />
-                                    </a>
-                                    <div class="hotel-badge">Populyar</div>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>2 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4.6 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Standart</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing elit. Eos nemo culpa atque.
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            150 M <span> /gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/3.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>8.8 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Deluxe Otaq</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum, dolor sit amet consectetur
-                                        adipisicing elit. Ducimus nobis natus
-                                        voluptas.
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            250 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/4.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>1 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>3.2 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Economy</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum dolor, sit amet consectetur
-                                        adipisicing elit. Doloremque perferendis
-                                        quisquam nemo!
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            100 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/3.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>8.8 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Deluxe</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Tenetur repudiandae at
-                                        beatae..
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            175 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/2.jpg" alt="cover" />
-                                    </a>
-                                    <div class="hotel-badge">Populyar</div>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>2 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4.6 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Standart</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Libero inventore veniam
-                                        sapiente!
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            75 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/4.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>1 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>3.2 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Ekonomik</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem, ipsum dolor sit amet consectetur
-                                        adipisicing elit. Ea error officia
-                                        nesciunt.
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            150 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
-                        <div class="swiper-slide">
-                            <!-- room card -->
-                            <div class="hotel-room-card hotel-scroll-animation">
-                                <div class="hotel-cover-frame imgLoad">
-                                    <a href="room.html">
-                                        <img class="lozad" data-src="img/rooms/3.jpg" alt="cover" />
-                                    </a>
-                                </div>
-                                <div class="hotel-description-frame">
-                                    <div class="hotel-room-features">
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/bed.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>4 Nəfərlik</span>
-                                        </div>
-                                        <div class="hotel-feature imgLoad">
-                                            <div class="hotel-icon-frame">
-                                                <img class="lozad" data-src="img/icons/square.svg"
-                                                     alt="icon" />
-                                            </div>
-                                            <span>8.8 m²</span>
-                                        </div>
-                                    </div>
-                                    <a href="room.html">
-                                        <h3 class="hotel-mb-20">Deluxe</h3>
-                                    </a>
-                                    <div class="
-														hotel-text-light
-														hotel-text-sm
-														hotel-mb-20
-													">
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Distinctio obcaecati
-                                        laboriosam provident?
-                                    </div>
-                                    <div class="hotel-card-bottom imgLoad">
-                                        <div class="hotel-price">
-                                            200 M <span>/gecə</span>
-                                        </div>
-                                        <a href="room.html" class="hotel-btn">
-                                            <img class="lozad" data-src="img/icons/bookmark.svg"
-                                                 alt="icon" />Rezerv et
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- room card end -->
-                        </div>
+                        }
+
                     </div>
 
                     <!-- slider navigation -->
@@ -865,118 +518,34 @@
             </div>
             <div class="col-lg-6">
                 <!-- slider -->
-                <div class="
-									swiper-slider
-									hotel-testimonials-slider hotel-scroll-animation
-								">
+                <div class="swiper-slider hotel-testimonials-slider hotel-scroll-animation">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="hotel-testimonial-card">
-                                <div class="hotel-avatar-frame imgLoad">
-                                    <img class="lozad" data-src="img/faces/1.jpg" alt="Avatar" />
-                                </div>
-                                <div class="hotel-name-and-text">
-                                    <h3 class="hotel-mb-10">Rahidə Mahmudova</h3>
-                                    <div>Sumqayıt</div>
-                                    <blockquote>
-                                        <ul class="hotel-stars">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li class="hotel-empty">
-                                                <i class="fas fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Libero, quae maxime
-                                        recusandae dolorem tempore nobis vero
-                                        asperiores earum culpa. Suscipit
-                                        asperiores nisi laboriosam iste illum
-                                        veritatis dolor in! Fuga, eaque!
-                                    </blockquote>
+                        @foreach (var item in Model.Comments)
+                        {
+                            <div class="swiper-slide">
+                                <div class="hotel-testimonial-card">
+                                    <div class="hotel-avatar-frame imgLoad">
+                                        <img class="lozad" src="img/faces/@item.User.ProfilePhoto" alt="Avatar" />
+                                    </div>
+                                    <div class="hotel-name-and-text">
+                                        <h3 class="hotel-mb-10">@item.User.Name @item.User.Surname</h3>
+                                        <div>@item.Hotel.Name</div>
+                                        <blockquote>
+                                            <ul class="hotel-stars">
+                                                @for (int i = 1; i <= @item.Rating; i++)
+                                                {
+                                                    <li><i class="fas fa-star"></i></li>
+                                                }
+
+
+                                            </ul>
+                                     @item.Content
+                                        </blockquote>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-testimonial-card">
-                                <div class="hotel-avatar-frame imgLoad">
-                                    <img class="lozad" data-src="img/faces/2.jpg" alt="Avatar" />
-                                </div>
-                                <div class="hotel-name-and-text">
-                                    <h3 class="hotel-mb-10">Leyla Əhmədova</h3>
-                                    <div>Qəbələ</div>
-                                    <blockquote>
-                                        <ul class="hotel-stars">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                        </ul>
-                                        Lorem ipsum dolor sit amet consectetur,
-                                        adipisicing elit. Aliquid doloribus illo
-                                        reiciendis officiis. Assumenda aspernatur
-                                        ut autem distinctio eos nihil error
-                                        quaerat quam.
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-testimonial-card">
-                                <div class="hotel-avatar-frame imgLoad">
-                                    <img class="lozad" data-src="img/faces/3.jpg" alt="Avatar" />
-                                </div>
-                                <div class="hotel-name-and-text">
-                                    <h3 class="hotel-mb-10">Anar Babayev</h3>
-                                    <div>Şəki</div>
-                                    <blockquote>
-                                        <ul class="hotel-stars">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li class="hotel-empty">
-                                                <i class="fas fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Veniam, error
-                                        reiciendis. Itaque tempore, eius corporis
-                                        accusamus laboriosam reprehenderit
-                                        impedit! Necessitatibus cupiditate magni
-                                        eius! Minima accusamus ab sapiente dicta
-                                        voluptas. Doloremque!
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="hotel-testimonial-card">
-                                <div class="hotel-avatar-frame imgLoad">
-                                    <img class="lozad" data-src="img/faces/4.jpg" alt="Avatar" />
-                                </div>
-                                <div class="hotel-name-and-text">
-                                    <h3 class="hotel-mb-10">Cavid İsmayilov</h3>
-                                    <div>Bakı</div>
-                                    <blockquote>
-                                        <ul class="hotel-stars">
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                            <li><i class="fas fa-star"></i></li>
-                                        </ul>
-                                        Lorem ipsum dolor sit amet, consectetur
-                                        adipisicing elit. Amet, velit veritatis!
-                                        Sed amet illum ab atque sit hic fugit,
-                                        tempora quisquam. Excepturi nesciunt quod
-                                        repellendus tempora earum exercitationem
-                                        nisi porro.
-                                    </blockquote>
-                                </div>
-                            </div>
-                        </div>
+                        }
+
                     </div>
                     <div class="hotel-testimonials-nav">
                         <div class="hotel-testimonials-slider-1-prev">

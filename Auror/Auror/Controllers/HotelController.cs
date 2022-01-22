@@ -1,7 +1,6 @@
 ﻿using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
 using Auror.Models.ViewModels;
-using Auror.Models.ViewModels.Reservation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -61,10 +60,7 @@ namespace Auror.Controllers
 
             return View(hdvm);
         }
-        //public async Task<IActionResult> Rooms(int? id)
-        //{
-
-        //}
+      
 
 
      

@@ -1,0 +1,55 @@
+﻿@model List<Service>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="hotel-banner-simple services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="hotel-center hotel-title-frame">
+                    <h1 class="hotel-mb-20 hotel-h1-inner">Xidmətlərimiz</h1>
+                    <p class="hotel-mb-30">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab vitae, dolor harum eaque nihil iste tempora error eveniet aut adipisci.</p>
+                    <ul class="hotel-breadcrumbs">
+                        <li><a href="index.html">Ana Səhifə</a></li>
+                        <li><span>Xidmətlərimiz</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="hotel-p-0-80 service">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="hotel-center hotel-title-frame hotel-scroll-animation hotel-mb-100">
+                    <h2 class="hotel-mb-20">Bütün Xidmətlərimiz</h2>
+                    <p class="hotel-mb-30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, culpa quasi facilis adipisci id atque tempora, nobis omnis tempore ea aspernatur sunt doloribus et rerum cumque hic ullam rem ad.</p>
+                </div>
+
+            </div>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4">
+                    <!-- service card -->
+                    <div class="hotel-ath-card hotel-scroll-animation imgLoad">
+                        <div class="hotel-cover-frame">
+                            <img class="lozad" src="~/img/services/@item.ImagePath" alt="cover">
+                        </div>
+                        <div class="hotel-card-description">
+                            <h3 class="hotel-mb-10">@item.Name</h3>
+                            <p>@item.Description</p>
+                        </div>
+                    </div>
+                    <!-- service card end -->
+                </div>
+            }
+
+        </div>
+        </div>
+    </section>
