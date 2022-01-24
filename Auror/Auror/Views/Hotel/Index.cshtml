@@ -54,7 +54,7 @@
                     <!-- room card -->
                     <div class="hotel-room-card">
                         <div class="hotel-cover-frame imgLoad">
-                            <a asp-controller="Hotel" asp-action="Detail" asp-route-id="@item.Id"><img class="lozad" src="@Url.Content($"~/img/HOTEL/{@item.DefaultImage}")" alt="cover"></a>
+                            <a asp-controller="Hotel" asp-action="Detail" asp-route-id="@item.Id"><img class="lozad" src="@Url.Content($"~/img/HOTEL/{@item.Images.FirstOrDefault().Path}")" alt="cover"></a>
                         </div>
                         <div class="hotel-description-frame">
                             @if (item.Rating > 90)

@@ -1,6 +1,7 @@
 ﻿using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
 using Auror.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,9 +14,11 @@ namespace Auror.Controllers
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;
-        public HotelController(AurorDataContext dt)
+        private readonly UserManager<User> _user;
+        public HotelController(AurorDataContext dt, UserManager<User> user)
         {
             _dt = dt;
+            _user = user;
         }
         public async Task<IActionResult> Index()
         {
@@ -23,6 +26,7 @@ namespace Auror.Controllers
             {
                 Hotels = await _dt.Hotel.Where(h => !h.IsDeleted)
                 .Include(c => c.HotelCategory)
+                .Include(i=>i.Images.Where(i=>i.IsMain))
                 .OrderBy(r => r.Rating)
                 .ToListAsync(),
 
@@ -43,11 +47,11 @@ namespace Auror.Controllers
             }
 
 
-
+            TempData["Id"] = id;
             var hdvm = new HotelDetailViewModel()
             {
                 Hotel = await _dt.Hotel.Where(f => f.Id == id).Include(c => c.HotelCategory)
-                .Include(o => o.Images).FirstOrDefaultAsync(),
+                .Include(o => o.Images).Include(c=>c.Comments).ThenInclude(c=>c.User).FirstOrDefaultAsync(),
                 Advantages = await _dt.HotelAdvantages.Where(i => i.HotelId == id).Select(x =>
                 new Advantage
                 {
@@ -60,9 +64,23 @@ namespace Auror.Controllers
 
             return View(hdvm);
         }
-      
+        public async Task<PartialViewResult> Comment(string content)
+        {
+            var user = await _user.GetUserAsync(HttpContext.User);
+            var comment = new Comment()
+            {
+                Content = content,
+                HotelId = Convert.ToInt32(TempData["Id"]),
+                User = user
+            };
+
+            await _dt.Comment.AddAsync(comment);
+            await _dt.SaveChangesAsync();
+            return PartialView("_CommentPartial", comment);
+        }
 
 
-     
+
+
     }
 }

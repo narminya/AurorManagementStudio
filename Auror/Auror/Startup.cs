@@ -59,7 +59,6 @@ namespace Auror
 
                 options.AddPolicy("AreaAdmin", policyBuilder => policyBuilder.RequireAssertion(
                     context => context.User.IsInRole("SuperAdmin") ||
-                               context.User.IsInRole("Admin") ||
                                context.User.IsInRole("Hotel") && context.User.HasClaim("Admin", "true")
                     ));
             });
@@ -70,7 +69,7 @@ namespace Auror
                 options.UseSqlServer(_conf.GetConnectionString("DefaultConnection"));
             });
 
-            FileConstants.ImagePath = Path.Combine(_env.WebRootPath, "img", "uploads");
+            FileConstant.ImagePath = Path.Combine(_env.WebRootPath, "img");
 
         }
 

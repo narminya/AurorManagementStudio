@@ -106,7 +106,7 @@ $(function() {
     $(".hotel-active").removeClass("hotel-active");
     $(this).closest('li a').addClass("hotel-active");
     var theClass = $(this).attr("class");
-    $('.' + theClass).parent('li a').addClass('hotel-active');
+    $('.' + theClass).parent('li a').addClass('hotel-active')
     $('html, body').stop().animate({
       scrollTop: $($(this).attr('href')).offset().top - 170
     }, 600);

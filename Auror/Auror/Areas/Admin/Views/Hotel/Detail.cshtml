@@ -8,44 +8,45 @@
     <h3>Photo - <span class="semi-bold">Gallery</span></h3>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="grid simple vertical green">
             <div class="grid-title no-border">
                 <h4>Hotel</h4>
             </div>
-            <div class="grid-body no-border">
-                <div class="row-fluid ">
-                    <address class="margin-bottom-20 margin-top-10">
-                        <strong>@Model.Name</strong><br> <strong>Rating : @Model.Rating</strong>
-                        @Model.Location<br>
-                        San Francisco, CA 94107<br>
-                        <abbr title="Phone">P:</abbr> @Model.Phone
-                    </address>
-                    <address>
-                        <strong>@Model.Description</strong><br>
-                        <a href="mailto:#">@Model.Email</a>
-                    </address>
-                    <img style="width: 20%" src="~/img/HOTEL/@Model.DefaultImage" />
-                </div>
+            <div class="grid-body">
+                <h1 class="light">@Model.Name</h1>
+                <h4>@Model.Description</h4>
+                <h2>Rating : @Model.Rating.ToString("n0")</h2>
+                <h4>Phone :  <span class="semi-bold"> @Model.Phone</span> </h4>
+                <p>
+                    <a href="mailto:@Model.Email">@Model.Email</a>
+                </p>
+                <address class="margin-bottom-20 margin-top-10">
+
+                    @Model.Location<br>
+
+                </address>
             </div>
         </div>
     </div>
 </div>
-<div class="content" style="padding: 0">
-    <div class="superbox" style="display: flex">
-        @foreach (var item in Model.Images)
-        {
-            <div class="superbox-list" style="width: 25%"> <img src="~/img/HOTEL/@item.Path" data-img="@Url.Content($"~/img/HOTEL/{@item.Path}")" alt="" class="superbox-img"> </div>
-            <div class="superbox-float"></div>
-        }
+<div class="row">
+    <div class="content" style="padding: 0">
+        <div class="superbox" style="display: flex">
+            @foreach (var item in Model.Images)
+            {
+                <div class="superbox-list" style="width: 25%"> <img src="~/img/HOTEL/@item.Path" data-img="@Url.Content($"~/img/HOTEL/{@item.Path}")" alt="" class="superbox-img"> </div>
+                <div class="superbox-float"></div>
+            }
 
+        </div>
     </div>
 </div>
-    @section script {
-        <script>
-            $(function () {
-                // Call SuperBox - that's it!
-                $('.superbox').SuperBox();
-            });
-        </script>
-    }
+@section script {
+    <script>
+        $(function () {
+            // Call SuperBox - that's it!
+            $('.superbox').SuperBox();
+        });
+    </script>
+}

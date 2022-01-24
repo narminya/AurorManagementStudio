@@ -34,15 +34,17 @@ namespace Auror.Models.DataAccessLayer
                 InitHotelAdvantages(db);
                 InitRooms(db);
                 InitRoomImages(db);
-                InitComments(db);
+               //  InitComments(db);
                 InitServices(db);
                 //   InitReservation(db);
-                InitGuest(db);
+               // InitGuest(db);
                 //await db.SaveChangesAsync();
             }
 
             return app;
         }
+
+      
 
         private static void InitServices(AurorDataContext db)
         {
@@ -62,6 +64,7 @@ namespace Auror.Models.DataAccessLayer
 
         private static void InitComments(AurorDataContext db)
         {
+            if (!db.Comment.Any())
             {
                 db.Comment.AddRange(
                     new Comment
@@ -70,7 +73,7 @@ namespace Auror.Models.DataAccessLayer
                         "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
                         HotelId = 1,
                         Rating = 4,
-                        UserId = "a0b71bab-722d-4b5e-b4e7-c85143e79e42"
+                        UserId = "1e64102e-ee2e-4e6f-89c6-346d4d9db801"
                     },
                     new Comment
                     {
@@ -78,7 +81,7 @@ namespace Auror.Models.DataAccessLayer
                         "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
                         HotelId = 2,
                         Rating = 3,
-                        UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee"
+                        UserId = "5f91fc89-ae62-4c9f-a940-cd027165fb5b"
                     },
                     new Comment
                     {
@@ -86,7 +89,7 @@ namespace Auror.Models.DataAccessLayer
                         "illoreiciendis officiis.Assumenda aspernatur ut autem distinctio eos nihil error quaerat quam.",
                         HotelId = 2,
                         Rating = 4,
-                        UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee"
+                        UserId = "b68a4a79-ed27-4d23-b934-87e7e3e9a2e1"
                     }
                     );
                 db.SaveChanges();
@@ -243,7 +246,6 @@ namespace Auror.Models.DataAccessLayer
                     new Navigation { Name = "Ana Səhifə", Order = 1, Controller = "Home" },
                     new Navigation { Name = "Haqqımızda", Order = 2, Controller = "About" },
                     new Navigation { Name = "Hotellər", Order = 3, Controller = "Hotel" },
-                    new Navigation { Name = "Otaqlar", Order = 4, Controller = "Room" },
                     new Navigation { Name = "Xidmətlərimiz", Order = 5, Controller = "Service" },
                     new Navigation { Name = "Əlaqə", Order = 6, Controller = "Contact" }
                     );
@@ -256,21 +258,21 @@ namespace Auror.Models.DataAccessLayer
             {
                 db.Images.AddRange(
                     new HotelImage { Path = "hotel-2.jpg", HotelId = 1 },
-                    new HotelImage { Path = "hotel-3.jpg", HotelId = 1 },
+                    new HotelImage { Path = "hotel-3.jpg", IsMain = true, HotelId = 1 },
                     new HotelImage { Path = "hotel-4.jpg", HotelId = 1 },
                     new HotelImage { Path = "hotel-8.jpg", HotelId = 1 },
-                    new HotelImage { Path = "hotel-2.jpg", HotelId = 4 },
+                    new HotelImage { Path = "hotel-2.jpg", IsMain = true, HotelId = 4 },
                     new HotelImage { Path = "hotel-3.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-4.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-8.jpg", HotelId = 4 },
                     new HotelImage { Path = "hotel-2.jpg", HotelId = 3 },
                     new HotelImage { Path = "hotel-3.jpg", HotelId = 3 },
-                    new HotelImage { Path = "hotel-4.jpg", HotelId = 3 },
+                    new HotelImage { Path = "hotel-4.jpg", IsMain = true, HotelId = 3 },
                     new HotelImage { Path = "hotel-8.jpg", HotelId = 3 },
                     new HotelImage { Path = "hotel-2.jpg", HotelId = 2 },
                     new HotelImage { Path = "hotel-3.jpg", HotelId = 2 },
                     new HotelImage { Path = "hotel-4.jpg", HotelId = 2 },
-                    new HotelImage { Path = "hotel-8.jpg", HotelId = 2 }
+                    new HotelImage { Path = "hotel-8.jpg", IsMain = true, HotelId = 2 }
                     );
             }
             db.SaveChanges();
@@ -286,7 +288,6 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 5",
                         Rating = 49,
                         IsDeleted = false,
-                        DefaultImage = "hotel-1.jpg",
                         Phone = "+0(68)48214848",
                         HotelCategoryId = 1,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
@@ -298,7 +299,6 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 6",
                         Rating = 85,
                         IsDeleted = false,
-                        DefaultImage = "hotel-2.jpg",
                         Phone = "+0(68)47814848",
                         HotelCategoryId = 2,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
@@ -310,7 +310,6 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 12",
                         Rating = 79,
                         IsDeleted = false,
-                        DefaultImage = "hotel-3.jpg",
                         Phone = "+0(68)48212848",
                         HotelCategoryId = 3,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +
@@ -322,7 +321,6 @@ namespace Auror.Models.DataAccessLayer
                         Location = "Street 8",
                         Rating = 75,
                         IsDeleted = false,
-                        DefaultImage = "hotel-4.jpg",
                         Phone = "+0(68)96214848",
                         HotelCategoryId = 4,
                         Description = " Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum possimus aut eius fuga dolore ullam, " +

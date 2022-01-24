@@ -144,66 +144,49 @@
                 <!-- services end -->
                 <!-- reviews -->
                 <section class="hotel-mb-30">
-                    <div class="row">
+                    <div class="row" id="comment-container">
                         <div class="col-lg-12">
                             <h3 class="hotel-mb-40 hotel-scroll-animation">Rəylər</h3>
                         </div>
-                        <div class="col-lg-12">
+                        @foreach (var item in Model.Hotel.Comments)
+                        {
+                            <div class="col-lg-12">
 
-                            <div class="hotel-review-card hotel-scroll-animation">
-                                <div class="hotel-card-header">
-                                    <div class="hotel-name-and-photo">
-                                        <div class="hotel-avatar-frame">
-                                            <img src="~/img/faces/3.jpg" alt="Avatar">
+                                <div class="hotel-review-card hotel-scroll-animation">
+                                    <div class="hotel-card-header">
+                                        <div class="hotel-name-and-photo">
+                                            <div class="hotel-avatar-frame">
+                                                @if (item.User.ProfilePhoto == null)
+                                                {
+                                                    <img src="~/img/faces/author.png" alt="Avatar">
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/img/faces/@item.User.ProfilePhoto" alt="Avatar">
+                                                }
+                                            </div>
+                                            <div>
+                                                <h5>@item.User.Name @item.User.Surname</h5>
+                                                <span>@item.CreatedDate.ToString("dd/MM/yyyy")</span>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h5>Anar İsmayilov</h5>
-                                            <span>14.07.2021</span>
-                                        </div>
+                                        <ul class="hotel-stars">
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                            <li><i class="fas fa-star"></i></li>
+                                        </ul>
                                     </div>
-                                    <ul class="hotel-stars">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                    </ul>
+                                    <blockquote>
+                                        @item.Content
+                                    </blockquote>
+
                                 </div>
-                                <blockquote>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque magnam voluptatum tenetur iusto eaque.
-                                </blockquote>
 
                             </div>
+                        }
 
-                        </div>
-                        <div class="col-lg-12">
-
-                            <div class="hotel-review-card hotel-scroll-animation">
-                                <div class="hotel-card-header">
-                                    <div class="hotel-name-and-photo">
-                                        <div class="hotel-avatar-frame">
-                                            <img src="~/img/faces/2.jpg" alt="Avatar">
-                                        </div>
-                                        <div>
-                                            <h5>Fatime Ferzelizade</h5>
-                                            <span>14.07.2021</span>
-                                        </div>
-                                    </div>
-                                    <ul class="hotel-stars">
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li><i class="fas fa-star"></i></li>
-                                        <li class="hotel-empty"><i class="fas fa-star"></i></li>
-                                    </ul>
-                                </div>
-                                <blockquote>
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus fugiat molestiae impedit suscipit beatae deserunt minima aut corrupti quibusdam aperiam.
-                                </blockquote>
-
-                            </div>
-
-                        </div>
                     </div>
                 </section>
                 <!-- reviews end -->
@@ -222,19 +205,13 @@
                             {
                                 <form class="hotel-scroll-animation">
                                     <div class="row">
-                                        <div class="col-lg-6">
-                                            <input type="text" placeholder="Adınız">
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <input type="email" placeholder="Email">
-                                        </div>
                                         <div class="col-lg-12">
-                                            <textarea name="name" rows="8" placeholder="Şərh"></textarea>
+                                            <textarea name="content" rows="8" placeholder="Şərh" id="comContent"></textarea>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="hotel-form-submit-frame">
                                                 <!-- temporary button to show the popup -->
-                                                <a class="hotel-btn" data-fancybox href="#hotel-success">Göndər</a>
+                                                <button class="hotel-btn" id="addComment" data-fancybox href="#hotel-success">Göndər</button>
                                                 <!-- <button class="hotel-btn">Send</button> -->
                                                 <div class="hotel-text-sm">*Şəxsi məlumatlarınızı üçüncü tərəflərə açıqlamayacağımıza söz veririk..</div>
                                             </div>
@@ -254,20 +231,20 @@
 
                     @foreach (var item in Model.Rooms)
                     {
-                    <div class="hotel-room-features-lg hotel-mb-20">
-                        <div class="hotel-text-sm">@item.RoomType.Name</div>
-                        <div class="hotel-feature">
-                            <div class="hotel-icon-frame"><img src="~/img/icons/bed.svg" alt="icon"></div>
-                            <span>@item.PeopleCount Nəfərlik</span>
+                        <div class="hotel-room-features-lg hotel-mb-20">
+                            <div class="hotel-text-sm">@item.RoomType.Name</div>
+                            <div class="hotel-feature">
+                                <div class="hotel-icon-frame"><img src="~/img/icons/bed.svg" alt="icon"></div>
+                                <span>@item.PeopleCount Nəfərlik</span>
+                            </div>
+                            <div class="hotel-feature">
+                                <div class="hotel-icon-frame"><img src="~/img/icons/square.svg" alt="icon"></div>
+                                <span>@item.RoomSquare Ft²</span>
+                            </div>
                         </div>
-                        <div class="hotel-feature">
-                            <div class="hotel-icon-frame"><img src="~/img/icons/square.svg" alt="icon"></div>
-                            <span>@item.RoomSquare Ft²</span>
-                        </div>
-                    </div>
                     }
 
-                    <a asp-controller="Reservation" asp-action="Reservation"  asp-route-id="@Model.Hotel.Id" class="hotel-btn">Rezervasiya</a>
+                    <a asp-controller="Reservation" asp-action="Reservation" asp-route-id="@Model.Hotel.Id" class="hotel-btn">Rezervasiya</a>
 
                 </div>
                 <!-- sidebar end -->
@@ -276,8 +253,21 @@
         </div>
     </div>
 </div>
+
+
 @section script{
     <script>
 
+        $(document).on("click", "#addComment", function () {
+            let content = $("#comContent").val();
+            $.ajax({
+                type: "GET",
+                url: "/Hotel/Comment?content=" + content,
+                success: function (res) {
+                    $("#comment-container").append(res);
+                    $("#comContent").val(" ");
+                }
+            })
+        })
     </script>
 }

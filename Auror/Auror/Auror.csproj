@@ -20,6 +20,100 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Admin\assets\js\calender.js" />
+    <None Include="wwwroot\Admin\assets\js\charts.js" />
+    <None Include="wwwroot\Admin\assets\js\chat.js" />
+    <None Include="wwwroot\Admin\assets\js\dashboard.js" />
+    <None Include="wwwroot\Admin\assets\js\dashboard_v2.js" />
+    <None Include="wwwroot\Admin\assets\js\datatables.js" />
+    <None Include="wwwroot\Admin\assets\js\email_comman.js" />
+    <None Include="wwwroot\Admin\assets\js\form_elements.js" />
+    <None Include="wwwroot\Admin\assets\js\form_validations.js" />
+    <None Include="wwwroot\Admin\assets\js\google_maps.js" />
+    <None Include="wwwroot\Admin\assets\js\group_list.js" />
+    <None Include="wwwroot\Admin\assets\js\icon.js" />
+    <None Include="wwwroot\Admin\assets\js\notifications.js" />
+    <None Include="wwwroot\Admin\assets\js\search_results.js" />
+    <None Include="wwwroot\Admin\assets\js\support_ticket.js" />
+    <None Include="wwwroot\Admin\assets\js\vector_maps.js" />
+    <None Include="wwwroot\Admin\assets\js\widgets.js" />
+    <None Include="wwwroot\Admin\assets\plugins\boostrap-clockpicker\bootstrap-clockpicker.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\boostrap-form-wizard\js\jquery.bootstrap.wizard.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\boostrap-slider\js\bootstrap-slider.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-select2\select2.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-tag\bootstrap-tagsinput.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-timepicker\js\bootstrap-timepicker.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrapv3\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrapv3\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\Admin\assets\plugins\bootstrapv3\js\bootstrap.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\datatables-responsive\js\datatables.responsive.js" />
+    <None Include="wwwroot\Admin\assets\plugins\datatables-responsive\js\lodash.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\dropzone\dropzone.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\font-awesome\fonts\fontawesome-webfont93e3.svg" />
+    <None Include="wwwroot\Admin\assets\plugins\font-awesome\fonts\fontawesome-webfont93e3.woff2" />
+    <None Include="wwwroot\Admin\assets\plugins\fullcalendar\fullcalendar.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\ios-switch\ios7-switch.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-autonumeric\autoNumeric.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-block-ui\jqueryblockui.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-block-ui\jqueryblockui.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-datatable\extra\js\dataTables.tableTools.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-datatable\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-easy-pie-chart\js\jquery.easypiechart.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.animator.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.orderBars.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.selection.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-flot\jquery.flot.time.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-gmap\gmaps.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-inputmask\jquery.inputmask.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-jvectormap\js\jquery-jvectormap-1.2.2.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-jvectormap\js\jquery-jvectormap-us-lcc-en.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-jvectormap\js\jquery-jvectormap-world-mill-en.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-metrojs\MetroJs.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-mixitup\jquery.mixitup.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-morris-chart\js\morris.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-nestable\jquery.nestable.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-notifications\js\demo\demo.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-notifications\js\demo\location-sel.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-notifications\js\demo\theme-sel.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-notifications\js\messenger-theme-future.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-notifications\js\messenger.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-numberAnimate\jquery.animateNumbers.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-ricksaw-chart\js\d3.v2.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-ricksaw-chart\js\raphael-min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-ricksaw-chart\js\rickshaw.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-scrollbar\jquery.scrollbar.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-slider\jquery.sidr.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-sparkline\jquery-sparkline.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-superbox\js\superbox.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-ui-touch\jquery.ui.touch-punch.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-unveil\jquery.unveil.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery-validation\js\jquery.validate.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\jquery\jquery-1.11.3.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\js\hammer.js" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\js\jquery.easing.js" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\js\jquery.mousewheel.js" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\mapplic\images\closedhand.cur" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\mapplic\images\openhand.cur" />
+    <None Include="wwwroot\Admin\assets\plugins\Mapplic\mapplic\mapplic.js" />
+    <None Include="wwwroot\Admin\assets\plugins\modernizr.js" />
+    <None Include="wwwroot\Admin\assets\plugins\owl-carousel\owl.carousel.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\pace\pace.min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\shape-hover\fonts\codropsicons\codropsicons.svg" />
+    <None Include="wwwroot\Admin\assets\plugins\shape-hover\js\snap.svg-min.js" />
+    <None Include="wwwroot\Admin\assets\plugins\skycons\skycons.js" />
+    <None Include="wwwroot\Admin\css\imager.css.map" />
+    <None Include="wwwroot\Admin\css\imager.min.css.map" />
+    <None Include="wwwroot\Admin\js\imager.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
@@ -37,8 +131,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\ViewModels\" />
-    <Folder Include="wwwroot\Admin\assets\plugins\jquery-superbox\img\" />
+    <Folder Include="wwwroot\img\NewFolder\" />
   </ItemGroup>
 
 </Project>

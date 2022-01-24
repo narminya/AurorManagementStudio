@@ -1,0 +1,37 @@
+﻿@model Comment
+<div class="col-lg-12">
+
+    <div class="hotel-review-card hotel-scroll-animation">
+        <div class="hotel-card-header">
+            <div class="hotel-name-and-photo">
+                <div class="hotel-avatar-frame">
+                    @if (@Model.User.ProfilePhoto == null)
+                    {
+                        <img src="~/img/faces/author.png" alt="Avatar">
+                    }
+                    else
+                    {
+                        <img src="~/img/faces/@Model.User.ProfilePhoto" alt="Avatar">
+                    }
+
+                </div>
+                <div>
+                    <h5>@Model.User.Name @Model.User.Surname</h5>
+                    <span>@Model.CreatedDate.ToString("dd/MM/yyyy")</span>
+                </div>
+            </div>
+            <ul class="hotel-stars">
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li class="hotel-empty"><i class="fas fa-star"></i></li>
+            </ul>
+        </div>
+        <blockquote>
+           @Model.Content
+        </blockquote>
+
+    </div>
+
+</div>

@@ -160,9 +160,6 @@ namespace Auror.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("DefaultImage")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
@@ -269,6 +266,9 @@ namespace Auror.Migrations
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsMain")
                         .HasColumnType("bit");
 
                     b.Property<string>("Path")

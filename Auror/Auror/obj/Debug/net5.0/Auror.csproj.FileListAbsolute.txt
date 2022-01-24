@@ -666,3 +666,7 @@ C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\_ValidatePartial.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Reservation\Index.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Service\Index.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\Create.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\bin\Debug\net5.0\libman.json
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\Update.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\_CommentPartial.cshtml.g.cs

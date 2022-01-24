@@ -1,0 +1,99 @@
+﻿
+@model HotelCreateViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+@section style{
+
+}
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>Dashboard</p>
+        </li>
+        <li><a href="#" class="active">Create a new hotel</a> </li>
+    </ul>
+    <div class="page-title">
+        <i class="icon-custom-left"></i>
+        <h3>Create <span class="semi-bold"> a new hotel</span></h3>
+    </div>
+    <!-- BEGIN BASIC FORM ELEMENTS-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid simple">
+                <div class="grid-body no-border">
+                    <br>
+                    <div class="row">
+                        <form method="post" asp-action="update" enctype="multipart/form-data" >
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+
+                                <div class="form-group">
+                                    <label asp-for="Name" class="form-label"></label>
+                                    <span class="help">e.g. "Mona Lisa Portrait"</span>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Location" class="form-label"></label>
+                                    <span class="help">e.g. "Auror street 5, 96"</span>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="Location">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <span class="help">e.g. "some@example.com"</span>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Phone" class="form-label"></label>
+                                    <span class="help">e.g. "+994(50)999-99-99"</span>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="Phone">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Category" class="form-label"></label>
+                                    <span class="help">e.g. "+994(50)999-99-99"</span>
+                                    <div class="controls">
+                                        <select asp-for="HotelCategoryId" asp-items='new SelectList(Model.Category, "Id", "Name")'>
+                                            <option disabled>Select category of hotel</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="imager-container" id="viewer1" name="file">
+
+                                    <div class="viewer no-show" style="width:400px; height:400px"> </div>
+
+                                    <div class="viewer-thumbs" name="image">
+                                    
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="btn btn-block btn-primary m-t-10 " type="submit"><i class="icon-cloud-download"></i>&nbsp;&nbsp;Create</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END BASIC FORM ELEMENTS-->
+</div>
+
+@section script{
+    <script>
+        $('#viewer1').imgadd();
+
+    </script>
+
+}
+

@@ -39,7 +39,7 @@ namespace Auror.Models.DataAccessLayer
         {
             base.OnModelCreating(builder);
 
-           builder.Ignore<Base>();
+            builder.Ignore<Base>();
         }
 
 

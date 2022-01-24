@@ -123,5 +123,10 @@ namespace Auror.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account", new { Area = "" });
         }
+
+        //public async Task<IActionResult> AccessDenied()
+        //{
+
+        //}
     }
 }
