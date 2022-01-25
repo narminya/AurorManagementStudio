@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,9 +10,13 @@ namespace Auror.Areas.Admin.ViewModels
 {
     public class HotelCreateViewModel
     {
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string Location { get; set; }
+        [Required]
         public string Phone { get; set; }
+        [Required, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public int? HotelCategoryId { get; set; }
         public string Description { get; set; }

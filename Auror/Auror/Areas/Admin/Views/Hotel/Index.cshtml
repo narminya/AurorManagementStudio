@@ -91,11 +91,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-
-
         $(document).on("click", "#deleteCat", function (e) {
             let _id = $(this).attr("data-id");
-
             Swal.fire({
                 title: `Are you sure to delete ${$(this).attr("name")}?`,
                 icon: 'warning',
@@ -116,14 +113,10 @@
                             )
                             location.reload();
                         }
-
                     })
-
                 }
             })
-
         })
     </script>
-}
 }
 @*<partial name="_ValidatePartial" />*@

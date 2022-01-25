@@ -1,0 +1,125 @@
+﻿@model RoomCreateViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+@section style{
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+}
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>Dashboard</p>
+        </li>
+        <li><a href="#" class="active">Create a new room</a> </li>
+    </ul>
+    <div class="page-title">
+        <i class="icon-custom-left"></i>
+        <h3>Create <span class="semi-bold"> a new room</span></h3>
+    </div>
+    <!-- BEGIN BASIC FORM ELEMENTS-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid simple">
+                <div class="grid-body no-border">
+                    <br>
+                    <div class="row">
+                        <form method="post" enctype="multipart/form-data" asp-action="Update">
+
+                            <div class="col-md-8 col-sm-8 col-xs-12">
+
+                                <div class="form-group">
+                                    <label asp-for="Number" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="Number" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Number" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="IsAvailable" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="IsAvailable" style="width:20px" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="IsAvailable" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="CurrentPrice" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="CurrentPrice" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="CurrentPrice" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="RoomSquare" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="RoomSquare" min="25" max="100" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="RoomSquare" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="BedCount" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="BedCount" min="1" max="4" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="BedCount" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PeopleCount" class="form-label"></label>
+                                    <div class="controls">
+                                        <input class="form-control" asp-for="PeopleCount" min="1" max="4" />
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="PeopleCount" class="error"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Hotels" class="form-label"></label>
+                                    <div class="controls">
+                                        <select asp-for="HotelId" asp-items='new SelectList(Model.Hotels, "Id", "Name")'>
+                                            <option disabled>Select category of hotel</option>
+                                        </select>
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="HotelId" class="error"></span></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="RoomTypeId" class="form-label"></label>
+                                    <div class="controls">
+                                        <select asp-for="RoomTypeId" asp-items='new SelectList(Model.RoomType, "Id", "Name")'>
+                                            <option disabled>Select category of hotel</option>
+                                        </select>
+                                    </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="RoomTypeId" class="error"></span></span>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="imager-container" id="viewer1" name="file">
+
+                                    <div class="viewer no-show" style=" height:400px"> </div>
+
+                                    <div class="viewer-thumbs" name="image">
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <button class="btn btn-block btn-primary m-t-10 " type="submit"><i class="icon-cloud-download"></i>&nbsp;&nbsp;Create</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END BASIC FORM ELEMENTS-->
+</div>
+
+@section script{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $('#viewer1').imgadd();
+        $('.js-example-basic-multiple').select2();
+    </script>
+
+}
+

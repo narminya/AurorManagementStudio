@@ -2,12 +2,20 @@
 
 @{
     Layout = null;
-   // var profilePicture = @Model.FindByNameAsync(User.Identity.Name).Result.ProfilePhoto;
+    // var profilePicture = @Model.FindByNameAsync(User.Identity.Name).Result.ProfilePhoto;
 }
 
 <div class="user-info-wrapper sm">
     <div class="profile-wrapper sm">
-        <img src="~/img/@Model.ProfilePhoto" alt="" width="69" height="69" />
+        @if (Model.ProfilePhoto == null)
+        {
+            <img src="~/Admin/img/загружено.jpg" alt="" width="69" height="69" />
+        }
+        else
+        {
+            <img src="~/img/@Model.ProfilePhoto" alt="" width="69" height="69" />
+
+        }
         <div class="availability-bubble online"></div>
     </div>
     <div class="user-info sm">

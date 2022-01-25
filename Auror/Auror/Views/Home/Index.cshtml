@@ -525,7 +525,14 @@
                             <div class="swiper-slide">
                                 <div class="hotel-testimonial-card">
                                     <div class="hotel-avatar-frame imgLoad">
-                                        <img class="lozad" src="img/faces/@item.User.ProfilePhoto" alt="Avatar" />
+                                        @if (@item.User.ProfilePhoto == null)
+                                        {
+                                            <img class="lozad" src="img/faces/author.png" alt="Avatar" />
+                                        }
+                                        else
+                                        {
+                                            <img class="lozad" src="img/faces/@item.User.ProfilePhoto" alt="Avatar" />
+                                        }
                                     </div>
                                     <div class="hotel-name-and-text">
                                         <h3 class="hotel-mb-10">@item.User.Name @item.User.Surname</h3>
@@ -539,7 +546,7 @@
 
 
                                             </ul>
-                                     @item.Content
+                                            @item.Content
                                         </blockquote>
                                     </div>
                                 </div>

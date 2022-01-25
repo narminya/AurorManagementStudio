@@ -20,11 +20,9 @@ namespace Auror.Areas.Admin.Controllers
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;
-        private readonly IWebHostEnvironment _env;
-        public HotelController(AurorDataContext dt, IWebHostEnvironment env)
+        public HotelController(AurorDataContext dt)
         {
             _dt = dt;
-            _env = env;
         }
         public async Task<IActionResult> Index()
         {
@@ -116,7 +114,7 @@ namespace Auror.Areas.Admin.Controllers
                 Images = hotelImages,
                 Description = hcvm.Description,
                 HotelCategoryId = hcvm.HotelCategoryId,
-                
+
             };
             var hotelAdvantages = new List<HotelAdvantages>();
             foreach (var adv in hcvm.AdvantageId)
@@ -144,7 +142,7 @@ namespace Auror.Areas.Admin.Controllers
             }
 
             var category = await _dt.HotelCategory.Where(i => !i.IsDeleted).ToListAsync();
-
+            var advantage = await _dt.Advantages.Where(a => !a.IsDeleted ).ToListAsync();
 
             var hotelUpdate = new HotelCreateViewModel()
             {
@@ -154,7 +152,8 @@ namespace Auror.Areas.Admin.Controllers
                 Location = hotel.Location,
                 Name = hotel.Name,
                 Phone = hotel.Phone,
-                Category = category
+                Category = category,
+                 Advantage = advantage
 
             };
 
@@ -168,6 +167,12 @@ namespace Auror.Areas.Admin.Controllers
             {
                 return View(hotel);
             }
+
+            var category = await _dt.HotelCategory.Where(i => !i.IsDeleted).ToListAsync();
+            var advantage = await _dt.Advantages.Where(a => !a.IsDeleted).ToListAsync();
+            hotel.Category = category;
+            hotel.Advantage = advantage;
+
             var foundHotel = await _dt.Hotel.Where(i => i.Id == id).Include(p => p.Images).FirstOrDefaultAsync();
             var previousImages = foundHotel.Images.ToList();
 
@@ -203,6 +208,13 @@ namespace Auror.Areas.Admin.Controllers
             foundHotel.Images = hotelImages;
 
 
+            var hotelAdvantages = new List<HotelAdvantages>();
+            foreach (var adv in hotel.AdvantageId)
+            {
+                hotelAdvantages.Add(new HotelAdvantages { AdvantageId = adv, HotelId = foundHotel.Id });
+            }
+            foundHotel.Advantages = hotelAdvantages;
+
             _dt.Hotel.Update(foundHotel);
             await _dt.SaveChangesAsync();
 
@@ -227,6 +239,6 @@ namespace Auror.Areas.Admin.Controllers
             return Json(hotel);
         }
 
-       
+
     }
 }

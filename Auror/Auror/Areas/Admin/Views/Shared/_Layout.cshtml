@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Webarch - Responsive Admin Dashboard</title>
+    <title>Admin - @ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -228,12 +228,23 @@
                             @*  <li class=""> <a href="index.html"> Dashboard v2 <span class=" label label-info pull-right m-r-30">NEW</span></a></li>*@
                         </ul>
                     </li>
+                    
                     <li class="start ">
                         <a href="index.html"><i class="material-icons">panorama_horizontal</i> <span class="title">Hotel</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
                             <li> <a asp-controller="Hotel" asp-action="Index">Hotel</a></li>
                             <li> <a asp-controller="Hotel" asp-action="Create">Create</a></li>
-                          @*  <li> <a asp-controller="Hotel" asp-action="Create">Create</a></li>*@
+
+                            @*  <li> <a asp-controller="Hotel" asp-action="Create">Create</a></li>*@
+
+                        </ul>
+                    </li>
+                    <li class="start ">
+                        <a href="index.html"><i class="material-icons">apps</i><span class="title">Room</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a asp-controller="Rooms" asp-action="Index">Room list</a></li>
+                            <li> <a asp-controller="Rooms" asp-action="Create">Create</a></li>
+
 
                         </ul>
                     </li>

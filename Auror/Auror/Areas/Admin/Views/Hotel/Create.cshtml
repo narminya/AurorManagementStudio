@@ -33,6 +33,7 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Name">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Name" class="error"></span></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Location" class="form-label"></label>
@@ -40,6 +41,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Location">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Location" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Email" class="form-label"></label>
@@ -47,6 +50,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Email">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Email" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Phone" class="form-label"></label>
@@ -54,6 +59,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Phone">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Phone" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Category" class="form-label"></label>
@@ -63,12 +70,15 @@
                                             <option disabled>Select category of hotel</option>
                                         </select>
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Category" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Advantage"></label>
                                     <select asp-for="AdvantageId" asp-items='new SelectList(Model.Advantage, "Id", "Name")' style="width: 300px" class="js-example-basic-multiple" multiple="multiple">
-                                        
                                     </select>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Advantage" class="error"></span></span>
+
                                 </div>
 
                             </div>

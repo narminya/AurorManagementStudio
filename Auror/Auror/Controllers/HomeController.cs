@@ -24,7 +24,7 @@ namespace Auror.Controllers
                 .Include(r=>r.RoomImages.Where(i=>i.IsMain)).Include(i=>i.RoomType).Take(6).ToListAsync(),
 
                 Comments = await _dt.Comment.Where(o=>!o.IsDeleted)
-                .Include(h => h.Hotel).Include(u=>u.User).ToListAsync()
+                .Include(h => h.Hotel).Include(u=>u.User).Take(3).ToListAsync()
                 
             };
             return View(hvm);

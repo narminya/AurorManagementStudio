@@ -670,3 +670,7 @@ C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\bin\Debug\net5.0\libman.json
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\Update.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Shared\_CommentPartial.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Rooms\Index.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Rooms\Detail.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Rooms\Create.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Rooms\Update.cshtml.g.cs

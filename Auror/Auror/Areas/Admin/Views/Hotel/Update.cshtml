@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 @section style{
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 }
 <div class="content">
     <ul class="breadcrumb">
@@ -24,7 +24,7 @@
                 <div class="grid-body no-border">
                     <br>
                     <div class="row">
-                        <form method="post" asp-action="update" enctype="multipart/form-data" >
+                        <form method="post" asp-action="update" enctype="multipart/form-data">
 
                             <div class="col-md-8 col-sm-8 col-xs-12">
 
@@ -34,6 +34,7 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Name">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Name" class="error"></span></span>
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Location" class="form-label"></label>
@@ -41,6 +42,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Location">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Location" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Email" class="form-label"></label>
@@ -48,6 +51,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Email">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Email" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Phone" class="form-label"></label>
@@ -55,6 +60,8 @@
                                     <div class="controls">
                                         <input class="form-control" asp-for="Phone">
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Phone" class="error"></span></span>
+
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Category" class="form-label"></label>
@@ -64,6 +71,17 @@
                                             <option disabled>Select category of hotel</option>
                                         </select>
                                     </div>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Category" class="error"></span></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Advantage"></label>
+                                    <select asp-for="AdvantageId" asp-items='new SelectList(Model.Advantage, "Id", "Name")' style="width: 300px" class="js-example-basic-multiple" multiple="multiple">
+                                      
+
+                                    </select>
+                                    <span class="error"><span id="form3Address-error" asp-validation-for="Advantage" class="error"></span></span>
+
                                 </div>
 
                             </div>
@@ -73,7 +91,7 @@
                                     <div class="viewer no-show" style="width:400px; height:400px"> </div>
 
                                     <div class="viewer-thumbs" name="image">
-                                    
+
                                     </div>
 
                                 </div>
@@ -90,9 +108,10 @@
 </div>
 
 @section script{
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $('#viewer1').imgadd();
-
+        $('.js-example-basic-multiple').select2();
     </script>
 
 }
