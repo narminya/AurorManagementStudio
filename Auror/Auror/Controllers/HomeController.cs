@@ -23,8 +23,8 @@ namespace Auror.Controllers
                 Rooms = await _dt.Room.Where(x => x.IsAvailable)
                 .Include(r=>r.RoomImages.Where(i=>i.IsMain)).Include(i=>i.RoomType).Take(6).ToListAsync(),
 
-                Comments = await _dt.Comment.Where(o=>!o.IsDeleted)
-                .Include(h => h.Hotel).Include(u=>u.User).Take(3).ToListAsync()
+                Comments = await _dt.Comment.Where(o=>!o.IsDeleted).OrderBy(c=>c.CreatedDate)
+                .Include(h => h.Hotel).Include(u=>u.User).Take(4).ToListAsync()
                 
             };
             return View(hvm);

@@ -33,6 +33,8 @@ namespace Auror.Models.DataAccessLayer
         public DbSet<Navigation> Navigation { get; set; }
         public DbSet<Advantage> Advantages { get; set; }
         public DbSet<HotelAdvantages> HotelAdvantages { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Message> Message { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

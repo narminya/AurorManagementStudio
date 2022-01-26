@@ -5453,7 +5453,6 @@ wysihtml5.dom.replaceWithChildNodes = function(node) {
 
       // Create the basic dom tree including proper DOCTYPE and charset
       iframeDocument.open("text/html", "replace");
-      iframeDocument.write(sandboxHtml);
       iframeDocument.close();
 
       this.getWindow = function() { return iframe.contentWindow; };

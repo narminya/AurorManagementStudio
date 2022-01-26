@@ -36,6 +36,7 @@ namespace Auror.Models.DataAccessLayer
                 InitRoomImages(db);
                //  InitComments(db);
                 InitServices(db);
+                InitContact(db);
                 //   InitReservation(db);
                // InitGuest(db);
                 //await db.SaveChangesAsync();
@@ -44,7 +45,20 @@ namespace Auror.Models.DataAccessLayer
             return app;
         }
 
-      
+        private static void InitContact(AurorDataContext db)
+        {
+            if (!db.Contacts.Any())
+            {
+                db.Contacts.AddRange(
+                    new Contact { Content = "Bakı,Azərbaycan", Name = "Ünvan", Icon = "9.svg" },
+                    new Contact { Content = "+99455 555-55-55", Name = "Telefon", Icon = "10.svg" },
+                    new Contact { Content = "Email", Name = "inbox@mail.com", Icon = "11.svg" }
+
+                    );
+            }
+
+            db.SaveChanges();
+        }
 
         private static void InitServices(AurorDataContext db)
         {

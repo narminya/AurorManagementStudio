@@ -1,0 +1,66 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "Answer";
+}
+<div class="content">
+    <ul class="breadcrumb">
+        <li>
+            <p>YOU ARE HERE</p>
+        </li>
+        <li><a href="#" class="active">Form Elements</a> </li>
+    </ul>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="grid simple">
+                <div class="grid-title no-border">
+                    <h4>HTML5 <span class="semi-bold">WYSIWYG</span></h4>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse"></a>
+                        <a href="#grid-config" data-toggle="modal" class="config"></a>
+                        <a href="javascript:;" class="reload"></a>
+                        <a href="javascript:;" class="remove"></a>
+                    </div>
+                </div>
+                <div class="grid-body no-border">
+                    <form method="post">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <div class="controls">
+                                <input asp-for="Name" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <div class="controls">
+                                <input asp-for="Email" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" asp-for="Content" rows="8" disabled></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            @if (!string.IsNullOrWhiteSpace(Model.Answer))
+                            {
+                                <textarea class="form-control" asp-for="Answer" disabled rows="8" placeholder="Write your message here..."></textarea>
+                            }
+                            else
+                            {
+                                <textarea class="form-control" asp-for="Answer" rows="8" placeholder="Write your message here..."></textarea>
+                            }
+
+
+                        </div>
+                        <button type="submit" class="btn btn-success">Send</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+@section script{
+
+
+}
