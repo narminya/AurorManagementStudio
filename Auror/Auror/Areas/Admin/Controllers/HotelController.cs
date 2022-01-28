@@ -4,6 +4,7 @@ using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,9 +21,15 @@ namespace Auror.Areas.Admin.Controllers
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;
-        public HotelController(AurorDataContext dt)
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        public HotelController(AurorDataContext dt, SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _dt = dt;
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
         public async Task<IActionResult> Index()
         {
@@ -142,7 +149,7 @@ namespace Auror.Areas.Admin.Controllers
             }
 
             var category = await _dt.HotelCategory.Where(i => !i.IsDeleted).ToListAsync();
-            var advantage = await _dt.Advantages.Where(a => !a.IsDeleted ).ToListAsync();
+            var advantage = await _dt.Advantages.Where(a => !a.IsDeleted).ToListAsync();
 
             var hotelUpdate = new HotelCreateViewModel()
             {
@@ -153,7 +160,7 @@ namespace Auror.Areas.Admin.Controllers
                 Name = hotel.Name,
                 Phone = hotel.Phone,
                 Category = category,
-                 Advantage = advantage
+                Advantage = advantage
 
             };
 
@@ -239,6 +246,46 @@ namespace Auror.Areas.Admin.Controllers
             return Json(hotel);
         }
 
+        public async Task<IActionResult> AddHotelUsers()
+        {
+            var huvm = new HotelUserViewModel()
+            {
+                hotels = await _dt.Hotel.Where(c => c.IsDeleted).ToListAsync()
+            };
+            return View(huvm);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddHotelUsers(HotelUserViewModel huvm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(huvm);
+            }
+
+            var hotelName = _dt.Hotel.Where(c => c.Id == huvm.Hotel).FirstOrDefault().Name;
+
+            User user = new User()
+            {
+                Name = huvm.Name,
+                Surname = huvm.Surname,
+                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3) + hotelName,
+                Email = huvm.Email
+            };
+
+            var identityUser = await _userManager.CreateAsync(user, "123456789");
+            await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
+            if (!identityUser.Succeeded)
+            {
+                foreach (var item in identityUser.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Index", "User");
+        }
     }
 }

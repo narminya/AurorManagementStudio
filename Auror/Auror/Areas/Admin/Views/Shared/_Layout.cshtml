@@ -230,7 +230,7 @@
                     </li>
 
                     <li class="start ">
-                        <a href="index.html"><i class="material-icons">panorama_horizontal</i> <span class="title">Hotel</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <a asp-controller="Hotel" asp-action="Index"><i class="material-icons">panorama_horizontal</i> <span class="title">Hotels</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
                             <li> <a asp-controller="Hotel" asp-action="Index">Hotel</a></li>
                             <li> <a asp-controller="Hotel" asp-action="Create">Create</a></li>
@@ -240,7 +240,7 @@
                         </ul>
                     </li>
                     <li class="start ">
-                        <a href="index.html"><i class="material-icons">apps</i><span class="title">Room</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <a asp-controller="Rooms" asp-action="Index"><i class="material-icons">apps</i><span class="title">Rooms</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
                             <li> <a asp-controller="Rooms" asp-action="Index">Room list</a></li>
                             <li> <a asp-controller="Rooms" asp-action="Create">Create</a></li>
@@ -249,11 +249,15 @@
                         </ul>
                     </li>
                     <li class="start ">
-                        <a href="index.html"><i class="material-icons">email</i><span class="title">Message</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <a asp-controller="Messages" asp-action="Index"><i class="material-icons">email</i><span class="title">Messages</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
-                            <li> <a asp-controller="Message" asp-action="Index">Received messages</a></li>
-
-
+                            <li> <a asp-controller="Messages" asp-action="Index">Received messages</a></li>
+                        </ul>
+                    </li>
+                    <li class="start ">
+                        <a asp-controller="User" asp-action="Index"><i class="material-icons">group</i><span class="title">Users</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a asp-controller="User" asp-action="Index">Users list</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -458,7 +462,7 @@
                             <div class="sent_time">Yesterday 11:25pm</div>
                             <div class="user-details-wrapper ">
                                 <div class="user-profile">
-                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
+                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="/img/profiles/d.jpg" data-src-retina="/img/profiles/d2x.jpg" width="35" height="35">
                                 </div>
                                 <div class="user-details">
                                     <div class="bubble">
@@ -470,7 +474,7 @@
                             </div>
                             <div class="user-details-wrapper ">
                                 <div class="user-profile">
-                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
+                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="/Admin/assets/img/profiles/d.jpg" data-src-retina="/img/profiles/d2x.jpg" width="35" height="35">
                                 </div>
                                 <div class="user-details">
                                     <div class="bubble">
@@ -482,7 +486,7 @@
                             </div>
                             <div class="user-details-wrapper ">
                                 <div class="user-profile">
-                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="Admin/assets/img/profiles/d.jpg" data-src-retina="Admin/assets/img/profiles/d2x.jpg" width="35" height="35">
+                                    <img src="~/Admin/assets/img/profiles/d.jpg" alt="" data-src="/img/profiles/d.jpg" data-src-retina="/img/profiles/d2x.jpg" width="35" height="35">
                                 </div>
                                 <div class="user-details">
                                     <div class="bubble">

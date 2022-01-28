@@ -34,11 +34,12 @@ namespace Auror.Models.DataAccessLayer
                 InitHotelAdvantages(db);
                 InitRooms(db);
                 InitRoomImages(db);
-               //  InitComments(db);
+                //  InitComments(db);
                 InitServices(db);
                 InitContact(db);
-                //   InitReservation(db);
-               // InitGuest(db);
+               InitReservation(db);
+               InitReservationRooms(db);
+                InitGuest(db);
                 //await db.SaveChangesAsync();
             }
 
@@ -149,9 +150,9 @@ namespace Auror.Models.DataAccessLayer
             if (!db.Guest.Any())
             {
                 db.Guest.AddRange(
-                    new Guest { Name = "Brad", Surname = "Pitt", Email = "bradpitt@gmail.com", GenderId = 2, UserId = "b4bbc156-ca0c-40f2-9773-26520ad7880e" },
-                    new Guest { Name = "Chris", Surname = "Hemsworth", Email = "chrish@gmail.com", GenderId = 2, UserId = "a0b71bab-722d-4b5e-b4e7-c85143e79e42" },
-                    new Guest { Name = "Tom", Surname = "Hiddleston", Email = "tomh@gmail.com", GenderId = 2, UserId = "e86cb9c8-0a58-48e6-9bf2-3181953012ee" }
+                    new Guest { Name = "Brad", Surname = "Pitt", Email = "bradpitt@gmail.com", GenderId = 2, UserId = "1e64102e-ee2e-4e6f-89c6-346d4d9db801" },
+                    new Guest { Name = "Chris", Surname = "Hemsworth", Email = "chrish@gmail.com", GenderId = 2, UserId = "5f91fc89-ae62-4c9f-a940-cd027165fb5b" },
+                    new Guest { Name = "Tom", Surname = "Hiddleston", Email = "tomh@gmail.com", GenderId = 2, UserId = "b68a4a79-ed27-4d23-b934-87e7e3e9a2e1" }
                     );
                 db.SaveChanges();
             }
@@ -161,7 +162,38 @@ namespace Auror.Models.DataAccessLayer
         {
             if (!db.Reservation.Any())
             {
-                db.AddRange(new Reservation { });
+                db.AddRange(new Reservation { CheckIn = DateTime.MinValue, CheckOut = DateTime.MinValue.AddDays(4), PeopleCount = 1, GuestId = 1, ReservationStatusId = 1, TotalPrice = 0, HotelId = 1 });
+            }
+            db.SaveChanges();
+        }
+        private static void InitReservationRooms(AurorDataContext db)
+        {
+            if (!db.ReservationRooms.Any())
+            {
+                db.AddRange(
+                    new ReservationRooms { ReservationId = 2, RoomId = 1 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 2 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 3 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 4 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 5 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 6 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 7 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 8 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 9 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 10 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 11 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 12 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 13 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 14 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 15 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 16 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 17 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 18 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 19 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 20 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 21 },
+                    new ReservationRooms { ReservationId = 2, RoomId = 22 }
+                    );
             }
             db.SaveChanges();
         }

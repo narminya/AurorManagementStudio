@@ -59,10 +59,28 @@ namespace Auror.Controllers
                     Icon = x.Advantage.Icon
 
                 }).ToListAsync(),
-                Rooms = await _dt.Room.Where(f => f.HotelId == id && f.IsAvailable == true).Include(r => r.RoomType).ToListAsync()
+                RoomTypes = await _dt.Room.Where(c => c.HotelId == id)
+                      .Select(r => new RoomExampleViewModel { TypeName = r.RoomType.Name, PeopleCount =r.PeopleCount, RoomSquare = r.RoomSquare})
+                      .Distinct().ToListAsync()
             };
 
             return View(hdvm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Detail(int id, RoomBookViewModel model)
+        {
+            model.HotelId = id;
+            //model.Rooms = await _dt.Room.Where(h => h.HotelId == model.HotelId)
+            //.Include(r => r.RoomType)
+            //.Include(t => t.RoomImages).ToListAsync();
+
+            model.RoomTypes = await _dt.Room.Where(c => c.HotelId == model.HotelId)
+                      .Select(r => new RoomType { Name = r.RoomType.Name })
+                      .Distinct().ToListAsync();
+            return RedirectToAction("Index","Room", model);
+
         }
         public async Task<PartialViewResult> Comment(string content)
         {

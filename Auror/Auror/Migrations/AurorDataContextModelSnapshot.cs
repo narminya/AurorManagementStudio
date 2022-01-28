@@ -991,7 +991,7 @@ namespace Auror.Migrations
                         .HasForeignKey("ReservationId");
 
                     b.HasOne("Auror.Models.Entity.Room", "Room")
-                        .WithMany()
+                        .WithMany("Reserved")
                         .HasForeignKey("RoomId");
 
                     b.Navigation("Reservation");
@@ -1006,7 +1006,7 @@ namespace Auror.Migrations
                         .HasForeignKey("HotelId");
 
                     b.HasOne("Auror.Models.Entity.RoomType", "RoomType")
-                        .WithMany()
+                        .WithMany("Rooms")
                         .HasForeignKey("RoomTypeId");
 
                     b.Navigation("Hotel");
@@ -1021,7 +1021,7 @@ namespace Auror.Migrations
                         .HasForeignKey("CommentId");
 
                     b.HasOne("Auror.Models.Entity.Room", "Room")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("RoomId");
 
                     b.HasOne("Auror.Models.Entity.User", "User")
@@ -1126,9 +1126,14 @@ namespace Auror.Migrations
 
             modelBuilder.Entity("Auror.Models.Entity.Room", b =>
                 {
-                    b.Navigation("Comments");
+                    b.Navigation("Reserved");
 
                     b.Navigation("RoomImages");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.RoomType", b =>
+                {
+                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

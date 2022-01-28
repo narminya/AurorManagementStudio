@@ -12,5 +12,7 @@ namespace Auror.Models.Entity
         public int? ReservationId { get; set; }
         public Reservation Reservation { get; set; }
 
+
+
     }
 }

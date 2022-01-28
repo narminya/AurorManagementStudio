@@ -23,6 +23,7 @@ namespace Auror.Models.Entity
         public int PeopleCount { get; set; }
         public int? ReservationStatusId { get; set; } = 1;
         public ReservationStatus ReservationStatus { get; set; }
-        public ICollection<ReservationRooms> Rooms { get; set; }
+        public ICollection<ReservationRooms> Reserved { get; set; }
     }
 }
+

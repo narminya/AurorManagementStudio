@@ -64,7 +64,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: "Get",
-                        url: "Room/Delete/" + _id,
+                        url: "/Admin/Rooms/Delete/" + _id,
                         success: function (res) {
                             Swal.fire(
                                 'Deleted!',

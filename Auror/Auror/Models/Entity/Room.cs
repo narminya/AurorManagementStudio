@@ -17,7 +17,7 @@ namespace Auror.Models.Entity
         public int BedCount { get; set; }
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
-        public ICollection<RoomComments> Comments { get; set; }
+        public ICollection<ReservationRooms> Reserved { get; set; }
         public ICollection<RoomImage> RoomImages { get; set; }
 
     }

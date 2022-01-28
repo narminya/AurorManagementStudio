@@ -229,10 +229,10 @@
                 <!-- sidebar -->
                 <div class="hotel-sticky hotel-stycky-right" data-margin-top="100">
 
-                    @foreach (var item in Model.Rooms)
+                    @foreach (var item in Model.RoomTypes)
                     {
                         <div class="hotel-room-features-lg hotel-mb-20">
-                            <div class="hotel-text-sm">@item.RoomType.Name</div>
+                            <div class="hotel-text-sm">@item.TypeName</div>
                             <div class="hotel-feature">
                                 <div class="hotel-icon-frame"><img src="~/img/icons/bed.svg" alt="icon"></div>
                                 <span>@item.PeopleCount Nəfərlik</span>
@@ -244,9 +244,54 @@
                         </div>
                     }
 
-                    <a asp-controller="Reservation" asp-action="Reservation" asp-route-id="@Model.Hotel.Id" class="hotel-btn">Rezervasiya</a>
-
+                    <div class="hotel-book-form">
+                        <form method="post" asp-action="Detail">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="hotel-input-frame">
+                                        <label for="check-in">Giriş</label>
+                                        <input id="check-in" type="text" name="CheckIn" class="datepicker-here" data-position="bottom left" placeholder="Tarix Seçin" autocomplete="off" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="hotel-input-frame">
+                                        <label for="check-out" class="hotel-add-icon">Çıxış</label>
+                                        <input id="check-out" type="text" name="CheckOut" class="datepicker-here" data-position="bottom left" placeholder="Tarix Seçin" autocomplete="off" readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="hotel-select-frame">
+                                        <label for="person">Böyük</label>
+                                        <select id="person" style="display: none;" name="Adults">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4" disabled="">4</option>
+                                        </select><div class="nice-select" tabindex="0"><span class="current">1</span><ul class="list"><li data-value="1" class="option selected">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option">3</li><li data-value="4" class="option disabled">4</li></ul></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="hotel-select-frame">
+                                        <label for="children">Uşaq</label>
+                                        <select id="children" style="display: none;" name="Kids">
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3" disabled="">3</option>
+                                        </select><div class="nice-select" tabindex="0"><span class="current">0</span><ul class="list"><li data-value="0" class="option selected">0</li><li data-value="1" class="option">1</li><li data-value="2" class="option">2</li><li data-value="3" class="option disabled">3</li></ul></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 hotel-center">
+                                    <button type="submit" class="hotel-btn">
+                                        <img src="~/img/icons/search.svg" class="hotel-zoom" alt="icon">
+                                        Bron Et
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
                 <!-- sidebar end -->
 
             </div>
