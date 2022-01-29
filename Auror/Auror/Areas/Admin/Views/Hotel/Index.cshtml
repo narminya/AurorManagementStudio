@@ -68,12 +68,7 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-success btn-cons-md" asp-controller="Hotel" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
-                                        @if ((await AuthorizationService.AuthorizeAsync(User, "AreaAdmin")).Succeeded)
-                                        {
-                                            <a class="btn btn-warning btn-cons-md" asp-controller="Hotel" asp-action="Update" asp-route-id="@item.Id">Update</a>
-                                            <a class="btn btn-danger btn-cons-md" id="deleteCat" data-id="@item.Id" name="@item.Name">Delete</a>
-
-                                        }
+                                      
                                     </td>
                                 </tr>
                             }

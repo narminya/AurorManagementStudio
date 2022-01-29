@@ -72,13 +72,15 @@ namespace Auror.Controllers
         public async Task<IActionResult> Detail(int id, RoomBookViewModel model)
         {
             model.HotelId = id;
-            //model.Rooms = await _dt.Room.Where(h => h.HotelId == model.HotelId)
-            //.Include(r => r.RoomType)
-            //.Include(t => t.RoomImages).ToListAsync();
 
             model.RoomTypes = await _dt.Room.Where(c => c.HotelId == model.HotelId)
                       .Select(r => new RoomType { Name = r.RoomType.Name })
                       .Distinct().ToListAsync();
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             return RedirectToAction("Index","Room", model);
 
         }

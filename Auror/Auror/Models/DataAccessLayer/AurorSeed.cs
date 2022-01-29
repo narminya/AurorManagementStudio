@@ -38,7 +38,6 @@ namespace Auror.Models.DataAccessLayer
                 InitServices(db);
                 InitContact(db);
                InitReservation(db);
-               InitReservationRooms(db);
                 InitGuest(db);
                 //await db.SaveChangesAsync();
             }
@@ -162,38 +161,7 @@ namespace Auror.Models.DataAccessLayer
         {
             if (!db.Reservation.Any())
             {
-                db.AddRange(new Reservation { CheckIn = DateTime.MinValue, CheckOut = DateTime.MinValue.AddDays(4), PeopleCount = 1, GuestId = 1, ReservationStatusId = 1, TotalPrice = 0, HotelId = 1 });
-            }
-            db.SaveChanges();
-        }
-        private static void InitReservationRooms(AurorDataContext db)
-        {
-            if (!db.ReservationRooms.Any())
-            {
-                db.AddRange(
-                    new ReservationRooms { ReservationId = 2, RoomId = 1 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 2 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 3 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 4 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 5 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 6 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 7 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 8 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 9 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 10 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 11 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 12 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 13 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 14 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 15 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 16 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 17 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 18 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 19 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 20 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 21 },
-                    new ReservationRooms { ReservationId = 2, RoomId = 22 }
-                    );
+                db.AddRange(new Reservation { CheckIn = new DateTime(2022,02,01,12,00,00), CheckOut = new DateTime(2022, 02, 05, 12, 00, 00), PeopleCount = 1,RoomId = 2, GuestId = 1, ReservationStatusId = 1, TotalPrice = 0, HotelId = 1 });
             }
             db.SaveChanges();
         }

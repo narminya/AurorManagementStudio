@@ -1,6 +1,8 @@
 using Auror.Constants;
 using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
+using Auror.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -56,13 +58,14 @@ namespace Auror
                 //    context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
                 //    || context.User.IsInRole("Hotel")
                 //    ));
+                options.AddPolicy("HotelEmployees", policy => policy.AddRequirements(new SecurityRequirements()));
 
                 options.AddPolicy("AreaAdmin", policyBuilder => policyBuilder.RequireAssertion(
                     context => context.User.IsInRole("SuperAdmin") ||
                                context.User.IsInRole("Hotel") && context.User.HasClaim("Admin", "true")
                     ));
             });
-
+            //services.AddSingleton<IAuthorizationHandler, HotelEmployeesClaimsHandler>();
 
             services.AddDbContext<AurorDataContext>(options =>
             {
@@ -83,7 +86,7 @@ namespace Auror
 
             app.UseRouting();
             app.UseStaticFiles();
-           await app.Seed();
+            await app.Seed();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

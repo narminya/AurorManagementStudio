@@ -24,11 +24,9 @@ namespace Auror.Models.DataAccessLayer
         public DbSet<HotelCategory> HotelCategory { get; set; }
         public DbSet<HotelImage> Images { get; set; }
         public DbSet<Reservation> Reservation { get; set; }
-        public DbSet<ReservationRooms> ReservationRooms { get; set; }
         public DbSet<ReservationStatus> ReservationStatus { get; set; }
         public DbSet<Room> Room { get; set; }
         public DbSet<RoomImage> RoomImages { get; set; }
-        public DbSet<RoomComments> RoomComments { get; set; }
         public DbSet<RoomType> RoomType { get; set; }
         public DbSet<Navigation> Navigation { get; set; }
         public DbSet<Advantage> Advantages { get; set; }

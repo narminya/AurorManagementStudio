@@ -23,7 +23,6 @@ namespace Auror.Areas.Admin.ViewModels
         public int? RoomTypeId { get; set; }
         public IFormFile[] file { get; set; }
         public int fileSelectedIndex { get; set; }
-        public List<Hotel> Hotels { get; set; }
         public List<RoomType> RoomType { get; set; }
 
     }

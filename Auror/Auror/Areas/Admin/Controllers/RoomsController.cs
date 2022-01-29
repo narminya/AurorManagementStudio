@@ -21,7 +21,7 @@ namespace Auror.Areas.Admin.Controllers
         {
             _dt = dt;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             var rooms = await _dt.Room.Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
             return View(rooms);
@@ -42,12 +42,17 @@ namespace Auror.Areas.Admin.Controllers
             return View(room);
         }
 
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(int? id)
         {
+            if (!id.HasValue || id.Value ==0)
+            {
+                return BadRequest();
+            }
+            TempData["Hotel"] = id;
             var rcv = new RoomCreateViewModel()
             {
                 RoomType = await _dt.RoomType.Where(a => !a.IsDeleted).ToListAsync(),
-                Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync()
+                HotelId = id
             };
             return View(rcv);
         }
@@ -57,19 +62,14 @@ namespace Auror.Areas.Admin.Controllers
         public async Task<IActionResult> Create(RoomCreateViewModel rcv)
         {
             rcv.RoomType = await _dt.RoomType.ToListAsync();
-            rcv.Hotels = await _dt.Hotel.ToListAsync();
+           // rcv.Hotels = await _dt.Hotel.ToListAsync();
 
             if (!ModelState.IsValid)
             {
                 return View(rcv);
             }
 
-            var hotel = await _dt.Hotel.FindAsync(rcv.HotelId);
-            if (hotel == null)
-            {
-                ModelState.AddModelError(nameof(RoomCreateViewModel.HotelId), "Please choose valid hotel");
-                return View(rcv);
-            }
+            var hotel = TempData["Id"];
 
             List<RoomImage> images = new List<RoomImage>();
             foreach (var item in rcv.file)
@@ -95,7 +95,8 @@ namespace Auror.Areas.Admin.Controllers
             {
                 Name = rcv.Number,
                 BedCount = rcv.BedCount,
-                HotelId = rcv.HotelId,
+                HotelId = (int)hotel,
+                CurrentPrice = rcv.CurrentPrice,
                 IsAvailable = rcv.IsAvailable,
                 PeopleCount = rcv.PeopleCount,
                 RoomSquare = rcv.RoomSquare,
@@ -122,8 +123,7 @@ namespace Auror.Areas.Admin.Controllers
             var rcv = new RoomCreateViewModel()
             {
                 RoomType = await _dt.RoomType.Where(a => !a.IsDeleted).ToListAsync(),
-                Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync(),
-
+                //  Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync(),
                 Number = room.Name,
                 BedCount = room.BedCount,
                 HotelId = room.HotelId,
@@ -142,7 +142,7 @@ namespace Auror.Areas.Admin.Controllers
         {
 
             rcv.RoomType = await _dt.RoomType.Where(a => !a.IsDeleted).ToListAsync();
-            rcv.Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync();
+          //  rcv.Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -180,7 +180,6 @@ namespace Auror.Areas.Admin.Controllers
             foundRoom.RoomSquare = rcv.RoomSquare;
             foundRoom.RoomTypeId = rcv.RoomTypeId;
             foundRoom.PeopleCount = rcv.PeopleCount;
-            foundRoom.HotelId = rcv.HotelId;
             foundRoom.RoomImages = roomImages;
 
 

@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Utilities;
 
@@ -35,7 +36,9 @@ namespace Auror.Areas.Admin.Controllers
         {
             var hotels = await _dt.Hotel.Include(c => c.HotelCategory).OrderBy(r => r.Rating).ToListAsync();
             return View(hotels);
-        }
+        }  
+        
+
         public async Task<IActionResult> Detail(int? id)
         {
             if (!id.HasValue || id.Value == 0)
@@ -47,16 +50,18 @@ namespace Auror.Areas.Admin.Controllers
                 .Include(r => r.Images)
                 .Include(r => r.Rooms)
                 .FirstOrDefaultAsync();
+
+
             if (hotel == null)
             {
                 return NotFound();
             }
 
-
             return View(hotel);
         }
 
-        [Authorize(Policy = "AreaAdmin")]
+    
+      
         public async Task<IActionResult> Create()
         {
             var category = await _dt.HotelCategory.Where(i => !i.IsDeleted).ToListAsync();
@@ -250,7 +255,7 @@ namespace Auror.Areas.Admin.Controllers
         {
             var huvm = new HotelUserViewModel()
             {
-                hotels = await _dt.Hotel.Where(c => c.IsDeleted).ToListAsync()
+                hotels = await _dt.Hotel.Where(c => !c.IsDeleted).ToListAsync()
             };
             return View(huvm);
         }
@@ -270,20 +275,26 @@ namespace Auror.Areas.Admin.Controllers
             {
                 Name = huvm.Name,
                 Surname = huvm.Surname,
-                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3) + hotelName,
-                Email = huvm.Email
+                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3) + hotelName.Substring(0,3),
+                Email = huvm.Email, 
+                 GenderId =3
             };
+           
 
-            var identityUser = await _userManager.CreateAsync(user, "123456789");
-            await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
+            var identityUser = await _userManager.CreateAsync(user, "Vse1234567@");
+
             if (!identityUser.Succeeded)
             {
                 foreach (var item in identityUser.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
-                    return View();
+                    return View(huvm);
                 }
             }
+
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Sid, hotelName));
+            await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
+            
 
             return RedirectToAction("Index", "User");
         }

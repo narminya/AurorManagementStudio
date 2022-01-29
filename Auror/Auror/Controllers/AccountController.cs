@@ -67,18 +67,21 @@ namespace Auror.Controllers
 
         public IActionResult Register()
         {
-            ViewBag.Gender = new SelectList(_dt.Gender, "Id", "Name");
-            return View();
+            var rgv = new RegisterViewModel()
+            {
+                Gender = _dt.Gender.ToList()
+            };
+            return View(rgv);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
-            ViewBag.Gender = new SelectList(_dt.Gender, "Id", "Name");
+            rvm.Gender = _dt.Gender.ToList();
 
             if (!ModelState.IsValid)
             {
-                return View();
+                return View(rvm);
             }
 
             var dbUser = await _userManager.FindByNameAsync(rvm.Username);
@@ -95,24 +98,32 @@ namespace Auror.Controllers
             user.Surname = rvm.Surname;
             user.Email = rvm.Email;
             user.GenderId = (await _dt.Gender.FindAsync(int.Parse(rvm.GenderId))).Id;
-               //user.ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
+            //user.ProfilePhoto = FileUtils.FileCreate(rvm.ProfilePicture, FileConstants.ImagePath)
 
-            
+
 
             var identityUser = await _userManager.CreateAsync(user, rvm.Password);
 
             if (!identityUser.Succeeded)
             {
+
+
                 foreach (var item in identityUser.Errors)
                 {
                     ModelState.AddModelError("", item.Description);
                     return View();
                 }
             }
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email }, Request.Scheme);
+
+            Utilities.SendEmail.EmailSender(user.Email, "Please confirm your email", confirmationLink);
+            await _userManager.ConfirmEmailAsync(user, token);
+
 
             await _signInManager.SignInAsync(user, true);
             await _userManager.AddToRoleAsync(user, RoleConstants.User);
-            
+
             rvm.Email.EmailSender(Credentials.Message, Credentials.Body);
 
             return RedirectToAction("Index", "Home");
@@ -124,9 +135,19 @@ namespace Auror.Controllers
             return RedirectToAction("Login", "Account", new { Area = "" });
         }
 
-        //public async Task<IActionResult> AccessDenied()
-        //{
+        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return NotFound();
 
-        //}
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return BadRequest();
+        }
     }
 }

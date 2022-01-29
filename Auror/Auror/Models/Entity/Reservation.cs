@@ -16,6 +16,8 @@ namespace Auror.Models.Entity
         public Guest Guest { get; set; }
         public int? HotelId { get; set; }
         public Hotel Hotel { get; set; }
+        public int? RoomId { get; set; }
+        public Room Room { get; set; }
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
         public DateTime ActiveTill { get; set; } 
@@ -23,7 +25,6 @@ namespace Auror.Models.Entity
         public int PeopleCount { get; set; }
         public int? ReservationStatusId { get; set; } = 1;
         public ReservationStatus ReservationStatus { get; set; }
-        public ICollection<ReservationRooms> Reserved { get; set; }
     }
 }
 

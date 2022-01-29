@@ -26,6 +26,12 @@
                     @Model.Location<br>
 
                 </address>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "AreaAdmin")).Succeeded)
+                {
+                    <a class="btn btn-warning btn-cons-md" asp-controller="Hotel" asp-action="Update" asp-route-id="@Model.Id">Update</a>
+                    <a class="btn btn-danger btn-cons-md" id="deleteCat" data-id="@Model.Id" name="@Model.Name">Delete</a>
+                    <a class="btn btn-success btn-cons-md" asp-controller="Rooms" asp-action="Create" asp-route-id="@Model.Id">Add room</a>
+                }
             </div>
         </div>
     </div>
@@ -43,10 +49,42 @@
     </div>
 </div>
 @section script {
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(function () {
             // Call SuperBox - that's it!
             $('.superbox').SuperBox();
         });
+        $(document).on("click", "#deleteCat", function (e) {
+            let _id = $(this).attr("data-id");
+            Swal.fire({
+                title: `Are you sure to delete ${$(this).attr("name")}?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "Get",
+                        url: "/Admin/Hotel/Delete/" + _id,
+                        success: function (res) {
+                            Swal.fire(
+                                'Deleted!',
+                                `${res.message}`,
+                                'success'
+                            )
+                            location.reload();
+                        }
+                    })
+                }
+            })
+        })
+
+
+
+
+
     </script>
 }

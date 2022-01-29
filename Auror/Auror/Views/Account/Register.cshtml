@@ -11,6 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qeydiyyat</title>
     <link rel="stylesheet" href="~/css/style.css">
+    <style>
+        ul.list{
+            width:100%;
+        }
+    </style>
 </head>
 <body>
     <div class="hotel-app">
@@ -49,7 +54,7 @@
                             <input asp-for="ConfirmPassword" placeholder="Confirm password">
                             <span class="text-danger" asp-validation-for="Username"></span>
 
-                            <select asp-items="ViewBag.Gender" asp-for="GenderId">Choose your gender</select>
+                            <select asp-items='new SelectList(Model.Gender,"Id","Name")' asp-for="GenderId">Choose your gender</select>
 
                             <button type="submit">Qeydiyyatdan keç</button>
                         </form>

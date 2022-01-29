@@ -3574,13 +3574,14 @@ textarea {
         border-radius: 10px;
         border: none;
         padding: 5px;
+        width: 100%;
     }
 
         .nice-select .list .option {
             text-align: center;
             display: block;
             padding: 0;
-            width: 35px !important;
+            width: 100% ;
             min-height: 35px;
             height: 35px;
             line-height: 35px;
@@ -3593,6 +3594,7 @@ textarea {
                 background-color: #64BC5F;
                 color: #FFFFFF;
                 font-weight: inherit;
+                width: 100% !important;
             }
 
 ::placeholder {

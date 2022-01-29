@@ -7,6 +7,7 @@ namespace Auror.Constants
 {
     public static class RoleConstants
     {
+        public static string Visitor { get; set; } = "User";
         public static string User { get; set; } = "User";
         public static string SuperAdmin { get; set; } = "SuperAdmin";
         public static string Admin { get; set; } = "Admin";

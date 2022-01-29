@@ -23,7 +23,8 @@
                 <h3><span class="semi-bold">@Model.RoomSquare</span><span class="semi-bold">m<sup>2</sup></span></h3>
                 <h3>Current price <span class="semi-bold">@Model.CurrentPrice<sup>₼</sup></span></h3>
                 <h3>Room has <span class="semi-bold">@Model.BedCount</span> beds</h3>
-                <a class="text-danger" id="deleteCat" data-id="@Model.Id"> Delete</a>
+                <a class="btn btn-primary" asp-action="Update" asp-route-id="@Model.Id"> Update</a>
+                <a class="btn btn-danger" id="deleteCat" data-id="@Model.Id"> Delete</a>
             </div>
         </div>
     </div>

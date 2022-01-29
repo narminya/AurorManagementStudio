@@ -4,14 +4,16 @@ using Auror.Models.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    partial class AurorDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220128224618_userhotelid")]
+    partial class userhotelid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -422,9 +424,6 @@ namespace Auror.Migrations
                     b.Property<int?>("ReservationStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,2)");
 
@@ -436,9 +435,38 @@ namespace Auror.Migrations
 
                     b.HasIndex("ReservationStatusId");
 
+                    b.ToTable("Reservation");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.ReservationRooms", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ReservationId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReservationId");
+
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Reservation");
+                    b.ToTable("ReservationRooms");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.ReservationStatus", b =>
@@ -512,6 +540,45 @@ namespace Auror.Migrations
                     b.HasIndex("RoomTypeId");
 
                     b.ToTable("Room");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.RoomComments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CommentId");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("RoomComments");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.RoomImage", b =>
@@ -809,6 +876,9 @@ namespace Auror.Migrations
                     b.Property<int>("GenderId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("HotelId")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -912,15 +982,24 @@ namespace Auror.Migrations
                         .WithMany()
                         .HasForeignKey("ReservationStatusId");
 
-                    b.HasOne("Auror.Models.Entity.Room", "Room")
-                        .WithMany("Reservation")
-                        .HasForeignKey("RoomId");
-
                     b.Navigation("Guest");
 
                     b.Navigation("Hotel");
 
                     b.Navigation("ReservationStatus");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.ReservationRooms", b =>
+                {
+                    b.HasOne("Auror.Models.Entity.Reservation", "Reservation")
+                        .WithMany("Reserved")
+                        .HasForeignKey("ReservationId");
+
+                    b.HasOne("Auror.Models.Entity.Room", "Room")
+                        .WithMany("Reserved")
+                        .HasForeignKey("RoomId");
+
+                    b.Navigation("Reservation");
 
                     b.Navigation("Room");
                 });
@@ -938,6 +1017,27 @@ namespace Auror.Migrations
                     b.Navigation("Hotel");
 
                     b.Navigation("RoomType");
+                });
+
+            modelBuilder.Entity("Auror.Models.Entity.RoomComments", b =>
+                {
+                    b.HasOne("Auror.Models.Entity.Comment", "Comment")
+                        .WithMany()
+                        .HasForeignKey("CommentId");
+
+                    b.HasOne("Auror.Models.Entity.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId");
+
+                    b.HasOne("Auror.Models.Entity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Comment");
+
+                    b.Navigation("Room");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Auror.Models.Entity.RoomImage", b =>
@@ -1024,9 +1124,14 @@ namespace Auror.Migrations
                     b.Navigation("Rooms");
                 });
 
+            modelBuilder.Entity("Auror.Models.Entity.Reservation", b =>
+                {
+                    b.Navigation("Reserved");
+                });
+
             modelBuilder.Entity("Auror.Models.Entity.Room", b =>
                 {
-                    b.Navigation("Reservation");
+                    b.Navigation("Reserved");
 
                     b.Navigation("RoomImages");
                 });

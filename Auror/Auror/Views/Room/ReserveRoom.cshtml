@@ -1,0 +1,93 @@
+﻿@model ReservationViewModel
+@{
+    ViewData["Title"] = "ReserveRoom";
+}
+
+
+<section class="hotel-banner-simple hotel-transition-bottom">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="hotel-center hotel-title-frame">
+                    <h1 class="hotel-mb-20 hotel-h1-inner">Stantart Otaq</h1>
+                    <ul class="hotel-breadcrumbs">
+                        <li><a href="index.html">Ana Səhifə</a></li>
+                        <li><a href="rooms.html">Otaqlar</a></li>
+                        <li><span>Standart Otaq</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section style=" padding: 80px 100px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="hotel-mb-40 hotel-scroll-animation hotel-active-el">Reservasiya</h3>
+        </div>
+        <div class="col-lg-12">
+            <form class="hotel-scroll-animation hotel-active-el" method="post">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="hotel-input-frame">
+                            <label for="check-in">Giriş</label>
+                            <input name="CheckIn" value="@Model.CheckIn" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hotel-input-frame">
+                            <label for="check-in">Çıxış</label>
+                            <input name="CheckOut" value="@Model.CheckOut" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="hotel-input-frame">
+                            <label for="check-in">Insanlar</label>
+                            <input name="PeopleCount" value="@Model.PeopleCount" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <input asp-for="Name" style="width:100%" placeholder="Adınız">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="col-lg-4">
+                        <input asp-for="Surname" style="width:100%" placeholder="Soyadınız">
+                        <span class="text-danger" asp-validation-for="Surname"></span>
+                    </div>
+                    <div class="col-lg-4">
+                        <select asp-items='new SelectList(Model.Gender,"Id","Name")' asp-for="GenderId">Choose your gender</select>
+                    </div>
+                    <div class="col-lg-6">
+                        <input asp-for="Phone" style="width:100%" placeholder="Phone">
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="col-lg-4">
+                        <input asp-for="Email" style="width:100%" placeholder="Email">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="hotel-form-submit-frame">
+                            <!-- temporary button to show the popup -->
+                            <button class="hotel-btn"type="submit">Göndər</button>
+                            <!-- <button class="hotel-btn">Send</button> -->
+                            <div class="hotel-text-sm">*Şəxsi məlumatlarınızı üçüncü tərəflərə açıqlamayacağımıza söz veririk..</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+<div id="hotel-success" class="hotel-popup imgLoad">
+    <img class="lozad hotel-succes-icon" data-src="/img/features/12.svg"
+         alt="success" />
+    <h2 class="hotel-mb-20">Uğurlu</h2>
+    <p>
+        Reservasiyaniz qebul olundu! Sizi hotelimizde gozleyirik.
+    </p>
+</div>
