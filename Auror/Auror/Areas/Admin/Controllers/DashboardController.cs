@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Policy = "AreaAdmin")]
+    [Authorize(Policy = "AreaAdmin")]
     public class DashboardController : Controller
     {
         private readonly AurorDataContext _dt;

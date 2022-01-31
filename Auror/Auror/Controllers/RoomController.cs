@@ -9,8 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-
-
 namespace Auror.Controllers
 {
     public class RoomController : Controller
@@ -48,7 +46,7 @@ namespace Auror.Controllers
 
 
             var reservations = _dt.Reservation.Include(r => r.Room)
-               .Where(r => (r.HotelId == model.HotelId) && (
+               .Where(r => (r.HotelId == model.HotelId) && (r.ReservationStatus.Status=="Active") && (
                (model.CheckIn >= r.CheckIn && model.CheckOut <= r.CheckOut) ||
                (model.CheckOut >= r.CheckIn && model.CheckOut < r.CheckOut)) ||
               ((model.CheckIn <= r.CheckIn) && (model.CheckOut >= r.CheckIn) && (model.CheckOut <= r.CheckOut)) ||
@@ -112,6 +110,20 @@ namespace Auror.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             rsvm.Gender = await _dt.Gender.ToListAsync();
+
+            ReservationViewModel reservation = new ReservationViewModel();
+
+            var reservJson = Request.Cookies["reserv"];
+
+            if (!string.IsNullOrWhiteSpace(reservJson))
+            {
+                reservation = JsonConvert.DeserializeObject<ReservationViewModel>(reservJson);
+            }
+            rsvm.CheckIn = reservation.CheckIn;
+            rsvm.CheckOut = reservation.CheckOut;
+            rsvm.PeopleCount = reservation.PeopleCount;
+
+
             if (!ModelState.IsValid)
             {
                 return View(rsvm);
@@ -142,7 +154,7 @@ namespace Auror.Controllers
                 Room = room,
                 PeopleCount = rsvm.PeopleCount,
                 ReservationStatusId = 1,
-                TotalPrice = room.CurrentPrice,
+                TotalPrice = (rsvm.CheckOut-rsvm.CheckOut).Days * room.CurrentPrice,
                 RoomId = id
             };
 

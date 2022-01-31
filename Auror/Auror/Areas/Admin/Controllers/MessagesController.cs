@@ -1,5 +1,6 @@
 ﻿using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "AreaAdmin")]
     public class MessagesController : Controller
     {
         private readonly AurorDataContext _dt;

@@ -2,6 +2,7 @@
 using Auror.Constants;
 using Auror.Models.DataAccessLayer;
 using Auror.Models.Entity;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,13 +18,29 @@ namespace Auror.Areas.Admin.Controllers
     public class RoomsController : Controller
     {
         private readonly AurorDataContext _dt;
-        public RoomsController(AurorDataContext dt)
+        private readonly IAuthorizationService _authorizationService;
+
+        public RoomsController(AurorDataContext dt, IAuthorizationService authorizationService)
         {
             _dt = dt;
+            _authorizationService = authorizationService;
         }
         public async Task<IActionResult> Index(int? id)
         {
-            var rooms = await _dt.Room.Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
+            var hotel = await _dt.Hotel.FindAsync(id);
+            var result = await _authorizationService.AuthorizeAsync(User, hotel, "HotelPermissionPolicy");
+            if (!result.Succeeded)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    return new ForbidResult();
+                }
+                else
+                {
+                    return new ChallengeResult();
+                }
+            }
+            var rooms = await _dt.Room.Where(h=>h.HotelId==id).Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
             return View(rooms);
         }
 
@@ -34,6 +51,20 @@ namespace Auror.Areas.Admin.Controllers
                 return NotFound();
             }
             var room = await _dt.Room.Where(i => i.Id == id).Include(p => p.RoomImages).Include(p => p.RoomType).Include(t => t.Hotel).FirstOrDefaultAsync();
+            var hotelid = room.HotelId;
+            var hotel = await _dt.Hotel.Where(h => h.Id == hotelid).FirstOrDefaultAsync();
+            var result = await _authorizationService.AuthorizeAsync(User, hotel, "HotelPermissionPolicy");
+            if (!result.Succeeded)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    return new ForbidResult();
+                }
+                else
+                {
+                    return new ChallengeResult();
+                }
+            }
 
             if (room == null)
             {

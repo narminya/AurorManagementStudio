@@ -26,11 +26,16 @@
                     @Model.Location<br>
 
                 </address>
-                @if ((await AuthorizationService.AuthorizeAsync(User, "AreaAdmin")).Succeeded)
+                @if ((await AuthorizationService.AuthorizeAsync(User, "AreaAdmin")).Succeeded || (await AuthorizationService.AuthorizeAsync(User, Model, "HotelPermissionPolicy")).Succeeded)
                 {
                     <a class="btn btn-warning btn-cons-md" asp-controller="Hotel" asp-action="Update" asp-route-id="@Model.Id">Update</a>
-                    <a class="btn btn-danger btn-cons-md" id="deleteCat" data-id="@Model.Id" name="@Model.Name">Delete</a>
+
                     <a class="btn btn-success btn-cons-md" asp-controller="Rooms" asp-action="Create" asp-route-id="@Model.Id">Add room</a>
+                    <a class="btn btn-info btn-cons-md" asp-controller="Rooms" asp-action="Index" asp-route-id="@Model.Id">List of rooms</a>
+                }
+                else if ((await AuthorizationService.AuthorizeAsync(User, "AreaAdmin")).Succeeded)
+                {
+                    <a class="btn btn-danger btn-cons-md" id="deleteCat" data-id="@Model.Id" name="@Model.Name">Delete</a>
                 }
             </div>
         </div>

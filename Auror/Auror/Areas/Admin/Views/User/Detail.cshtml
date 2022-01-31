@@ -64,13 +64,11 @@
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"> Dropdown <b class="caret"></b> </a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Manage</a></li>
-                                            <li><a href="#">Edit Details</a></li>
-                                            <li><a href="#">View More</a></li>
+                                            <li><a asp-area="" asp-controller="Account" asp-action="PasswordChange" asp-route-id="@Model.Id">Change password</a></li>
                                             <li class="divider"></li>
                                             @if (User.IsInRole(RoleConstants.SuperAdmin))
                                             {
-                                                <li><a href="#" class="text-error">Delete user</a></li>
+                                                <li><a asp-controller="Account" asp-action="Disable">Disable user</a></li>
                                             }
 
                                         </ul>
@@ -87,19 +85,27 @@
                                         <div class="row">
                                             <div class="col-md-6">
 
-                                                <h3>CLaims</h3>
-                                                <p>A style represents visual customizations on top of a layout. By editing a style, you can use Squarespace's visual interface to customize your...</p>
-                                                <br>
+                                                <h3>Remove claim</h3>
+                                                <form method="post" asp-action="RemoveClaim">
+                                                    <div class="controls" style="padding-bottom:20px">
+                                                        <input type="hidden" name="claim" value="@Model.Id" />
+                                                        <select name="claims" asp-items='@new SelectList(Model.UserClaims)'></select>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary btn-cons">Add</button>
+                                                </form>
                                             </div>
                                             <div class="col-md-6">
+                                                <h3>Remove claim</h3>
+                                                <form method="post" asp-action="AddClaim">
+                                                    <div class="controls" style="padding-bottom:20px">
+                                                        <input type="hidden" name="claim" value="@Model.Id" />
+                                                        <input  name="type" />
+                                                        <input  name="claimValue" />
 
-                                                <h3>“ Nothing is<span class="semi-bold"> impossible</span>, the word itself says 'I'm <span class="semi-bold">possible</span>'! ”</h3>
-                                                <p>A style represents visual customizations on top of a layout. By editing a style, you can use Squarespace's visual interface to customize your...</p>
-                                                <br>
-                                                <p class="pull-right">
-                                                    <button type="button" class="btn btn-white btn-cons">White</button>
-                                                    <button type="button" class="btn btn-success btn-cons">Success</button>
-                                                </p>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary btn-cons">Add</button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -115,8 +121,7 @@
                                                 }
                                                 <br>
                                             </div>
-                                            @if (User.IsInRole(RoleConstants.SuperAdmin))
-                                            {
+                                          
                                                 <div class="col-md-6">
 
                                                     <h3>Add new role</h3>
@@ -140,17 +145,14 @@
                                                     </form>
 
                                                 </div>
-                                            }
+                                            
 
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab1Inspire">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <h3>Follow us &amp; get updated!</h3>
-                                                <p>Instantly connect to what's most important to you. Follow your friends, experts, favorite celebrities, and breaking news.</p>
-                                                <br>
-                                                <p><a href="#" class="btn-social"><i class="icon-facebook"></i></a> <a href="#" class="btn-social"><i class="icon-twitter"></i> </a> <a href="#" class="btn-social"><i class="icon-dribbble"></i></a> <a href="#" class="btn-social"><i class="icon-pinterest-sign"></i></a> <a href="#" class="btn-social"><i class="icon-tumblr"></i> </a> <a href="#" class="btn-social"><i class="icon-linkedin-sign"></i> </a> </p>
+                                         
                                             </div>
                                         </div>
                                     </div>

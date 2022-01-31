@@ -53,48 +53,13 @@
                     <div class="hotel-room-card">
                         <div class="hotel-cover-frame imgLoad">
                             <a asp-controller="Hotel" asp-action="Detail" asp-route-id="@item.Id"><img class="lozad" src="@Url.Content($"~/img/HOTEL/{@item.Images.FirstOrDefault().Path}")" alt="cover"></a>
+                            @if (item.Rating > 80)
+                            {
+                                <div class="hotel-badge">Populyar</div>
+                            }
                         </div>
                         <div class="hotel-description-frame">
-                            @if (item.Rating > 90)
-                            {
-                                <ul class="rating vote-cast">
-                                    <li class="star">&star;</li>
-                                    <li class="star">&star;</li>
-                                    <li class="star ">&star;</li>
-                                    <li class="star">&star;</li>
-                                    <li class="star selected">&star;</li>
-                                </ul>
-                            }
-                            else if (item.Rating > 70)
-                            {
-                                <ul class="rating vote-cast">
-                                    <li class="star">&star;</li>
-                                    <li class="star">&star;</li>
-                                    <li class="star ">&star;</li>
-                                    <li class="star selected">&star;</li>
-                                    <li class="star">&star;</li>
-                                </ul>
-                            }
-                            else if (item.Rating > 50)
-                            {
-                                <ul class="rating vote-cast">
-                                    <li class="star">&star;</li>
-                                    <li class="star">&star;</li>
-                                    <li class="star selected">&star;</li>
-                                    <li class="star ">&star;</li>
-                                    <li class="star ">&star;</li>
-                                </ul>
-                            }
-                            else
-                            {
-                                <ul class="rating vote-cast">
-                                    <li class="star">&star;</li>
-                                    <li class="star selected">&star;</li>
-                                    <li class="star ">&star;</li>
-                                    <li class="star ">&star;</li>
-                                    <li class="star ">&star;</li>
-                                </ul>
-                            }
+                      
                             <a href="menu.html">
                                 <h3 class="hotel-mb-20">@item.Name</h3>
                             </a>
@@ -144,28 +109,4 @@
 
 }
 
-@section style{
 
-    <style>
-
-        .star {
-            cursor: default;
-            display: inline-block;
-            font-size: 30px;
-            list-style-type: none;
-        }
-
-        .star,
-        .rating:not(.vote-cast):hover .star:hover ~ .star,
-        .rating.vote-cast .star.selected ~ .star {
-            /* normal state */
-            color: black;
-        }
-
-        .rating:hover .star,
-        .rating.vote-cast .star {
-            /* highlighted state */
-            color: gold;
-        }
-    </style>
-}

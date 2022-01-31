@@ -33,8 +33,15 @@ using Auror.Models.ViewComponents;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fa96b9b4f41517776a3596b57725abc786c3e6e0", @"/Views/Room/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57bf0a1f419ce57d8246871689edb49d03972f34", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"310ebb0f113070e47727ea2b5fce5012d9f49d85", @"/Views/_ViewImports.cshtml")]
     public class Views_Room_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<RoomBookViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("lozad"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -162,8 +169,8 @@ WriteAttributeValue(" ", 1605, item.RoomType.Name.ToLower().Replace(" ",""), 160
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(" style=\"position: absolute; left: 0%; top: 0px;\">\r\n\r\n                    <!-- room card -->\r\n                    <div class=\"hotel-room-card\">\r\n                        <div class=\"hotel-cover-frame imgLoad\">\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa96b9b4f41517776a3596b57725abc786c3e6e011815", async() => {
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e012032", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa96b9b4f41517776a3596b57725abc786c3e6e012034", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e012251", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -224,7 +231,7 @@ AddHtmlAttributeValue("", 2011, item.RoomImages.Where(c=>c.IsMain).FirstOrDefaul
                             <div class=""hotel-room-features"">
                                 <div class=""hotel-feature imgLoad"">
                                     <div class=""hotel-icon-frame"">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e016316", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e016535", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -250,7 +257,7 @@ AddHtmlAttributeValue("", 2011, item.RoomImages.Where(c=>c.IsMain).FirstOrDefaul
 #line hidden
 #nullable disable
             WriteLiteral(" Nəfərlik</span>\r\n                                </div>\r\n                                <div class=\"hotel-feature imgLoad\">\r\n                                    <div class=\"hotel-icon-frame\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e018200", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e018419", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -296,9 +303,9 @@ AddHtmlAttributeValue("", 2011, item.RoomImages.Where(c=>c.IsMain).FirstOrDefaul
 #line hidden
 #nullable disable
             WriteLiteral(" <span>/gecə</span></div>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa96b9b4f41517776a3596b57725abc786c3e6e021059", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fa96b9b4f41517776a3596b57725abc786c3e6e021278", async() => {
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e021351", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "fa96b9b4f41517776a3596b57725abc786c3e6e021570", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -359,6 +366,8 @@ AddHtmlAttributeValue("", 2011, item.RoomImages.Where(c=>c.IsMain).FirstOrDefaul
             WriteLiteral("\r\n\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n");
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

@@ -18,26 +18,35 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public HotelController(AurorDataContext dt, SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly IAuthorizationService _authorizationService;
+        public HotelController(AurorDataContext dt, SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IAuthorizationService authorizationService)
         {
             _dt = dt;
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _authorizationService = authorizationService;
         }
         public async Task<IActionResult> Index()
         {
-            var hotels = await _dt.Hotel.Include(c => c.HotelCategory).OrderBy(r => r.Rating).ToListAsync();
+
+            var hotels = new AllHotelsShowViewModel()
+            {
+                Hotels = await _dt.Hotel.Include(c => c.HotelCategory).Include(c=>c.Images).Include(c => c.HotelCategory).OrderByDescending(r => r.Rating).ToListAsync(),
+                Categories = await _dt.HotelCategory.ToListAsync()
+            };
+
+
             return View(hotels);
-        }  
-        
+        }
+
 
         public async Task<IActionResult> Detail(int? id)
         {
@@ -57,11 +66,23 @@ namespace Auror.Areas.Admin.Controllers
                 return NotFound();
             }
 
+            var result = await _authorizationService.AuthorizeAsync(User, hotel, "HotelPermissionPolicy");
+            if (!result.Succeeded)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    return new ForbidResult();
+                }
+                else
+                {
+                    return new ChallengeResult();
+                }
+            }
             return View(hotel);
         }
 
-    
-      
+
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> Create()
         {
             var category = await _dt.HotelCategory.Where(i => !i.IsDeleted).ToListAsync();
@@ -241,7 +262,7 @@ namespace Auror.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             var hotel = await _dt.Hotel.FindAsync(id);
@@ -251,6 +272,7 @@ namespace Auror.Areas.Admin.Controllers
             return Json(hotel);
         }
 
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> AddHotelUsers()
         {
             var huvm = new HotelUserViewModel()
@@ -269,17 +291,17 @@ namespace Auror.Areas.Admin.Controllers
                 return View(huvm);
             }
 
-            var hotelName = _dt.Hotel.Where(c => c.Id == huvm.Hotel).FirstOrDefault().Name;
+            var hotelName = _dt.Hotel.Where(c => c.Id == huvm.Hotel).FirstOrDefault().Id;
 
             User user = new User()
             {
                 Name = huvm.Name,
                 Surname = huvm.Surname,
-                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3) + hotelName.Substring(0,3),
-                Email = huvm.Email, 
-                 GenderId =3
+                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3),
+                Email = huvm.Email,
+                GenderId = 3
             };
-           
+
 
             var identityUser = await _userManager.CreateAsync(user, "Vse1234567@");
 
@@ -292,9 +314,9 @@ namespace Auror.Areas.Admin.Controllers
                 }
             }
 
-            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Sid, hotelName));
+            await _userManager.AddClaimAsync(user, new Claim("HotelId", hotelName.ToString()));
             await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
-            
+
 
             return RedirectToAction("Index", "User");
         }

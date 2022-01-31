@@ -88,7 +88,7 @@
 					dimensions[dimension] = filterString;
 					
 					// We now have two strings containing the filter arguments for each dimension:	
-					console.info('dimension 1: '+dimensions.region);
+					console.info('dimension 1: '+dimensions.categories);
 					console.info('dimension 2: '+dimensions.recreation);
 					
 					/*
@@ -100,7 +100,7 @@
 					*	AND logic between dimensions. At least one dimension must pass for the element to show.
 					*/
 					
-					$('#Parks').mixitup('filter',[dimensions.region, dimensions.recreation])			
+					$('#Parks').mixitup('filter',[dimensions.categories, dimensions.recreation])			
 				});
 
 			});

@@ -33,8 +33,15 @@ using Auror.Models.ViewComponents;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"9829b4a1488d3483d3feb9431f771b4036fc3895", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57bf0a1f419ce57d8246871689edb49d03972f34", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"310ebb0f113070e47727ea2b5fce5012d9f49d85", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<HomeViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "1", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -116,7 +123,7 @@ using Auror.Models.ViewComponents;
             </div>
             <div class=""hotel-book-form hotel-book-form-2"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc38958664", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc38958883", async() => {
                 WriteLiteral(@"
                     <div class=""row align-items-center"">
                         <div class=""col-12 col-lg-3"">
@@ -149,7 +156,7 @@ using Auror.Models.ViewComponents;
                                 <label for=""person"">Böyük</label>
                                 <select id=""person"">
                                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389510741", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389510960", async() => {
                     WriteLiteral("1");
                 }
                 );
@@ -165,7 +172,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389511996", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389512215", async() => {
                     WriteLiteral("2");
                 }
                 );
@@ -181,7 +188,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389513251", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389513470", async() => {
                     WriteLiteral("3");
                 }
                 );
@@ -197,7 +204,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389514506", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389514725", async() => {
                     WriteLiteral("4");
                 }
                 );
@@ -224,7 +231,7 @@ using Auror.Models.ViewComponents;
                                 <label for=""children"">Uşaq</label>
                                 <select id=""children"">
                                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389516442", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389516661", async() => {
                     WriteLiteral("0");
                 }
                 );
@@ -240,7 +247,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389517697", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389517916", async() => {
                     WriteLiteral("1");
                 }
                 );
@@ -256,7 +263,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389518952", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389519171", async() => {
                     WriteLiteral("2");
                 }
                 );
@@ -272,7 +279,7 @@ using Auror.Models.ViewComponents;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389520207", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9829b4a1488d3483d3feb9431f771b4036fc389520426", async() => {
                     WriteLiteral("3");
                 }
                 );
@@ -675,7 +682,7 @@ using Auror.Models.ViewComponents;
                                     <div class=""hotel-cover-frame imgLoad"">
                                         <a href=""room.html"">
                                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389540083", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389540302", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -707,7 +714,7 @@ AddHtmlAttributeValue("", 20378, item.RoomImages.FirstOrDefault().Path, 20378, 3
                                             <div class=""hotel-feature imgLoad"">
                                                 <div class=""hotel-icon-frame"">
                                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389542239", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389542458", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -735,7 +742,7 @@ AddHtmlAttributeValue("", 20378, item.RoomImages.FirstOrDefault().Path, 20378, 3
                                             <div class=""hotel-feature imgLoad"">
                                                 <div class=""hotel-icon-frame"">
                                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389544118", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389544337", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -786,7 +793,7 @@ AddHtmlAttributeValue("", 20378, item.RoomImages.FirstOrDefault().Path, 20378, 3
 #line hidden
 #nullable disable
             WriteLiteral(" M<span>/gecə</span>\r\n                                            </div>\r\n                                            <a href=\"room.html\" class=\"hotel-btn\">\r\n                                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389547151", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9829b4a1488d3483d3feb9431f771b4036fc389547370", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -988,6 +995,8 @@ WriteAttributeValue("", 25860, item.User.ProfilePhoto, 25860, 23, false);
 ");
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

@@ -46,6 +46,11 @@ namespace Auror.Controllers
                 ModelState.AddModelError(nameof(lvm.Email), "User is not found");
                 return View();
             }
+            else if (user.EmailConfirmed == false)
+            {
+                ModelState.AddModelError(nameof(lvm.Email), "Please confirm your email address");
+                return View();
+            }
 
             var result = await _signInManager.PasswordSignInAsync(user, lvm.Password, lvm.KeepMeSigned, true);
             if (!result.Succeeded)
@@ -121,8 +126,8 @@ namespace Auror.Controllers
             await _userManager.ConfirmEmailAsync(user, token);
 
 
-            await _signInManager.SignInAsync(user, true);
-            await _userManager.AddToRoleAsync(user, RoleConstants.User);
+
+            await _userManager.AddToRoleAsync(user, RoleConstants.Visitor);
 
             rvm.Email.EmailSender(Credentials.Message, Credentials.Body);
 
@@ -143,11 +148,72 @@ namespace Auror.Controllers
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
 
+
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, RoleConstants.User);
+                await _userManager.RemoveFromRoleAsync(user, RoleConstants.Visitor);
                 return RedirectToAction("Index", "Home");
             }
             return BadRequest();
+        }
+        public async Task<IActionResult> PasswordChange(string id)
+        {
+            var user = await _dt.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var changePasswordViewModel = new ChangePasswordViewModel()
+            {
+                Id = user.Id,
+                Username = user.UserName
+            };
+            return View(changePasswordViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PasswordChange(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "User is not found");
+                return View();
+            }
+            var changePasswordViewModel = new ChangePasswordViewModel()
+            {
+                Id = user.Id,
+                Username = user.UserName
+            };
+
+            var passwordcheck = await _userManager.CheckPasswordAsync(user, model.OldPassword);
+            if (!passwordcheck)
+            {
+                ModelState.AddModelError("", "Old password is wrong");
+                return View(changePasswordViewModel);
+            }
+
+            var passwordChangeResult = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
+            if (!passwordChangeResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Something went wrong,try again");
+                return View();
+            }
+
+            return RedirectToAction("User", "Detail", new { id = model.Id});
+        }
+
+        public async Task<IActionResult> PasswordReset()
+        {
+            return View();
         }
     }
 }

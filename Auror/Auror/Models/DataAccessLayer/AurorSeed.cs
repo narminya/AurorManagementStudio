@@ -37,8 +37,8 @@ namespace Auror.Models.DataAccessLayer
                 //  InitComments(db);
                 InitServices(db);
                 InitContact(db);
-               InitReservation(db);
-                InitGuest(db);
+            //   InitReservation(db);
+          //      InitGuest(db);
                 //await db.SaveChangesAsync();
             }
 
@@ -119,8 +119,6 @@ namespace Auror.Models.DataAccessLayer
                  new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 2 },
                  new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 3 },
                  new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 4 },
-                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 5 },
-                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 6 },
                  new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 7 },
                  new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 8 },
                  new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 9 },
@@ -128,11 +126,8 @@ namespace Auror.Models.DataAccessLayer
                  new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 11 },
                  new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 12 },
                  new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 14 },
-                 new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 15 },
                  new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 16 },
                  new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 17 },
-                 new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 18 },
-                 new RoomImage { IsMain = true, Path = "4.jpg", RoomId = 19 },
                  new RoomImage { IsMain = true, Path = "1.jpg", RoomId = 20 },
                  new RoomImage { IsMain = true, Path = "2.jpg", RoomId = 21 },
                  new RoomImage { IsMain = true, Path = "3.jpg", RoomId = 22 },
@@ -403,6 +398,8 @@ namespace Auror.Models.DataAccessLayer
                 await role.CreateAsync(new IdentityRole { Name = RoleConstants.User });
                 await role.CreateAsync(new IdentityRole { Name = RoleConstants.SuperAdmin });
                 await role.CreateAsync(new IdentityRole { Name = RoleConstants.Hotel });
+                await role.CreateAsync(new IdentityRole { Name = RoleConstants.Visitor });
+
 
             }
             db.SaveChanges();

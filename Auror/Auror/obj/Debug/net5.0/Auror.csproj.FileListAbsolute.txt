@@ -682,3 +682,8 @@ C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Hotel\AddHotelUsers.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Room\Index.cshtml.g.cs
 C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Room\ReserveRoom.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservation\Index.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Reservation\AllReservations.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Account\PasswordChange.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Views\Account\PasswordReset.cshtml.g.cs
+C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Components\Account\Default.cshtml.g.cs

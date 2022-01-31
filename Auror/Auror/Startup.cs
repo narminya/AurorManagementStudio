@@ -47,30 +47,28 @@ namespace Auror
 
             services.AddAuthorization(options =>
             {
-                //    options.AddPolicy("Hotel", policy => policy.RequireRole("Hotel").RequireClaim("EditHotels", "true")
-                //    .RequireClaim("DeleteHotels", "true"));
+                options.AddPolicy("NonUser&Hotel", policyBuilder => policyBuilder.RequireAssertion(
+                       context => !context.User.IsInRole(RoleConstants.SuperAdmin) ||
+                                  context.User.IsInRole(RoleConstants.Admin) || context.User.IsInRole(RoleConstants.Hotel)));
 
-                //options.AddPolicy("Admin&Moderator", policy => policy.RequireClaim("Admin").RequireClaim("Moderator"));
 
-                //options.AddPolicy("User", policy => policy.RequireRole("User"));
+                options.AddPolicy("HotelPermissionPolicy", policy =>
+                   policy.AddRequirements(new HotelRequirement()));
 
-                //options.AddPolicy("Hotels", policyBuilder => policyBuilder.RequireAssertion(
-                //    context => context.User.IsInRole("SuperAdmin") || context.User.HasClaim("Edit&DeleteHotel","true")
-                //    || context.User.IsInRole("Hotel")
-                //    ));
-                options.AddPolicy("HotelEmployees", policy => policy.AddRequirements(new SecurityRequirements()));
+                options.AddPolicy("UserHimselfPolicy", policy =>
+                   policy.AddRequirements(new SameUserRequirement()));
 
                 options.AddPolicy("AreaAdmin", policyBuilder => policyBuilder.RequireAssertion(
-                    context => context.User.IsInRole("SuperAdmin") ||
-                               context.User.IsInRole("Hotel") && context.User.HasClaim("Admin", "true")
-                    ));
+                    context => context.User.IsInRole("SuperAdmin")));
             });
-            //services.AddSingleton<IAuthorizationHandler, HotelEmployeesClaimsHandler>();
 
             services.AddDbContext<AurorDataContext>(options =>
             {
                 options.UseSqlServer(_conf.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddSingleton<IAuthorizationHandler, HotelPermissionHandler>();
+            services.AddSingleton<IAuthorizationHandler, SameUserPermissionHandler>();
 
             FileConstant.ImagePath = Path.Combine(_env.WebRootPath, "img");
 

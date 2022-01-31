@@ -33,8 +33,15 @@ using Auror.Models.ViewComponents;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e304360c2f3ac4ac718d34d71ba7bdb81cbb6e16", @"/Views/Shared/Components/Navigation/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"57bf0a1f419ce57d8246871689edb49d03972f34", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"310ebb0f113070e47727ea2b5fce5012d9f49d85", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Navigation_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Navigation>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("src", new global::Microsoft.AspNetCore.Html.HtmlString("~/img/hotellogo.png"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,9 +82,9 @@ using Auror.Models.ViewComponents;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<div class=\"hotel-top-bar\">\r\n    <div class=\"container\">\r\n        <div class=\"hotel-left-side\">\r\n            <!-- logo -->\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e167751", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e167970", async() => {
                 WriteLiteral("\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e168022", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e168241", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -129,7 +136,7 @@ WriteAttributeValue("", 653, ViewContext.RouteData.Values["Controller"].ToString
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1611561", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1611780", async() => {
 #nullable restore
 #line 19 "C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\Views\Shared\Components\Navigation\Default.cshtml"
                                                                                    Write(item.Name);
@@ -179,7 +186,7 @@ WriteAttributeValue("", 653, ViewContext.RouteData.Values["Controller"].ToString
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1614468", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1614687", async() => {
 #nullable restore
 #line 29 "C:\Users\afsana.mammadova\Downloads\AurorManagementStudio\Auror\Auror\Views\Shared\Components\Navigation\Default.cshtml"
                                                                              Write(User.Identity.Name);
@@ -214,8 +221,8 @@ WriteAttributeValue("", 653, ViewContext.RouteData.Values["Controller"].ToString
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1616474", async() => {
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1616691", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1616693", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e304360c2f3ac4ac718d34d71ba7bdb81cbb6e1616910", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -257,6 +264,8 @@ WriteAttributeValue("", 653, ViewContext.RouteData.Values["Controller"].ToString
             WriteLiteral("\r\n            <!-- action button end -->\r\n        </div>\r\n        <!-- menu button -->\r\n        <div class=\"hotel-menu-btn\"><span></span></div>\r\n        <!-- menu button end -->\r\n    </div>\r\n</div>");
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
