@@ -48,7 +48,7 @@ namespace Auror
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("NonUser&Hotel", policyBuilder => policyBuilder.RequireAssertion(
-                       context => !context.User.IsInRole(RoleConstants.SuperAdmin) ||
+                       context => context.User.IsInRole(RoleConstants.SuperAdmin) ||
                                   context.User.IsInRole(RoleConstants.Admin) || context.User.IsInRole(RoleConstants.Hotel)));
 
 
@@ -60,6 +60,9 @@ namespace Auror
 
                 options.AddPolicy("AreaAdmin", policyBuilder => policyBuilder.RequireAssertion(
                     context => context.User.IsInRole("SuperAdmin")));
+
+                options.AddPolicy("Super&Admin", policyBuilder => policyBuilder.RequireAssertion(
+                  context => context.User.IsInRole("SuperAdmin") || context.User.IsInRole("Admin")));
             });
 
             services.AddDbContext<AurorDataContext>(options =>

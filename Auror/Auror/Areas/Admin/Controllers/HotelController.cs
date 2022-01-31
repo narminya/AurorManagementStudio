@@ -18,7 +18,7 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    
+     [Authorize(Policy = "NonUser&Hotel")]
     public class HotelController : Controller
     {
         private readonly AurorDataContext _dt;
@@ -34,6 +34,8 @@ namespace Auror.Areas.Admin.Controllers
             _roleManager = roleManager;
             _authorizationService = authorizationService;
         }
+
+       
         public async Task<IActionResult> Index()
         {
 

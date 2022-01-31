@@ -68,7 +68,7 @@
                                             <li class="divider"></li>
                                             @if (User.IsInRole(RoleConstants.SuperAdmin))
                                             {
-                                                <li><a asp-controller="Account" asp-action="Disable">Disable user</a></li>
+                                                <li><a asp-controller="User" asp-action="Disable" asp-route-id="@Model.Id">Disable user</a></li>
                                             }
 
                                         </ul>
@@ -83,30 +83,33 @@
                                 <div class="tab-content">
                                     <div class="tab-pane " id="tab1hellowWorld">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            @if (User.IsInRole(RoleConstants.SuperAdmin))
+                                            {<div class="col-md-6">
+                                                    <h3>Remove claim</h3>
+                                                    <form method="post" asp-action="RemoveClaim">
+                                                        <div class="controls" style="padding-bottom:20px">
+                                                            <input type="hidden" name="claim" value="@Model.Id" />
+                                                            <select name="claims" asp-items='@new SelectList(Model.UserClaims)'></select>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary btn-cons">Remove</button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h3>Add claim</h3>
+                                                    <form method="post" asp-action="AddClaim">
+                                                        <div class="controls" style="padding-bottom:20px">
+                                                            <input type="hidden" name="id" value="@Model.Id" />
+                                                            <label for="claimType">Type</label>
+                                                            <input name="claimType" />
+                                                            <label for="claimType">Value</label>
+                                                            <input name="claimValue" />
 
-                                                <h3>Remove claim</h3>
-                                                <form method="post" asp-action="RemoveClaim">
-                                                    <div class="controls" style="padding-bottom:20px">
-                                                        <input type="hidden" name="claim" value="@Model.Id" />
-                                                        <select name="claims" asp-items='@new SelectList(Model.UserClaims)'></select>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary btn-cons">Add</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h3>Remove claim</h3>
-                                                <form method="post" asp-action="AddClaim">
-                                                    <div class="controls" style="padding-bottom:20px">
-                                                        <input type="hidden" name="claim" value="@Model.Id" />
-                                                        <input  name="type" />
-                                                        <input  name="claimValue" />
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary btn-cons">Add</button>
+                                                    </form>
 
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary btn-cons">Add</button>
-                                                </form>
+                                                </div>}
 
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane active" id="tab1FollowUs">
@@ -121,10 +124,10 @@
                                                 }
                                                 <br>
                                             </div>
-                                          
-                                                <div class="col-md-6">
 
-                                                    <h3>Add new role</h3>
+                                            <div class="col-md-6">
+                                                @if (User.IsInRole(RoleConstants.SuperAdmin))
+                                                {<h3>Add new role</h3>
 
                                                     <br>
                                                     <form method="post" asp-action="AddRoles">
@@ -144,15 +147,18 @@
 
                                                     </form>
 
-                                                </div>
-                                            
+                                                }
+
+
+                                            </div>
+
 
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab1Inspire">
                                         <div class="row">
                                             <div class="col-md-12">
-                                         
+
                                             </div>
                                         </div>
                                     </div>

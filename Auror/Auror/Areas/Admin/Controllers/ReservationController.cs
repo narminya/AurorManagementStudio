@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Policy = "NonUser&Hotel")]
     public class ReservationController : Controller
     {
         private readonly AurorDataContext _dt;

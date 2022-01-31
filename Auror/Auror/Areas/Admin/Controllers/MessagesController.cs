@@ -13,7 +13,7 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy = "AreaAdmin")]
+    [Authorize(Policy = "Super&Admin")]
     public class MessagesController : Controller
     {
         private readonly AurorDataContext _dt;

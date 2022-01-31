@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Policy = "AreaAdmin")]
+  
     public class UserController : Controller
     {
         private readonly AurorDataContext _dt;
@@ -30,6 +30,8 @@ namespace Auror.Areas.Admin.Controllers
             _signInManager = signInManager;
             _authorizationService = authorizationService;
         }
+
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> Index()
         {
             var list = await _userManager.Users.ToListAsync();
@@ -54,26 +56,12 @@ namespace Auror.Areas.Admin.Controllers
             return View(users);
         }
 
-     
         public async Task<IActionResult> Detail(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
                 return NotFound();
-            }
-
-            var result = await _authorizationService.AuthorizeAsync(User, user, "UserHimselfPolicy");
-            if (!result.Succeeded)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    return new ForbidResult();
-                }
-                else
-                {
-                    return new ChallengeResult();
-                }
             }
 
             var roles = (await _userManager.GetRolesAsync(user)).ToList();
@@ -97,7 +85,7 @@ namespace Auror.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> AddRoles(string role, string id)
         {
             var roleName = await _dt.Roles.FindAsync(role);
@@ -107,12 +95,12 @@ namespace Auror.Areas.Admin.Controllers
             }
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.AddToRoleAsync(user, roleName.Name);
-            await _signInManager.SignOutAsync();
             return RedirectToAction(nameof(Detail), new { id = id});
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "AreaAdmin")]
         public async Task<IActionResult> RemoveRoles(string role, string id)
         {
             var roleName = await _roleManager.Roles.Where(c=>c.Name==role).FirstOrDefaultAsync();
@@ -127,20 +115,35 @@ namespace Auror.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddClaim(Claim claim, string id)
+        [Authorize(Policy = "AreaAdmin")]
+        public async Task<IActionResult> RemoveClaim(Claim claim, string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             await _userManager.RemoveClaimAsync(user, claim);
-            return RedirectToAction(nameof(Detail), new { id = id });
+            return RedirectToAction(nameof(Detail), new { id = user.Id });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RemoveClaim(string type, string claimValue, string id)
+        [Authorize(Policy = "AreaAdmin")]
+        public async Task<IActionResult> AddClaim(string claimType, string claimValue, string id)
         {
-            Claim claim = new Claim(type, claimValue);
+            
             var user = await _userManager.FindByIdAsync(id);
-            await _userManager.AddClaimAsync(user, claim);
-            return RedirectToAction(nameof(Detail), new { id = id });
+
+            await _userManager.AddClaimAsync(user, new Claim(claimType, claimValue));
+            return RedirectToAction(nameof(Detail), new { id = user.Id });
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DisableUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            await _userManager.SetLockoutEnabledAsync(user, true);
+            await _userManager.SetLockoutEndDateAsync(user, new DateTimeOffset(DateTime.MaxValue));
+            //  await _user.UpdateSecurityStampAsync(user);
+            return RedirectToAction(nameof(Detail), new { id = user.Id });
+
         }
     }
 }

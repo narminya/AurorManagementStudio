@@ -14,7 +14,11 @@ namespace Auror.Security
                                                       HotelRequirement requirement,
                                                       Hotel resource)
         {
-            if (context.User.HasClaim("HotelId", resource.Id.ToString()) || context.User.IsInRole(RoleConstants.SuperAdmin))
+            if (context.User.HasClaim("HotelId", resource.Id.ToString()))
+            {
+                context.Succeed(requirement);
+            }
+            else if(context.User.IsInRole(RoleConstants.SuperAdmin))
             {
                 context.Succeed(requirement);
             }

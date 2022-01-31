@@ -15,6 +15,7 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    
     public class RoomsController : Controller
     {
         private readonly AurorDataContext _dt;
@@ -28,18 +29,7 @@ namespace Auror.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int? id)
         {
             var hotel = await _dt.Hotel.FindAsync(id);
-            var result = await _authorizationService.AuthorizeAsync(User, hotel, "HotelPermissionPolicy");
-            if (!result.Succeeded)
-            {
-                if (User.Identity.IsAuthenticated)
-                {
-                    return new ForbidResult();
-                }
-                else
-                {
-                    return new ChallengeResult();
-                }
-            }
+         
             var rooms = await _dt.Room.Where(h=>h.HotelId==id).Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
             return View(rooms);
         }

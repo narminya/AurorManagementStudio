@@ -5,6 +5,7 @@ using Auror.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,18 @@ namespace Auror.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        public AccountController(AurorDataContext dt, SignInManager<User> signInManager, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(AurorDataContext dt, SignInManager<User> signInManager,
+            UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
+             ILogger<AccountController> logger
+            )
         {
             _dt = dt;
             _signInManager = signInManager;
             _userManager = userManager;
             _roleManager = roleManager;
+            _logger = logger;
+
         }
         public IActionResult Login()
         {
@@ -123,7 +130,6 @@ namespace Auror.Controllers
             var confirmationLink = Url.Action(nameof(ConfirmEmail), "Account", new { token, email = user.Email }, Request.Scheme);
 
             Utilities.SendEmail.EmailSender(user.Email, "Please confirm your email", confirmationLink);
-            await _userManager.ConfirmEmailAsync(user, token);
 
 
 
@@ -208,12 +214,79 @@ namespace Auror.Controllers
                 return View();
             }
 
-            return RedirectToAction("User", "Detail", new { id = model.Id});
+            return RedirectToAction("Detail", "User", new {area="Admin", id = model.Id});
         }
 
-        public async Task<IActionResult> PasswordReset()
+        public IActionResult PasswordReset()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PasswordReset(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            var user =await _userManager.FindByEmailAsync(model.Email);
+            if (user ==null)
+            {
+                ModelState.AddModelError("", "Please enter valid email");
+                return View(model);
+            }
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var passwordResetLink = Url.Action("NewPasswordReset", "Account", new { email = model.Email, token = token }, Request.Scheme);
+
+            _logger.Log(LogLevel.Warning, passwordResetLink);
+            Utilities.SendEmail.EmailSender(user.Email, "Change password", passwordResetLink);
+            return View("PasswordResetConfirm","Account");
+        }
+
+        public IActionResult PasswordResetConfirm()
+        {
+            return View();
+        }
+
+        public  IActionResult NewPasswordReset(string token,string email)
+        {
+            if (token==null || email == null)
+            {
+                ModelState.AddModelError("", "Invalid password reset link");
+            }
+            return View();
+        }
+
+
+        public async Task<IActionResult> NewPasswordReset(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user==null)
+            {
+                return View(model);
+            }
+
+            var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                    return View(model);
+                }
+            }
+
+            if (User.IsInRole(RoleConstants.User))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("Index","Dashboard", new {area = "Admin"});
         }
     }
 }

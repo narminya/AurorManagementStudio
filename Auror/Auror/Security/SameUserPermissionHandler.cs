@@ -14,7 +14,7 @@ namespace Auror.Security
                                                       SameUserRequirement requirement,
                                                       User resource)
         {
-            if (context.User.HasClaim("UserHimself", resource.Id) || context.User.IsInRole(RoleConstants.SuperAdmin))
+            if (context.User.HasClaim("UserHimself", resource.Id))
             {
                 context.Succeed(requirement);
             }
