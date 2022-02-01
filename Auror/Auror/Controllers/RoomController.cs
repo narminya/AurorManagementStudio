@@ -132,7 +132,7 @@ namespace Auror.Controllers
             var id = (int)TempData["Room"];
 
             var room = await _dt.Room.Where(c => c.Id == id).FirstOrDefaultAsync();
-            var hotel = await _dt.Hotel.Where(c => c.Id == room.Id).FirstOrDefaultAsync();
+            var hotel = await _dt.Hotel.Where(c => c.Id == room.HotelId).FirstOrDefaultAsync();
             var guest = new Guest()
             {
                 Name = rsvm.Name,
@@ -160,6 +160,8 @@ namespace Auror.Controllers
 
             await _dt.Reservation.AddAsync(reserv);
             await _dt.SaveChangesAsync();
+
+            Utilities.SendEmail.EmailSender(rsvm.Email, "Reservation", "Reservation qebul olundu.Teshekkurler");
 
             foreach (var cookie in HttpContext.Request.Cookies)
             {

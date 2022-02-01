@@ -84,13 +84,14 @@ namespace Auror.Controllers
             return RedirectToAction("Index","Room", model);
 
         }
-        public async Task<PartialViewResult> Comment(string content)
+        public async Task<PartialViewResult> Comment(string content,string rating)
         {
             var user = await _user.GetUserAsync(HttpContext.User);
             var comment = new Comment()
             {
                 Content = content,
                 HotelId = Convert.ToInt32(TempData["Id"]),
+                Rating = Convert.ToInt32(rating),
                 User = user
             };
 

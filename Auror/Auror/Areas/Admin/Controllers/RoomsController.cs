@@ -34,6 +34,13 @@ namespace Auror.Areas.Admin.Controllers
             return View(rooms);
         }
 
+        [Authorize(Policy = "AreaAdmin")]
+        public async Task<IActionResult> GetAllRooms()
+        {
+            var rooms = await _dt.Room.Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
+            return View(rooms);
+        }
+
         public async Task<IActionResult> Detail(int? id)
         {
             if (!id.HasValue || id.Value == 0)
@@ -90,7 +97,7 @@ namespace Auror.Areas.Admin.Controllers
                 return View(rcv);
             }
 
-            var hotel = TempData["Id"];
+            var hotel = TempData["Hotel"];
 
             List<RoomImage> images = new List<RoomImage>();
             foreach (var item in rcv.file)
@@ -127,7 +134,7 @@ namespace Auror.Areas.Admin.Controllers
             await _dt.AddAsync(room);
             await _dt.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Rooms", new { id = hotel});
         }
 
         public async Task<IActionResult> Update(int? id)

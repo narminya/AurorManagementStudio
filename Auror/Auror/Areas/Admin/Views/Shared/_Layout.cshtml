@@ -41,7 +41,7 @@
                     </li>
                 </ul>
                 <!-- BEGIN LOGO -->
-                <a href="index.html">
+                <a asp-controller="Dashboard" asp-action="Index">
                     <img src="~/Admin/assets/img/logo.png" class="logo" alt="" width="106" height="21" />
                 </a>
                 <!-- END LOGO -->
@@ -225,7 +225,7 @@
                     <li class="start ">
                         <a asp-controller="Rooms" asp-action="Index"><i class="material-icons">apps</i><span class="title">Rooms</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
-                            <li> <a asp-controller="Rooms" asp-action="Index">Room list</a></li>
+                            <li> <a asp-controller="Rooms" asp-action="GetAllRooms">Room list</a></li>
                             <li> <a asp-controller="Rooms" asp-action="Create">Create</a></li>
 
 
