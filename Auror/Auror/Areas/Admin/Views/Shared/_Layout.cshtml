@@ -169,21 +169,7 @@
                             </a>
                             @await Component.InvokeAsync("Account")
                         </li>
-                        <li class="quicklinks"> <span class="h-seperate"></span></li>
-                        <li class="quicklinks">
-                            <a href="#" class="chat-menu-toggle" data-webarch="toggle-right-side">
-                                <i class="material-icons">chat</i><span class="badge badge-important hide">1</span>
-                            </a>
-                            <div class="simple-chat-popup chat-menu-toggle hide">
-                                <div class="simple-chat-popup-arrow"></div>
-                                <div class="simple-chat-popup-inner">
-                                    <div style="width:100px">
-                                        <div class="semi-bold">David Nester</div>
-                                        <div class="message">Hey you there </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+
                     </ul>
                 </div>
                 <!-- END CHAT TOGGLER -->
@@ -225,7 +211,7 @@
                     <li class="start ">
                         <a asp-controller="Rooms" asp-action="Index"><i class="material-icons">apps</i><span class="title">Rooms</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
-                            <li> <a asp-controller="Rooms" asp-action="GetAllRooms">Room list</a></li>
+                            <li> <a asp-controller="Rooms" asp-action="Index">Room list</a></li>
                             <li> <a asp-controller="Rooms" asp-action="Create">Create</a></li>
 
 
@@ -241,6 +227,20 @@
                         <a asp-controller="User" asp-action="Index"><i class="material-icons">group</i><span class="title">Users</span> <span class="selected"></span> <span class="arrow "></span> </a>
                         <ul class="sub-menu">
                             <li> <a asp-controller="User" asp-action="Index">Users list</a></li>
+                        </ul>
+                    </li>
+                    <li class="start ">
+                        <a asp-controller="Reservation" asp-action="Index"><i class="material-icons">eventseat</i><span class="title">Reservations</span> <span class="selected"></span> <span class="arrow "></span> </a>
+                        <ul class="sub-menu">
+                            <li> <a asp-controller="Reservation" asp-action="Index">All reservations</a></li>
+                        </ul>
+                    </li>
+                    <li class="start ">
+                        <a asp-controller="Comment" asp-action="Index">
+                            <i class="material-icons">comment </i><span class="title">Comments</span> <span class="selected"></span> <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li> <a asp-controller="Comment" asp-action="Index">All comments</a></li>
                         </ul>
                     </li>
                 </ul>

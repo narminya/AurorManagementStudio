@@ -59,6 +59,8 @@ namespace Auror.Controllers
                 return View();
             }
 
+
+
             var result = await _signInManager.PasswordSignInAsync(user, lvm.Password, lvm.KeepMeSigned, true);
             if (!result.Succeeded)
             {
@@ -71,6 +73,7 @@ namespace Auror.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+          
             return RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
 
 
@@ -214,7 +217,7 @@ namespace Auror.Controllers
                 return View();
             }
 
-            return RedirectToAction("Detail", "User", new {area="Admin", id = model.Id});
+            return RedirectToAction("Detail", "User", new { area = "Admin", id = model.Id });
         }
 
         public IActionResult PasswordReset()
@@ -230,8 +233,8 @@ namespace Auror.Controllers
             {
                 return View();
             }
-            var user =await _userManager.FindByEmailAsync(model.Email);
-            if (user ==null)
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
             {
                 ModelState.AddModelError("", "Please enter valid email");
                 return View(model);
@@ -241,7 +244,7 @@ namespace Auror.Controllers
 
             _logger.Log(LogLevel.Warning, passwordResetLink);
             Utilities.SendEmail.EmailSender(user.Email, "Change password", passwordResetLink);
-            return View("PasswordResetConfirm","Account");
+            return View("PasswordResetConfirm", "Account");
         }
 
         public IActionResult PasswordResetConfirm()
@@ -249,24 +252,24 @@ namespace Auror.Controllers
             return View();
         }
 
-        public  IActionResult NewPasswordReset(string token,string email)
+        public IActionResult NewPasswordReset(string token, string email)
         {
-            if (token==null || email == null)
+            if (token == null || email == null)
             {
                 ModelState.AddModelError("", "Invalid password reset link");
             }
             return View();
         }
 
-
+        [HttpPost]
         public async Task<IActionResult> NewPasswordReset(ResetPasswordViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if (user==null)
+            if (user == null)
             {
                 return View(model);
             }
@@ -281,12 +284,14 @@ namespace Auror.Controllers
                 }
             }
 
+
+
             if (User.IsInRole(RoleConstants.User))
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            return RedirectToAction("Index","Dashboard", new {area = "Admin"});
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
     }
 }

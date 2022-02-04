@@ -274,53 +274,6 @@ namespace Auror.Areas.Admin.Controllers
             return Json(hotel);
         }
 
-        [Authorize(Policy = "AreaAdmin")]
-        public async Task<IActionResult> AddHotelUsers()
-        {
-            var huvm = new HotelUserViewModel()
-            {
-                hotels = await _dt.Hotel.Where(c => !c.IsDeleted).ToListAsync()
-            };
-            return View(huvm);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddHotelUsers(HotelUserViewModel huvm)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(huvm);
-            }
-
-            var hotelName = _dt.Hotel.Where(c => c.Id == huvm.Hotel).FirstOrDefault().Id;
-
-            User user = new User()
-            {
-                Name = huvm.Name,
-                Surname = huvm.Surname,
-                UserName = huvm.Name.Substring(0, 3) + huvm.Surname.Substring(0, 3),
-                Email = huvm.Email,
-                GenderId = 3
-            };
-
-
-            var identityUser = await _userManager.CreateAsync(user, "Vse1234567@");
-
-            if (!identityUser.Succeeded)
-            {
-                foreach (var item in identityUser.Errors)
-                {
-                    ModelState.AddModelError("", item.Description);
-                    return View(huvm);
-                }
-            }
-
-            await _userManager.AddClaimAsync(user, new Claim("HotelId", hotelName.ToString()));
-            await _userManager.AddToRoleAsync(user, RoleConstants.Hotel);
-
-
-            return RedirectToAction("Index", "User");
-        }
+    
     }
 }

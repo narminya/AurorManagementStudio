@@ -18,16 +18,13 @@ namespace Auror.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var hvm = new HomeViewModel()
-            {
-                Rooms = await _dt.Room.Where(x => x.IsAvailable)
-                .Include(r=>r.RoomImages.Where(i=>i.IsMain)).Include(i=>i.RoomType).Take(6).ToListAsync(),
+            var vm = new HomeViewModel();
+            vm.Comments = await _dt.Comment.Where(o => !o.IsDeleted).OrderBy(c => c.CreatedDate)
+                       .Include(h => h.Hotel).Include(u => u.User).Take(4).ToListAsync();
+            vm.Rooms = await _dt.Room.Where(x => x.IsAvailable)
+                            .Include(r => r.RoomImages.Where(i => i.IsMain)).Include(i => i.RoomType).Take(6).ToListAsync();
 
-                Comments = await _dt.Comment.Where(o=>!o.IsDeleted).OrderBy(c=>c.CreatedDate)
-                .Include(h => h.Hotel).Include(u=>u.User).Take(4).ToListAsync()
-                
-            };
-            return View(hvm);
+            return View(vm);
         }
     }
 }

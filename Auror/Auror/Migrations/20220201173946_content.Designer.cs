@@ -4,14 +4,16 @@ using Auror.Models.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auror.Migrations
 {
     [DbContext(typeof(AurorDataContext))]
-    partial class AurorDataContextModelSnapshot : ModelSnapshot
+    [Migration("20220201173946_content")]
+    partial class content
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -806,9 +808,6 @@ namespace Auror.Migrations
             modelBuilder.Entity("Auror.Models.Entity.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<bool>("FirstSignIn")
-                        .HasColumnType("bit");
 
                     b.Property<int>("GenderId")
                         .HasColumnType("int");

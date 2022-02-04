@@ -14,6 +14,7 @@ namespace Auror.Models.Entity
         public string ProfilePhoto { get; set; }
         public int GenderId { get; set; }
         public Gender Gender { get; set; }
+        public bool FirstSignIn { get; set; }
 
     }
 }

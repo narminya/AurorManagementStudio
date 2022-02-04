@@ -23,8 +23,6 @@ namespace Auror.Controllers
         }
         public async Task<IActionResult> Index(RoomBookViewModel model)
         {
-
-
             ReservationViewModel reservation;
 
             var reservJson = Request.Cookies["reserv"];
@@ -153,7 +151,7 @@ namespace Auror.Controllers
                 Hotel = hotel,
                 Room = room,
                 PeopleCount = rsvm.PeopleCount,
-                ReservationStatusId = 1,
+                ReservationStatusId = 3,
                 TotalPrice = (rsvm.CheckOut-rsvm.CheckOut).Days * room.CurrentPrice,
                 RoomId = id
             };

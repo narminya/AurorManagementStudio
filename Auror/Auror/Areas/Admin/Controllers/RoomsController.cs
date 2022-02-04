@@ -15,7 +15,7 @@ using Utilities;
 namespace Auror.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    
+
     public class RoomsController : Controller
     {
         private readonly AurorDataContext _dt;
@@ -28,18 +28,33 @@ namespace Auror.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index(int? id)
         {
-            var hotel = await _dt.Hotel.FindAsync(id);
-         
-            var rooms = await _dt.Room.Where(h=>h.HotelId==id).Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
+            var rooms = new List<Room>();
+            if (!id.HasValue || id.Value == 0)
+            {
+                rooms = await _dt.Room.Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
+            }
+            else
+            {
+                var hotel = await _dt.Hotel.FindAsync(id);
+                var result = await _authorizationService.AuthorizeAsync(User, hotel, "HotelPermissionPolicy");
+                if (!result.Succeeded)
+                {
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        return new ForbidResult();
+                    }
+                    else
+                    {
+                        return new ChallengeResult();
+                    }
+                }
+                rooms = await _dt.Room.Where(h => h.HotelId == id).Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
+            }
+
             return View(rooms);
         }
 
-        [Authorize(Policy = "AreaAdmin")]
-        public async Task<IActionResult> GetAllRooms()
-        {
-            var rooms = await _dt.Room.Include(h => h.Hotel).Include(i => i.RoomImages).Include(t => t.RoomType).ToListAsync();
-            return View(rooms);
-        }
+      
 
         public async Task<IActionResult> Detail(int? id)
         {
@@ -72,7 +87,7 @@ namespace Auror.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(int? id)
         {
-            if (!id.HasValue || id.Value ==0)
+            if (!id.HasValue || id.Value == 0)
             {
                 return BadRequest();
             }
@@ -90,7 +105,7 @@ namespace Auror.Areas.Admin.Controllers
         public async Task<IActionResult> Create(RoomCreateViewModel rcv)
         {
             rcv.RoomType = await _dt.RoomType.ToListAsync();
-           // rcv.Hotels = await _dt.Hotel.ToListAsync();
+            // rcv.Hotels = await _dt.Hotel.ToListAsync();
 
             if (!ModelState.IsValid)
             {
@@ -134,7 +149,7 @@ namespace Auror.Areas.Admin.Controllers
             await _dt.AddAsync(room);
             await _dt.SaveChangesAsync();
 
-            return RedirectToAction("Index","Rooms", new { id = hotel});
+            return RedirectToAction("Index", "Rooms", new { id = hotel });
         }
 
         public async Task<IActionResult> Update(int? id)
@@ -166,11 +181,11 @@ namespace Auror.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(RoomCreateViewModel rcv,int? id)
+        public async Task<IActionResult> Update(RoomCreateViewModel rcv, int? id)
         {
 
             rcv.RoomType = await _dt.RoomType.Where(a => !a.IsDeleted).ToListAsync();
-          //  rcv.Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync();
+            //  rcv.Hotels = await _dt.Hotel.Where(a => !a.IsDeleted).ToListAsync();
 
             if (!ModelState.IsValid)
             {
